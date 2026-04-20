@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Golden Foundation — REV Global × Golden Limousine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── PASSWORD GATE ── */
+#gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#040D1E 0%,#0B1F48 100%);display:flex;align-items:center;justify-content:center;transition:opacity .5s ease}
+#gate.hide{opacity:0;pointer-events:none}
+.gate-box{text-align:center;max-width:380px;padding:2.5rem}
+.gate-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;color:#fff;letter-spacing:.04em;margin-bottom:.25rem}
+.gate-logo span{color:#FFCB05}
+.gate-sub{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.35);margin-bottom:2.5rem}
+.gate-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem;display:block}
+.gate-input{width:100%;padding:14px 18px;font-family:'Inter',sans-serif;font-size:15px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:4px;color:#fff;outline:none;transition:border-color .2s}
+.gate-input:focus{border-color:#FFCB05}
+.gate-input.err{border-color:#EF4444;animation:shake .4s ease}
+.gate-btn{width:100%;margin-top:1rem;padding:14px;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:600;background:#FFCB05;color:#040D1E;border:none;border-radius:4px;cursor:pointer;transition:all .2s}
+.gate-btn:hover{background:#fff;transform:translateY(-1px)}
+.gate-err-msg{font-family:'Inter',sans-serif;font-size:12px;color:#EF4444;margin-top:.75rem;min-height:18px}
+.gate-conf{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.2);margin-top:2rem}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+:root {
+  --navy-950: #040D1E; --navy-900: #071530; --navy-800: #0B1F48;
+  --navy-700: #102660; --navy-600: #00274C;
+  --gold-500: #CC9F00; --gold-400: #FFCB05; --gold-300: #FFE066;
+  --blue-500: #0066CC; --blue-400: #0080FF;
+  --gray-50: #F8FAFC; --gray-100: #F1F5F9; --gray-200: #E2E8F0;
+  --gray-400: #94A3B8; --gray-500: #64748B; --gray-800: #1E293B;
+  --white: #FFFFFF;
+  --font-d: 'Montserrat', sans-serif; --font-b: 'Inter', sans-serif;
+  --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 20px; --r-full: 9999px;
+  --ease: 200ms ease; --smooth: 350ms cubic-bezier(0.4,0,0.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--white); color: var(--gray-500); line-height: 1.75; font-size: 16px; -webkit-font-smoothing: antialiased; }
+::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--navy-950); } ::-webkit-scrollbar-thumb { background: var(--gold-400); border-radius: 2px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── Section label ── */
+.lbl { display: inline-flex; align-items: center; gap: 10px; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-400); margin-bottom: .875rem; display: block; }
+.lbl::before { content: ''; display: block; width: 24px; height: 1px; background: currentColor; }
+.lbl-navy { color: var(--navy-600); }
+
+/* ── Headings ── */
+.sh { font-family: var(--font-d); font-weight: 900; font-size: clamp(28px,3.5vw,48px); color: var(--navy-900); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1.25rem; text-align: left; }
+.sh-w { color: var(--white); }
+h1.sh, h2.sh, h3.sh, h1.htitle { text-align: left; }
+.lead { font-size: 1.1rem; color: var(--gray-500); max-width: 660px; line-height: 1.75; margin-bottom: 2.5rem; }
+.lead-w { color: rgba(255,255,255,.75); }
+
+/* ── Buttons ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-b); font-size: .875rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: var(--r-sm); transition: all var(--smooth); cursor: pointer; border: none; }
+.bta { background: var(--gold-400); color: var(--navy-900); }
+.bta:hover { background: var(--white); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,203,5,.35); }
+.bto { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.35); }
+.bto:hover { border-color: var(--gold-400); color: var(--gold-400); }
+.btn-n { background: var(--navy-900); color: var(--white); }
+.btn-n:hover { background: var(--navy-800); transform: translateY(-1px); }
+.arr { transition: transform var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; transition: all var(--smooth); }
+nav.sc { background: rgba(4,13,30,.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.ni { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.nlogos { display: flex; align-items: center; gap: 14px; }
+.nsep { width: 1px; height: 28px; background: rgba(255,255,255,.2); }
+.nrev { font-family: var(--font-d); font-weight: 900; font-size: 15px; letter-spacing: .04em; color: var(--white); opacity: .9; }
+.nrev span { color: var(--gold-400); }
+.ngl { height: 26px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .8; }
+.nlinks { display: flex; gap: 2rem; list-style: none; }
+.nlinks a { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; transition: color var(--ease); }
+.nlinks a:hover { color: var(--white); }
+.ncta { display: flex; gap: 12px; }
+
+/* ── HERO ── */
+.hero { background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%); min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 6rem; position: relative; overflow: hidden; }
+.hgrid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,203,5,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(255,203,5,.04) 1px,transparent 1px); background-size: 80px 80px; }
+.hglow { position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle,rgba(255,203,5,.08) 0%,transparent 70%); }
+.hcob { position: absolute; top: 96px; right: 2rem; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.hcol { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.3); }
+.hglg { height: 52px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .65; }
+.hcontent { position: relative; }
+.hey { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-400); margin-bottom: 1.25rem; display: inline-flex; align-items: center; gap: 10px; }
+.hey::before { content:''; display:block; width:24px; height:1px; background:var(--gold-400); }
+.htitle { font-family: var(--font-d); font-weight: 900; font-size: clamp(52px,7.5vw,108px); color: var(--white); line-height: .95; letter-spacing: -.03em; margin-bottom: 1.25rem; }
+.htitle .acc { color: var(--gold-400); }
+.hsub { font-size: clamp(15px,1.8vw,19px); color: rgba(255,255,255,.8); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; }
+.hmeta { display: flex; gap: 3rem; flex-wrap: wrap; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.08); margin-bottom: 2.5rem; }
+.hml { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 4px; }
+.hmv { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.8); }
+.hdates { display: flex; gap: 0; border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-sm); width: fit-content; overflow: hidden; }
+.hdp { padding: 10px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+.hdp:last-child { border-right: none; }
+.hdp.ft { background: rgba(255,203,5,.1); }
+.hdpl { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 3px; }
+.hdpv { font-family: var(--font-d); font-weight: 700; font-size: 13px; color: var(--white); }
+.hdp.ft .hdpv { color: var(--gold-400); }
+
+/* ── STATS BAR ── */
+.sbar { background: var(--navy-800); padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,.06); }
+.sgrid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid rgba(255,255,255,.06); }
+.sitem { padding: 1.75rem 2rem; text-align: center; border-right: 1px solid rgba(255,255,255,.06); transition: background var(--ease); }
+.sitem:last-child { border-right: none; }
+.sitem:hover { background: rgba(255,203,5,.04); }
+.snum { font-family: var(--font-d); font-weight: 900; font-size: 2.5rem; color: var(--white); line-height: 1; letter-spacing: -.03em; margin-bottom: 6px; }
+.snum .acc { color: var(--gold-400); }
+.slbl { font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+
+/* ── SECTIONS ── */
+.sw { background: var(--white); padding: 6rem 0; }
+.sg { background: var(--gray-50); padding: 6rem 0; }
+.sd { background: var(--navy-900); padding: 6rem 0; }
+
+/* ── PROBLEM GRID ── */
+.pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-top: 1rem; }
+.pc { background: var(--white); padding: 2.5rem; transition: background var(--ease); }
+.pc:hover { background: var(--gray-50); }
+.pnum { font-family: var(--font-d); font-weight: 900; font-size: 4rem; color: var(--gray-200); line-height: 1; margin-bottom: 1rem; }
+.pt { font-family: var(--font-d); font-weight: 700; font-size: 1.05rem; color: var(--navy-900); margin-bottom: .75rem; line-height: 1.35; }
+.pb { font-size: .875rem; color: var(--gray-500); line-height: 1.75; }
+.pco { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(255,203,5,.06); border-left: 3px solid var(--gold-400); border-radius: 0 var(--r-md) var(--r-md) 0; }
+.pcon { font-family: var(--font-d); font-weight: 900; font-size: 1.875rem; color: var(--navy-900); line-height: 1; }
+.pcon span { font-size: 1.2rem; color: var(--gold-500); }
+.pcol { font-size: .75rem; color: var(--gray-500); margin-top: 2px; }
+
+/* ── OUTCOMES TABLE ── */
+.otbl { border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; background: var(--white); }
+.orow { display: grid; grid-template-columns: 70px 1fr 1fr 180px; border-bottom: 1px solid var(--gray-200); transition: background var(--ease); }
+.orow:last-child { border-bottom: none; }
+.orow:hover { background: var(--gray-50); }
+.onc { padding: 2rem 1rem; display: flex; align-items: flex-start; justify-content: center; padding-top: 2.25rem; border-right: 1px solid var(--gray-200); }
+.onc span { font-family: var(--font-d); font-weight: 900; font-size: 2rem; color: var(--gray-200); line-height: 1; }
+.omc { padding: 2rem 1.75rem 2rem 2rem; border-right: 1px solid var(--gray-200); }
+.ot { font-family: var(--font-d); font-weight: 700; font-size: .95rem; color: var(--navy-900); margin-bottom: .5rem; line-height: 1.4; }
+.ob { font-size: .85rem; color: var(--gray-500); line-height: 1.7; }
+.omh { padding: 2rem 1.75rem; border-right: 1px solid var(--gray-200); }
+.oml { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .5rem; }
+.omt { font-size: .825rem; color: var(--gray-500); line-height: 1.65; }
+.okc { padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: center; }
+.okn { font-family: var(--font-d); font-weight: 900; font-size: 2rem; line-height: 1; margin-bottom: 4px; }
+.okl { font-size: .75rem; color: var(--gray-400); line-height: 1.5; }
+
+/* ── DELIVERABLES ── */
+.lhd { display: flex; align-items: baseline; gap: 1.25rem; margin-bottom: 1.25rem; padding-bottom: .875rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+.lnum { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+.ltit { font-family: var(--font-d); font-weight: 700; font-size: .875rem; letter-spacing: .04em; text-transform: uppercase; color: var(--gold-400); }
+.lsub { margin-left: auto; font-size: .8rem; color: rgba(255,255,255,.3); font-style: italic; }
+.lb { margin-bottom: 3.5rem; }
+.dgrid { display: grid; gap: 1px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.06); border-radius: var(--r-lg); overflow: hidden; }
+.c2 { grid-template-columns: 1fr 1fr; }
+.c3 { grid-template-columns: 1fr 1fr 1fr; }
+.dc { background: var(--navy-900); padding: 1.875rem; transition: background var(--smooth); position: relative; cursor: pointer; }
+.dc:hover { background: var(--navy-800); }
+.dc.expanded { cursor: default; }
+.dtag { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--r-full); margin-bottom: 1rem; }
+.tg { background: rgba(255,203,5,.12); color: var(--gold-400); }
+.tb { background: rgba(0,102,204,.2); color: #5BA3F5; }
+.tge { background: rgba(16,185,129,.12); color: #6EE7B7; }
+.to { background: rgba(251,146,60,.12); color: #FBB168; }
+.dn { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: .75rem; line-height: 1.3; display: flex; align-items: center; justify-content: space-between; }
+.dd { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 1.125rem; }
+.expand-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,203,5,.15); color: var(--gold-400); font-size: 14px; transition: transform var(--smooth); }
+.dc.expanded .expand-icon { transform: rotate(180deg); background: var(--gold-400); color: var(--navy-900); }
+.deliverable-details { max-height: 0; overflow: hidden; transition: max-height var(--smooth); }
+.dc.expanded .deliverable-details { max-height: 500px; }
+.dct { padding: .75rem 1rem; background: rgba(255,255,255,.04); border-left: 3px solid rgba(255,203,5,.35); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.dctlbl { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,203,5,.45); margin-bottom: 3px; }
+.dcttxt { font-size: .8rem; color: rgba(255,255,255,.38); line-height: 1.6; }
+.dstar { position: absolute; top: 0; right: 0; background: var(--gold-400); color: var(--navy-900); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 0 0 0 var(--r-sm); }
+.dcode { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,203,5,.5); margin-bottom: .875rem; font-family: var(--font-b); }
+.dmeta { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+.dloe, .drisk { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: var(--r-full); letter-spacing: .06em; text-transform: uppercase; }
+.dloe-easy { background: rgba(34,197,94,.15); color: #22C55E; }
+.dloe-medium { background: rgba(251,146,60,.15); color: #FB923C; }
+.dloe-hard { background: rgba(239,68,68,.15); color: #EF4444; }
+.drisk-low { background: rgba(34,197,94,.12); color: rgba(34,197,94,.8); }
+.drisk-conditional { background: rgba(251,146,60,.15); color: #FB923C; }
+.drisk-blocked { background: rgba(239,68,68,.15); color: #EF4444; }
+
+/* ── VS TABLE ── */
+.vstbl { width: 100%; border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; border-collapse: separate; }
+.vsh { background: var(--navy-950); }
+.vsh th { padding: 1rem 1.5rem; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); text-align: left; }
+.vsh th.hl { color: var(--gold-400); }
+.vstr td { padding: 1rem 1.5rem; font-size: .85rem; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+.vstr:nth-child(even) td { background: var(--gray-50); }
+.vstr:hover td { background: rgba(255,203,5,.03); }
+.vstr:last-child td { border-bottom: none; }
+.tc { font-weight: 600; color: var(--navy-900); }
+.th { color: var(--gray-400); }
+.tr { color: var(--navy-700); font-weight: 500; }
+.bx { color: #E57373; margin-right: 6px; }
+.bp { color: var(--gold-500); margin-right: 6px; }
+
+/* ── ROADMAP ── */
+.rwrap { position: relative; }
+.rspine { position: absolute; top: 36px; left: 35px; bottom: 36px; width: 1px; background: rgba(255,203,5,.15); }
+.ph { display: grid; grid-template-columns: 72px 1fr; gap: 2rem; margin-bottom: 2rem; }
+.pmk { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; }
+.pdot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid rgba(255,203,5,.4); background: var(--navy-900); }
+.pdot.on { background: var(--gold-400); border-color: var(--gold-400); box-shadow: 0 0 16px rgba(255,203,5,.4); }
+.pday { font-size: 10px; font-weight: 600; letter-spacing: .06em; color: rgba(255,255,255,.3); white-space: nowrap; }
+.pcard { background: var(--navy-800); border: 1px solid rgba(255,255,255,.06); border-radius: var(--r-lg); padding: 1.75rem 2rem; }
+.plbl { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold-400); margin-bottom: 4px; }
+.ptit { font-family: var(--font-d); font-weight: 800; font-size: 1.125rem; color: var(--white); margin-bottom: 1rem; }
+.plist { display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.25rem; }
+.plist li { font-size: .875rem; color: rgba(255,255,255,.5); list-style: none; padding-left: 1.125rem; position: relative; line-height: 1.6; }
+.plist li::before { content: '—'; position: absolute; left: 0; color: var(--gold-500); font-size: .8rem; }
+.pgate { padding: .875rem 1rem; background: rgba(255,203,5,.06); border-top: 1px solid rgba(255,203,5,.15); font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.6; border-radius: 0 0 var(--r-md) var(--r-md); }
+.pgate strong { color: var(--gold-400); }
+.pleg-sub { font-size: .8rem; color: rgba(255,255,255,.35); font-style: italic; margin-bottom: 1rem; margin-top: -4px; }
+
+/* ── INVESTMENT ── */
+.igrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.icard { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-xl); padding: 2.5rem; position: relative; overflow: hidden; transition: all var(--smooth); }
+.icard:hover { box-shadow: 0 20px 60px rgba(7,21,48,.12); }
+.icard.ft { border: 2px solid var(--gold-400); }
+.ibadge { position: absolute; top: 0; right: 0; background: var(--gold-400); color: var(--navy-900); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 6px 18px; border-radius: 0 var(--r-xl) 0 var(--r-md); }
+.itier { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .875rem; }
+.ipr { font-family: var(--font-d); font-weight: 900; font-size: clamp(2rem,3.5vw,3.25rem); color: var(--navy-900); line-height: 1; letter-spacing: -.03em; margin-bottom: .25rem; }
+.ips { font-size: .875rem; color: var(--gray-400); margin-bottom: 1.75rem; }
+.idiv { height: 1px; background: var(--gray-200); margin-bottom: 1.5rem; }
+.iitems { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+.ii { font-size: .875rem; color: var(--gray-500); padding-left: 1.25rem; position: relative; line-height: 1.55; }
+.ii::before { content: '→'; position: absolute; left: 0; color: var(--gold-500); font-size: 12px; top: 1px; }
+.inote { font-size: .8rem; color: var(--gray-400); font-style: italic; line-height: 1.7; padding-top: 1.25rem; border-top: 1px solid var(--gray-200); margin-top: 1.25rem; }
+
+/* ── COMPETITOR ANALYSIS ── */
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 3rem; }
+.comp-card { background: var(--white); padding: 2rem; transition: background var(--ease); }
+.comp-card:hover { background: var(--gray-50); }
+.comp-cat { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .875rem; }
+.comp-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--navy-900); margin-bottom: .625rem; line-height: 1.3; }
+.comp-body { font-size: .875rem; color: var(--gray-500); line-height: 1.75; }
+.comp-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: var(--r-full); margin-top: 1rem; }
+.comp-tag-warn { background: #FFFBEB; color: #B45309; }
+.comp-tag-info { background: #EFF6FF; color: #1D4ED8; }
+
+/* Deliverable deep links in moat section */
+.del-link { color: var(--gold-400); text-decoration: none; border-bottom: 1px dashed rgba(255,203,5,.4); font-weight: 600; transition: border-color var(--ease); white-space: nowrap; }
+.del-link:hover { border-bottom-color: var(--gold-400); }
+
+.moat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 1.5rem; }
+.moat-card { background: var(--navy-950); border-radius: var(--r-lg); padding: 1.75rem; position: relative; overflow: hidden; }
+.moat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold-400); }
+.moat-title { font-family: var(--font-d); font-weight: 700; font-size: .9375rem; color: var(--white); margin-bottom: .625rem; }
+.moat-body { font-size: .8125rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+.moat-accent { color: var(--gold-400); font-weight: 600; }
+
+/* ── CTA BANNER ── */
+.cta { background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%); padding: 6rem 0; text-align: center; }
+.ctat { font-family: var(--font-d); font-weight: 900; font-size: clamp(28px,4vw,56px); color: var(--white); letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+.ctat .acc { color: var(--gold-400); }
+.ctab { font-size: 1.1rem; color: rgba(255,255,255,.5); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.ctabtns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.ctadates { display: flex; gap: 3.5rem; justify-content: center; flex-wrap: wrap; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,.08); }
+.ctadi { text-align: center; }
+.ctadl { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 6px; }
+.ctadv { font-family: var(--font-d); font-weight: 800; font-size: 1.125rem; color: var(--white); }
+.ctadi.hl .ctadv { color: var(--gold-400); }
+
+/* ── FOOTER ── */
+footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgba(255,255,255,.06); }
+.fin { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.flogs { display: flex; align-items: center; gap: 14px; }
+.fsep { width: 1px; height: 24px; background: rgba(255,255,255,.15); }
+.frev { font-family: var(--font-d); font-weight: 900; font-size: 14px; color: rgba(255,255,255,.4); }
+.frev span { color: var(--gold-400); }
+.fgl { height: 22px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .3; }
+.fmeta { font-size: 11px; color: rgba(255,255,255,.25); }
+
+/* ── FADE ── */
+[data-f] { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms ease; }
+[data-f].vis { opacity: 1; transform: translateY(0); }
+[data-f][data-d="1"] { transition-delay: .1s; }
+[data-f][data-d="2"] { transition-delay: .2s; }
+[data-f][data-d="3"] { transition-delay: .3s; }
+[data-f][data-d="4"] { transition-delay: .4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { display: none; }
+  .hcob { display: none; }
+  .orow { grid-template-columns: 60px 1fr; }
+  .omh, .okc { display: none; }
+  .pgrid, .c2, .c3, .igrid, .comp-grid, .moat-grid { grid-template-columns: 1fr; }
+  .sgrid { grid-template-columns: 1fr 1fr; }
+  .ctadates { gap: 2rem; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spinGlobe { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spinGlobeReverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes glowPulse { 0%, 100% { box-shadow: 0 0 40px rgba(255,203,5,.15), 0 0 80px rgba(255,203,5,.06); } 50% { box-shadow: 0 0 60px rgba(255,203,5,.3), 0 0 120px rgba(255,203,5,.12); } }
+@keyframes ringExpand { 0% { transform: scale(.8); opacity: 0; } 60% { opacity: 1; } 100% { transform: scale(1.4); opacity: 0; } }
+@keyframes counterSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ── HERO LOGO TREATMENT ── */
+.hero-logo-wrap { position: relative; width: 160px; height: 160px; margin-bottom: 2.5rem; }
+.hero-logo-ring { position: absolute; inset: -16px; border-radius: 50%; border: 1px solid rgba(255,203,5,.2); animation: ringExpand 3s ease-out infinite; }
+.hero-logo-ring-2 { animation-delay: 1.5s; }
+.hero-logo-img { width: 160px; height: 160px; object-fit: contain; border-radius: 50%; position: relative; z-index: 2; animation: glowPulse 4s ease-in-out infinite; filter: drop-shadow(0 4px 24px rgba(0,0,0,.4)); }
+.hero-logo-orbit { position: absolute; inset: -8px; border-radius: 50%; border: 1px dashed rgba(255,203,5,.12); animation: counterSpin 20s linear infinite; }
+
+/* ── ENTRANCE ANIMATIONS ── */
+[data-f] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+[data-f].in-view { opacity: 1; transform: translateY(0); }
+[data-f][data-d="1"] { transition-delay: .1s; }
+[data-f][data-d="2"] { transition-delay: .2s; }
+[data-f][data-d="3"] { transition-delay: .3s; }
+[data-f][data-d="4"] { transition-delay: .4s; }
+[data-f][data-d="5"] { transition-delay: .5s; }
+
+/* ── NAV LOGO PULSE ON LOAD ── */
+.nlogos img { animation: fadeIn .8s ease .2s both; }
+
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">REV<span>.</span>Global</div>
+    <div class="gate-sub">Confidential Proposal — Golden Limousine International</div>
+    <label class="gate-label" for="pw">Enter access code</label>
+    <form id="gate-form" onsubmit="return checkGate(event)">
+      <input class="gate-input" id="pw" type="password" placeholder="Access code" autocomplete="off" autofocus>
+      <button class="gate-btn" type="submit">View Proposal</button>
+    </form>
+    <div class="gate-err-msg" id="gate-err"></div>
+    <div class="gate-conf">This document is confidential and prepared exclusively<br>for Golden Limousine International leadership.</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="ni">
+      <div class="nlogos">
+        <a href="https://revglobalinc.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;line-height:0;">
+          <img src="https://revglobalinc.com/logo-nav.png" alt="REV Global" style="height:32px;width:auto;object-fit:contain;">
+        </a>
+        <div class="nsep"></div>
+        <img src="https://goldenlimo.com/wp-content/themes/golden-limo-theme/images/logo.png" alt="Golden Limousine" class="ngl" onerror="this.style.display='none'">
+      </div>
+      <ul class="nlinks">
+        <li><a href="#problem">The Gap</a></li>
+        <li><a href="#outcomes">Outcomes</a></li>
+        <li><a href="#comparison">Capability Gap</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#deliverables">Deliverables</a></li>
+        <li><a href="#investment">Investment</a></li>
+      </ul>
+      <div class="ncta">
+        <a href="#investment" class="btn bto" style="font-size:13px;padding:10px 20px;">View Options</a>
+        <a href="#cta" class="btn bta" style="font-size:13px;padding:10px 20px;">Start Pilot <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hgrid"></div><div class="hglow"></div>
+  <div class="hcob" style="flex-direction:column;align-items:flex-end;gap:6px;animation:fadeIn 1s ease .3s both;opacity:0;">
+    <div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px;">Prepared by</div>
+    <a href="https://revglobalinc.com/" target="_blank" rel="noopener" style="line-height:0;">
+      <img src="https://revglobalinc.com/logo-nav.png" alt="REV Global" style="height:32px;width:auto;object-fit:contain;opacity:.9;">
+    </a>
+  </div>
+  <div class="container">
+    <div class="hcontent">
+      <div class="hero-logo-wrap" data-f style="opacity:0;animation:fadeUp .8s ease .1s forwards;">
+        <div class="hero-logo-ring"></div>
+        <div class="hero-logo-ring hero-logo-ring-2"></div>
+        <div class="hero-logo-orbit"></div>
+        <a href="https://goldenlimo.com" target="_blank" rel="noopener">
+          <img src="https://goldenlimo.com/wp-content/themes/golden-limo-theme/images/logo.png"
+               alt="Golden Limousine International"
+               class="hero-logo-img"
+               onerror="this.src='data:image/webp;base64,UklGRoiMAABXRUJQVlA4THuMAAAvJkFLEE1AbNtIkrSyPR9cl3/A0zO7l0FE/yeAL6dL8u27oDWSyk+HfOGJfiBF0FYttqbtL+LhbWemkBc2dsI7YGrrhdRJwve1Z/KUzLzoi3jGfSA82Hw5tp/WtuED/heblqLPKuGHXrSfHwRKb5arNgWyUKKFQHhhtTYtEPZ9VxJAMzxKdmybgq6w50gkgGnpw2FJMkHXdU5ynosZrSRdXghVatkiLaCvJCkxbf92rutcCZjVIe2SVOk89Qfy4YcBPeRSJEFy7ju1tZiZdqUrUUIb+CtvgCGrY1NyKAgouO5iyCAA6dx0gEBm2a7CBK+y6dpTau5FjG/cRrckus5dyQZ2i2zdijILlEiLALSt7RtMMn0IoJ0IDPVqgCRzI4kuKBgDfhAmkXojSdh1agUrFmEmADcKLcDw6JXdGyThS6N5iK3FLyM/EI9/k7BcMPbkB9K8A4/0aiZJ7G/C3KYFtSNp5rvHabWe+QfaSq0eVwu3kW07zcr2X+Iv4YWyuA+8RySFkBRJciQZRVKM3M3V4tT/f93qTZqkkKRIkiRJ2vsy6/9fF8c+NUajOI7jBP2fAPhfNhzhgw6RosAAYqPOhgS0iBRFUaKMAhucomFDg6hFS6usoijKLKNollMRAufWrhKRsoqiKNpoo0WLpjmSAgeUIERLpBi9LGu0aNFmmy2a5nTnxXmxZwA4oFQOAsCiXpbmMr1DMwxk/YCoNOSHyPYI9wGW5ZmVK1eu0wya5qQAARGIBGiwr/FsIuHK6/3KGbRDcx9ORgmWph/fHE5zCLC8M+a47IAPJA7jMKJpzj6JgVKqhEGAAM8sSzPmeFzweuU6DG10ClxQAgh1aJYFAHAYaPKAwxCzRZtF7QMuKBGQMEgIy28w2mxCzHkYmjYKkgZKjwCaEh0dhuGH5QJNHuLQokWLEhXBvoCBGwGUyvumBHWsIVYYhgajRYuWTVGQlCgAUKK01NpFQhiGoSh5zCIUNwMK6G1fBAkhRIZm+S8jEmIUZDlgV4oAgEBARkKIXgihKHhIBgAGrkhlRCQAwPCNiJCXh3YBlEq7WiAiAEAhnolQSQMggBaFIgAUhi83aqkSgEhAge7RgoqGQVQqBpCiXqHUKsCfWoCGAVAu4UDP5QIHVn1QshmA7UN+SXVAbhtJklSS/Le6eiur935GxASs/0hAeEcrK+GeHSqXtI/NkpvasRprjs1kplR6JsBZlqlZ7tsakpSPW6Y5MfI5P06As+KgJxsoQVk5HrhpPXUBw9LUHg4HVFpll9YDVabWHWLX8jDX1BLQM0ZUQdqWlmuOVKFplbIPpLAiC5N1EyqiypJ1GTtkvQg+wnob1g/J8Qs/o576/x3Jup59oLS8FwtvAIiaFwEfGWhugr27qmZXTY3CbygzcBpAhXLpE974JWDDAjBIbqg1AHaqtVrpQdIAKnwdnFmKO5RpKAoPgA2gkSguADuUObGQNIAOZRqHzBMfAPvmDacBbAAHw4NiAHQoM6kAvOmNHwB7LaWdi4PiAbABHDgDoABcB+asGxeAhqHIuwaAoG3bOOdP+SvDtm3DUNn/J3eWUNt21VoPBZwqYKOAVAG5CggKSBQACj4KaBQACj4KoApKFHBq4BEUdAKs1to225by/3egelRhexyeKJBogsBSGZBB50BhcQxcn0GP6vu+v0usTXPXrnP0kwWJ3AAqgLK/XHql8MlDEjWI40SwJd2xr94p0CNLliaNbf8ArkIxxs6jBkFse1JAX1uuBrZTXxJkUQHUIIMK4NqK46wk0BVEOdoorvziqSQqgkqBZitCYCVCABUFkbDHKEkAbUg3ANwljqsIAKpt28qWuX/FXfpfif/bY41K4wEgEt3vhhxJsuwkSxL7mSs2YCLmYoL2hhDJdtjmIHwGEYN8BpYZOAg6RtAxgo4YKAwsBjYDhcEPgw/hlcEEcLq2b70lWyobm3NFZkZGRmRGWqTt9Nxytu99vNzdq1qFu7t/Bdeetsrd3b1qH9m+d25Jd4udHpmRMf+N3KdqxD7SvstrIl23ZrVwd/fAeVuMt1P2G/QcXtzpujVdyqsm7rrwifPD4cVdJu7uTtNln+bE+eMkTuJM3N1ZWLeaOKwmuptY0Jw45a4/HLrutN194cQYHEuc1Z04gbv9cXdr7i+AO9E5Y+wW7oG/dINxWjhkE3d39y9AdzFG6cJd/jh03d3dHVru8gXeMWhVVA+HibvbF3B3dyYOTbeFeIwkW7Vt27YisrbOi5l5qbGU2ApuuZiZaQ7qraTHSLJV27ZtKyJr38yowZZzgcibxhhz9lYDQm1tYZsr4XcQHBQHxUEiIRLqoJuCnCnoqmDMAXVAHaQOfgkTwHn//2Vvo2fXdUm2JEtGWZLlmCTHKMnhGAN2OA74nnvQk2QYkhvmHspghpk5M+MMJRmHOQ6ZMolliGM7sSyzLUNiWbIlGSTLlm1pYU/hP/iUq2WZmZmZmVTuWT7L7Vlul2eZ2x0zM7O67H2UuVW5v3J7lRlUZmZmZm5V7lVmcrlXuS4zucy4xJSZVz0YznJXlGW/hdmWmWnLXJWrMpPLVZl2DFeZu2RwacncZteUmblnGZbMTGuGme5SZmZmZjoLW2Zm5q7xYX6eHcP3YWZ+9PCKmZmZma8H/wO+HuYNbtu2VbuRNObc55JkYZjCIAdTMVd9RaLrKcO25J8ohp+oR0suZoYv4LdkzqxgtiyW7j1nTUy2tbeRJOl9H0CacA+RsoY96y31bkrNW+5Rd6qIcHMzI4D/iwkQBNTZKyA4BV5wCN4CtoKdW/wVJBCKeE1W8HICCBrAeCv4WhtvXVdIgRSkDrURPK4HQQ2CStCDgDpkazcx3p6uEIINDLLACEZ0TABW8BdcEiTJJRDMAn1b8r21QfCRLFruJG8jchIoQUGzF7S3IzzYIHV6BEngyCiwhiTI3K1INgltFSYLJkG4NXkHPGvRIftMdNyiDUDSIhSxBNL+lvQoBY1MNiNYgK65HSn12EmRnBuA+2IGM94yokTSIUkmj5eaYpgzCqaxLv3F7tkB/jHaa1A7HZz0mMdKdIW0grg5JdPObP35qUFQBqaPs1hYVOjokH0xBdvl/ghEQRdrzhXVKeGj4EYQNQl5PBSl7jRICptH3RVD+piQ7aKtMT8174i9B0ino4QNRXlJx07hiyn6eAIYabCLtq781BzaA2rzqCAVZaRnDb4jefJ217E0yL31rQmnbaoncxgFK7p6KWkQJJvrOs0CuQVr+5kJ52OqIVe0QE/moLK+kM9SyJX2+Zz0mKtTmEKWVrFANsuWdN6HuvFT9+DJuVPwVIgpZhhypSTZXM8KX8gCuWWqeTIcPwqGrl4MQMwTOoVZFuElUp5VcnkcxXQKW0TrFbNpYBIMd6lW3AOf83BWMDMFqF2ejpAnKGIelyRTSI8cyXwGRlMnfipQZBoUZltAVOTtwBViyHuPHCkwjopZNge8UicdxR6TxKEAdZfDkX8n+VyD4qmIHtl6VXISYMZaoXzOl86KXRE2kH8Hz3lSIT3yniJPihnqI1sgwUit7CSXj6PCFQLwnC00kPI46XOO1kppW0TqJNOq3HkG0MGsXhgphHyhOGXKtie/Q445XpHPqYgjShelbp68tCP6euElunyMUipikyvtGyDlCAqTzSGnjiLPinTXbmxYNdhRCiyoo/cFPEnFu2muOScAl8F9MqPKZ3J3CkeRA3J8vR9Q9siLEGtGVHQh31iYkdjCcyI55Ag+g3/ndkmx/lHrvWrYJ0WxJ8UiEvYNEEeFp3Z6iVM+4wsZAs+KE2C8XRhvPHntCHTdzg0A0f4o3+kCgI3FdMgRsIJ8e4IDdTUqhpALC9g8YQ1E2GC88Vxr3EJw7jm5hDIuD5FiT4oF8lZwpWhry6uC1uZ6fIaYp6whWEvxLkkRtQ2v1FYfFcxyyZtquOYz8qsqJMZrSzcXC5X3eZ7BjNUXBslG1YmRa38/TzdWjAqe8jiYUf0n5FfUA7PrW6ebi4NR4LMNYMdqc598bwfJtFPsDA2fTMX9RWxxtlcZm2U8wQvV7pfHO4M8Y+o7tAypyn7qeGKxLYx2qchu4UDV9919o2inTXX7p+U1uPd7vKmqK/Q+Af7FFkW/VKVG1QTMgeqPB5rVgB1iDrdnSfHu/acEFfUX7xNKcxiLgo2R4H78zHe6QFxwU4bTgD3ELGmO8cUFkgGOTRU5R8ZLLIw4GkltFy03aBjOKS7ilDSHGYWnxGIGsK6glMAvLkC3cuZdcZi+byNg7Wb03LDpeE5+Fi0wnMC0hT1j/HYnmQqC2G9jRA6nV0W6CwWAaQ+Xr7mh0/E+YC0dwIyiE8aCk2IVPUVyB/eJGjqcAko7FpTAWEhJ2lRNNBgKdXUEhrOTFhTsMIBxyLFi7MiKIlNDXe1OHTYWhZViJxlbMQuaUMhJ8BvqCoTTI4WGgHr7LEUq9oy3udIaYF1frv+lkx6rpsGQe45yINUpl3icIngixynzx20lpED+I7GTwNWoAAa1fVH4KekcKsFByBNOfmHvkgShLn2HrONSskx9OS1NFQAh5DhxwB7Wrk6lgMnSR8lPMy97HquBc45XC9iX8yCBrzfd+sXjEvgsF+TNNIx1VOQQskWUh7SX/Id6E7l75+bkfFD4aWnNYCoi7bNNXybp8FBv6OfzDmsz+V4Rp6Q55uEBE8sWkZ8KoT8lTKTuruhGcj5LHnUIWGvo982yZHjJ+ELMODBSe5Mj5umygQVoP1D6V6noz4KQRf2R19lSkh6nGSNV4Xgdz4xU5AtVc3EDmcdvM5CppIBV0E9MlSxkNoomaeA8Zf+NlC1S0sk1gfm5fSaH7CWXMFSmba+hY1G+F7Sa8X+k8FyezRpxChoQNQklIwtOdcCKpqCfHFPEc4ISm03ms8ldnMzZ54+ZOkUEBhA4KrQ3qtTlGmgp9R9f+Ccplnsvlog8kCYoQohsmHo1idVKaBlsS5X91Bgp0ZuaIHesoWGe4pMiUs1FaXhH5p3kgWFHtZo+KWAVcpzMojx/bFEnkr0ZGd4KESsNKwUrqmIVKwQKpUb6Co6NWKF+KjmDk6c32mNJcrop2+9Qte1uCm5IWda8UNI/uvAGtWvewtu3iGooVlSrFsfSncuV6AdptipDAsGpAirTMaDpi7dX+DcsQutYtoAscKzhUDXZzay1irSmpZRPr8bTq7cG/hXluOJQdAAQEKpJERCS2ahmSmXZIDOU7KYMoDqtAqwIVvKszLIEhinS9yA0SVU2IQvsP8Wlufq1TUj7xmEMFWymAT5+tuG5o92U4enVrVEe38tLrQ2QdKiQdD0HGnGOLnRJtxnYEhJlyBOrcKpgMLET6hu1KUJSZZcpUVEGoAwkU9J5djM/TpoHsFTyxmSAvxqAdoP2T2eMpzN+vfWFbHQ8SQIgQ5ceUY7QISSW3J0iIzwang0UH6PoyiOWBzyU4wYmBHlylFzgtqSRpF4wbIbEmaqQDamvEvoSSpbHuWaTxsG8PEuJ6o5jFsAsDLo/ra406d7A/VFxhNQYAAlkQMfHfUS5VEx4Ex/wEKUn4MLnxJBU3JYJA+PDeGRTYVP3EOp+7MN6WA3kymSjUV/MhZOw1YVZLO7DFDNr0f1pd61B90ZpGaJAVISOTGAPD/N+ipOioQQAwM6MYUo/sRytilqXrGYkOm0dsyVkzXPkqUKDF7VqX7VoUVTrLkVEUCgTBckAMAqSUHJqHAbKZkXtq9RfomN8SqWzB5s5CJUHFucCYKJF96dVW6Pem9KA+846oxQzCUAppZJTQwlNALS6Mbpt1uBLiht59+UtLyuvCHXsxzVP6+syzj7syjANX/SUUAEWXmTVfv3/LVut3TwBuZxCrZQ1G1XhhEonCj00gNEwFl1arFNs9hr7Nqy8akT+rcyx6NqviATw1NM/ctDQR5Oa4nI/Je26fiLhjczu1BBBUckAbHznuflt9Vk95QhLmCWyLESYkDd1+G4tpL5+xrOolvZL1oBmE7Iatt0scZiFfOU1utVKPQNCYhV5dhTva4Ufr/n3GwDWkQvEBXNcRlDTWME1UUihVO9zi24FYGFqyR/ekaB/g56tZ+N9tZ41XwTSZy9yfVNTVAgeoffqOM1PPC7kVx4b3Xnu660T+qzOZq+ujpfPObNy1Dxtdo3yorKoiuZ2x3NqHNWvZRAMtQahMbJg1Vl8Xot/lMYfGPGjbH81EWsqNefm/9JN/4V97gdv4T3QBeAKdIhcACOcT5lStETXShgwB2ppg24N2BDJaoNVBmywuyllSAVRNKCnajuz/bAN9ZmFyz/H6XnGUNQn82D3j4Xusa9767gcDdDC2gB0qxltAmGu9NOPZj9LDFd7eIIPcTfHvLviFKzT1XZdpMViXwQMpiIa3aVR0sJDLY3RmerQKYIGiWGvYsLKS6gDYwYueNaFu3A1jgCQaLQzxb7t0HdiTx196j2tgPUPdZCjWqUsBbB5S+WUigFY49VHq+v05squPLvNgox691n0fk6qZ0wW9a1FFJvspBWh7B4NqM0i4Ms6+V9jki7o15mAWWSIXvQ+LgxVtmjbabvtMF/2inflSSpRVSs1cQgCkEBO1xgi24nz0iQ77PC0qoba0dzq/BUX3HH+s1og0b3SQuiko0vfXnRGMLXU0KfeRaOsTaiIWxAZsELC+wkW/gFY74XH2s9ryKXdLjjf5prlyqt3X8vfX2tx/EoiasM8YW02O1tA13IWZBxh0dfs5qbe2BJYRBpUi2yA+vBYcEPWMoNKST1JTQlDyGad+kUPjyEYWRnI4mLmsQ9uqfZ1OO+OtU+6oqDuAMml895I2VqidyVSQ69GvOuVkSq6EgjW4iJI+Ec4t9upvmZfaTAtPm03nVR/jjU5iFpnHOX+cch7o0tN6pp5+jCMTWObnXOPMIz66Qe7mw+dxSW1EFy6HjbVxkIto7XiQIg0NHW2zkNxcWquZGkoKcWTdRsR6XkMP3E9vEIgArjaAzxGtLcHrH3JeS+zoVdEMS2KSAVsE3siu1FD/+Ci//bGADjnC7FAwoRKKEFKQIR1X/zPrW4yrlOOPWy/7D4L1dxXMbkODQDaqEIjeuSHuDcWvqdG97Tom3p4p6pxGG84ceaO2YTNJbQg1sn/1pt6NW/dZTvMMMOkMllwsgp+pSuVsLbrXO6SYBa1tPYfpu9GYoU/lJNxYXseuAf4uwll7MDvKIsm9sRVy64EMfIf/ANMUtUlmYgH+ewXFy22/vf0r/7R6WpZitxc4181Ybckh+1+GRU16qpWUgOINs9xnRrfy8Nb/E2W/AqzaR7Zmt1tmxpnq/4jZ1f5WWEF10sDIrSSRJ20Qw6akwpQOWyGp1KjMh/upaxljcDMZvBXBZEqlZ80HQBasRJgtJWAtFcxATkZEAf7mYPA40MHP2m9WFv8cvPJkK8GjuKS2IypX8LkVcQX4L3huywD5ZW7ghZb/9Ps5V9ilpSl5Oaqubk5uSIrQ1TncZK9CpDOSHamH5tj8wwi2iLj6PfH+b2ZF+KlHK2tudwwZXuXT/L/ny/GVIl80REGnexvtebf1bH/bi1To2KqcoRNXFvRNfip5kvNhSpIwC6pvtZwaTTsj1SV+qXO4qQIqBCq1t2msVxNbvzf64n9EavvuMKcXVxciakMgI6E8ZVyX7N+/6Irkp+Eb1AgHOL2Nj8UIte/Nn/+14hNCGkSac89R/tDhN2S5Lga6P3ke4olx8W76ppzPRu9yXM52oOxRSZRbNKWFQgLuAM4U6121e6IU1v3b9O6rbO6n+bvKlo5xJe12l12atQsHbn0duHYFhdT5qIaRFcUf25X0dsaGrMQrC7GXNp999SaJi5Kk3LBcWhkgme3wQP8+3qifwIXkbPRFSAX1mSg0wDwBtPWqgLjpZq4ClX3gMtTDqXKAFbbeds8p0R3ZiMgR0CWv7Nf3VmUReUiI8vZF12AjM2oN58cJ9AS6Or42EJc3qo6nqt6A3DyIh4d1phgjShPc3U0c5SCWL5ox9ZW+vJ+oC/tB/ny3kKkwZCEqBepIWH3pKvpao/EZqJkRQ/1Si+moTVarBPGSyyUC4s3esnVWiDPcBRzloWwZoycZ/QgCUgVAGfVQq4Pl2pAvOeAozIhbOWlapQnarE1jv9T5yS1II4w1aWrQOvzCFy47Jf5H+8qRkI8XizCjqkYad9uaFfpLK+k+DbPreUSvUxpqU4KUfKBv7Qf5Ev7VoJ6Js3st0XA2ZWd6bfCQ/JXylAr0PWafCRYrXhOvDvXJcW7dg9xFhiJUkCxI8jsVxSXP1HcgpQgAYDLKW9vSDycqaDapPAmqXJ4uzuEKeUgelabPp/dZyz1rupzBrCVH83a+zAxKEqOxslDtbOmat6sM+7dq6nt/0Eflq2qnq7Sir+4pGVDTdoFewOAM1R2Rwlpi6nOrzPiKhd6pJ65MzheRt2AEbSDfmlrYdFfOBjoL9wUxVsHCQnkJlWE2WwAbkPKU511QteBGJRRgVreGkC2xtfjupOOZqo3Y68MYFgSLaKioWhk5GE1UhqUMLJnTI+kyFlkJeVHfThSo0TPvDcnWllJMa/wCgAQuVGrt/dPE0UfrJOLZ1mknAxNSAJLahwJH/NBWuclI5dnuQS7ES9lNa25Wt8xszr2s4H2SWwUbNWygCMOzMUYheCLLxH/QiKKgx3DJnIXmFsCsGvqjjpjop/jctQ0SmYKkIamWqFNpy8Ni1wuhQFynWA1CIAydogFjEn6QS/sXGZIcZQ4MHKRVCQhLySyPqruiwq5AF2fKCrYR4UmAMKvja1v0+mZfeDqFZpwQbgEAy4X+2QdONsQctjtD7msCaGxps6m9VW2qbl6bbklVLO75lXmtXwtTHmEgVoJkGTtpwZNPR5uUn+rVFhGWgN6pjGXmtEcSpVRVDlyq8hk3XQbdTfjK5icgeKbBlk1LaCn6tJhMolZML6ElJqIRMopfB9Ud82ka070fnsBEL1Ua7+0tnv2FLV6JcAGZs6z2+wuDSwaeATIq26rQ66ck5Gb52KhLWiwTlkw9jYhZ6CrlldtEdoMYD8RMB9aKpqiN6yLjqV+QZ/fmH/kUcggslYaZzUTXWo0WVEXBC/RZn3r1OU4lLXKoIHAsopCJlipmswdAOBijB2US5LqxN2nfY9bcMHEJaoVYmXF6Zd/O+YvpPWNT5AEGZJLM5AHNnQnhNCWwTgW8ZHE3Ak7/uQqNoD9uOMcf2ZMGZFKRK6kcJ44AgAJABDdtO2gXegK3ZLeoZqFC9MXdPKenKKQuPmX4xIeoNG6aJcGDMiWAWLibFbeaRD1G2sgYHSxqUnqTEqD3xH7nKIpilQQYB6/DL2VHPzwJ8fdPkStXiBIAGCIPE0IrpRRySsA5o0r4Grq82vDlF3CWMHirg60cpaQ87YjkotDhZmAA1BQM/6MKTZsnmLKUahb5EyGKx+KruQmIWMP6hXgQ8tNrhXqs8VUx8AtObG4AH2F5yHLDdDVkWUISrMEAeSjNKz1zPCd5iV0CkCsU8b+JkrsqknCJ/fq8DRAkA9M1RA2mGRb0cyaetTSPMneL0ugTfc2IDaru1YrjUXZ1tbRNhoVJ9DsR7rf9zH2ycoQR+pHtbTtvGnY9919P3f3I93VGo1WJgrSgDDlXJVzR9SX/HcDRG1x1U4YmyUbqwJ5qjOLi0pFgycKINWiShGufKw5wTlVfTL36SbLuNrcTownNLgFA9feYAUMXOn3MdptTBYMzArcDYCGOtiQwGRINtf8fD2kfqmb1IuB+7uh1FfpFQ1luyNcPQfu2gC2rH10Yd0ny2xYdOy4x/NkPqzLHq4QEZ2bbZT1m6c2NFlb2RDawB8+hwGAiGQ4ihW7yRfFJeWpsDMr5mg+skR0gqZVxV7iOtXh4BC1J4IP+mTwX56HGkCy6U4Xjc/rld8FuEu6ImlgR1xY71t6PlbzVvU7RVN8HAANK96ZYALAtfNlAWf5UiDCTVrD3lW9Zy7x2jXXLBfn6PBWPrmbUEWeXX2jkMoyi0Q4Wt+AkaSVc7qO43Ta3BAR/q3OFFo3j8HrGGxOvgcR0a7JKVB0xCtohVktQ0llNumvBYaLYcpg66MlIcDO7Jq31mL4RHLKdNO+YA04uvhtVzGcTY4N7qTWIsG6ksU+tN8GZOaZgZUdgl0i9ykFvHs2Ele2BA0FwsWWJlAO1U2SYVYcYXlbwrNJEUjDVq4jPOydc43TbtfYZZKFAZExHqGiyABbEoM5xHP+oeaqVjkGEKeceMT+7u6Hvts2c4h6CKIdtNbuNJ+8LTU2skBndKG7pY7wBYUnRH0Toh7JODG/1C7ZOs0lijp+pEKlLDkvEEOirAF2tDQxcNbSpBY6cdMg4GgGwH7gBsXh6DDFZ3tsdJvoYiCDwoSuhFDYRcDNuFuA/Dp2LFJIcJTlFyB/cfpfnLPCmpo0SIX0EBPkU/MBTTmQhvmBNNLbwUIoRnuvs6t35mWcNzErgw1hExCaxruzowqy2W1eTi3POqix+0n+uGFXz9VHq78YrL7CMJpUj2Bt1kLUURy/cw9CLaw1vS1YhXataWIiailofXEhn2sbBhqVNA87peazgQ2KXWms2VQhXEGq8qlKoSIAfcQPGyzvuzJGbOLuBwyYXOszFavIW/tZrFHc1dwR/KNYlsKiRohVBkjvA+AUuNzV82DL8AvAqUl3x76yCphWqes7q3DUsTqv3lpjHJZvhn8eh9bvq9YMVIum1m7ZJC8xvuRpLs7QbCYMzQnIZMNmjOW1+WpV9aqLlvEGbJXZWQzEY7AFQduo9eP8bYWp0Qg4TudDfLm/KdrIHOyLe3FqSdxFGRmB0U5taPKKjvx5H/5z7ZTRK6JX9PdHVsqbYlY0tA19qmmCwUKzFbYqkfsfjLxloD+0kn90Uq58A2nqEpum8geB+wP3z/Db3x7czrlcFJWolVVU7CiPlIBUiSLXzq/82YvR7xcg7hKAYBwr6vMuIBtNgVrAUigLInTc6vn+yh+R94C6r+hvKxeBcnvn7Gqt+QzYLJJw2ZBVsI+mZrHIYrvzymODP2lAi8xOome1CXJOnp3FYpnn3+vPiKAiCI1M7hWdsvlWHvxL+2IpbGtpbkGI3GZAG4Vj402S3ROiHpWN1TPnUS3gPJVBlZblGFviPJdQhP2N2v/NhsFPAr74OzlvzE8XJ5swIPeqie2GbixuKvZjLgLPQdwushgPWDT0I/1lTygKk9Hp/3EhdoLKFYsg129SMIYmQl9No6aePbHe/GiG347AxYfjGDvP+rRmj9uLwpbmJLy25kcAcGmazSVgMxicy1yauZTXvtL83YATMHaqftWFJpx2rsE8yELB8vlOMlq70pve3ddziOgv3B7WbnpMQ8jTtUEr55R3XVcioluyftI5mdcaGJrHEyMPMxerfuMe3sX2bsOlHLOj5pgtYUaqjzhUcp27S0FwfbGSudj8gcc6ZzE++AFET5xU3o4Bjx684ouasFRO/Uy0dBMvF6nj4k7uzj9ATCdotVOOryxMQVcMCEypGng0oA6Zg0wCgoO/Dm6j75q8ZYTsb1tu3dd4OT02zw4AbAYhZJfNglgICKCe7kvDItrQL+u4Wj4ILWrsUHsKzt07N7cM64BDGqS9wzW61cqbWyICqo7yGaVLZ1qPbd9POtyVBxdfTikKCptCwunjDE5mb8KAUTZZd7xllsRoA++k+IA2OfSZutc4tTH+75b25chgU2y3qNR9F+WtdUUMcu2qjmze2mMUp4lbVydX60XUiEI0j/BhvQuN8EpgxniP6B/9N1AQChBQQaOYDwTjQlBScDNS5ifT7Q3agTiHOnoODNCtfdL1PzpHz+bhf/nZ6epVkJABGGzYASBDVUtnLNTmQdP81f6Jc7K2ov95mlol4P/RNO2B7LvNlYaGTb027nqKlIeX8Kk8eu12viUHd9ek8owxpJQxqwq1yKlxqmybHPcJLaer9EX8TIdle4/xX5ZnhxuJGRuekVfYW0tG72f+5M6js+ig9qUzYK+r/JBOSieaM6vWsBI82qN9K8/n3bx7dbHyBZpUycdu6rYCH3YAL2keGbNHFpTfFy+vWE8spxJ3FifzwRKBLuYKJaDXMn2mwAOsj6RJRfJAIPbXQD0/69OAM7xx/9oAYAWTHWDNbgqMGjwWUw6cM/pmHXO7OuQ0AduFyj6qsjLUBzm/x1n/ZK37Zwr3WqdTrFrZPsNHll7CUfv4xr1Ot1Qtdxcl9fvgpVXhtF07D5dckEmqSUoN7zB+UH8S3q2hzXKpKQmnPPckaXSjeFFiwC2cN4PKirqp2XES6SztQsuvrPxnf8xGyBSzgCXyH3soeSCxn+K2za3RxSj5anvDBFGxcL61UDeCKjgM7G4orzH8y/M4uw6RyM18mPFcjCBDsLWCdSzLyeZtCbY5MVXtChL7wF8VnFv9FMKVkzRW/eprxJoB0kkC2VW7BoBr8DyIWJwTWulYO+nLJUMTyHMJdyhNlcdogrb406ysttnA+TwXusCPu0+h9x+vo/X0P/JJhU90gf1WuC2920p6fVblZe+R5uxtdXMKORYFaXKmVZqMJsbdnS6u3mjUuaKeZtBBxg7sDa8kw4w17FXBLBxKozhxO2rjP2aL0kRJTLM4oR9zATJ6KLrxwpEMt2t+l680+ehSj+hdE9GOuBPBEnh5UhglXQ3YACDvvDiZez4wAiGQhQgUDAh4fPWlaJhj0Lm0ea5QN86Fqk4lzXuAbeQz8dNqO0LsUgcgQXdCd5okh6oupPsytCWz42x6bpAWpy3PjoBhBg0VOLTyC7yqnXGNB5k6p/Ix4R9op/2UXLTN9z3sSXfv6glHNRIbRUoDPsqxvq1d55owVWFSZ0TIqCWurckLeX5KZKvObnmW5jlmPKGgk/Jz3TwwKY60MDmKxwtHviK1iDmhyxFbDYwm/gPnEmbM+VlvtE6qtgScE0ZFLju4+4MNqgEygDXBLYMjHW5X3Lq4BEkBILWqhhFafjTG7ZiddlB0sJfbNfpc+ZMEKDv0uXkY7o4IyiL+aQIIYMdXL21Hr0/D7W6g2JG5rteplZpbMxBHkwh2NNePq+2AmNkuQAKSA3Y1yx7K0WxPdTkNzzqbHuvR4+guUWZYy58Sdt7NDTP5bfyFF3+C71ss+pYO/XEL3j9FH8sy9ITDvXxv4TGq4IEXkTL4iu2y0JNIKxYfa4WZvLyUPT/5vzggbp90tCwj3Y+icMy5PLrKUySkIdlBpb2WHOwJ4o2OnWfnM202V/AGnTvbdTMOILf/TvxQX/madYt6RCpnDYCG6lPju/Wa5JbiiMz7d+vBsZ3LxaRdAJIZT1NTAINgY+FcBdaQvBfXHmADeoOUCw2AGjITuk2CQXCuO2h+cVCAILOvgiKgtgI7WgEJmgvaniRLR4mOvdQDVSxYwUAzUFfwOvpptR0BimRzAE47xNc+5V7W3/0+iNPxfN86p2RZs4t6F8cKR2ezy8XM6s1bqGPhTqte1tKbVX1thqynxmqf0NuimoTf5tALRi30IIvM1PiKA0ZQH2rBtNnAmpKMChVH5e6kloZVP/ZENpQWtUtlTfXe3t0Q2ZyemRZaqh3txTW8CDTM48iKV1RomXa0hzs3/ONoA32QPywsvk906IBHllAPXB4kXTIQ2B88pi37Ou/Rg1XHVQMR2/tBZqnwQLtFj+Ueijd5V7AveYT1vT5sZyfndHG9Hn8dq+juBwJyk+8KGg4tzapJEuA9VptFYjRG70o//Vn3nwegu52kDaBfsdqOAAlWSZBDD8g65R4b7X6/ZF6b+VuT7Ucy1lzsldrvKXUvukVLZc4rgNOt5Yu7t3JZRMZV85ssNW6IpaXoKHOsxE350O4tTnXC4D09u5XYb+ufjF0aleVDWl6jmhQPjLs2uos4WTiXnXjx82UxkMjYcy1rO4oPQttXteP+qJ1fa/VX6+zv4TcjeIaHVHymPiN/vhxDXN16TegaIspXFC+wQHkSuqQugEyOiR4g2MP5DJ7V6BJlotofZAZgHxc/4lkVq5t0aMNlCJoCcImSWkyiT4IYBGgEZUDp+7jK15gWxoPg0ayaJA3coW1RemgpXxAfZ64AHwfwtPU/T78YChcAhpBA8Gau4C+rFjizWScfRvhsCdnyjBIqP5qs6EBHFaUclNmpvVFo0IUbscJrtNQZM8eLxM7dLrJMOD+nsDO+vM+EtJadtpLEO22EFwMPL4j86QPP22lPim1lOi01dVCnb7nBRZTYnvXkM7S26djncQph+CT1MytCvDgXrFNLwzRYGmbN9bAI6hwuVLv7o4/xc33/zspkIWbZMIt1/8IvN/AIhysuG6CGKE3EtgtegNDcO5RmnMGH+3wrz/Rm1SQIe22+y5dLZRXa/nqAMy947uqI+XlcwJ9HrC4ygEX0+7EfzRu4lTkLl156deUWZGeWQQHpJkWFjiSrNOmkUWiaE+2zYB2savrEtNgL9z3Nbsc1JDjDVrnAHu+uJpeGZ4+ZZcyFtmokBBUcJFYY7N/Wh7Z94dtykuMkDHiKUqniofRIAd2KmgyvqaTkpmTLLILGEhAi4+ZVqZrL+ZcuFWsZGw51mHNOWZc05A3qPj/tC9tFnB1oQtUQ32zP7cJXyN7OfsUBHOvB+oKYMeFvnTAfBTNKAQu6CNAK7lxXUEPmNJw5Om0a9HwUH7GeXVDcQ4AzJxz5GzcHAhichnDdLkTvjePXeaid3lbf51mQYFt2ZboPNpXSqqWWBeiXap3kFNXUzwizYtWgY0JazOnW46h2OV2Fis8bXyraWOhSfyGjJqo/p6QqJT5jS+9IBUs87yb1jl1xnsJePBl1PGm9z6YbUIoYI5k2tclVxa+3aiMtPqZcR1pS95JKjRAiQyiaN9nXrAbLxW+3TuVhMxpsqnUpbKq3ZIaXLC031xEvLCyLtZKAiSHj5lmKfjt6DAeXgJ6VAA066AAjynFmUY+5/hYpEyA49uha1F5Izsy3iMH64pQCIuBH4LxuCwjTQWjKr8fdBX/FOfNdsjoLyPmsfOExUbP25fB/2Cf1m4xWFAqiNZBU+6m/MGc1MnRMKPeXTj6q5DlFk5IA1OmYQLqdzHIze07sp+W5r3JRT2kdxRDuyTULnmnxaZUMvudOTEvsZY/vtfHxGIWSpQkgmZbkPbJbZIHy1MKiSctSK/5G2s3L0nNZav9Zj7KX+FLOZnTTcFPWnDexRE400H32MXWSxbMKw9+K0VJOVpVVQ8254sCGdRW0hBi6PqEOvAICFtiRa7xixgmQLXSDLu9Zo/xA9J72aQgOeoiqVma+Zv8F1FCC8n7sx7f6OFx1LF4G+lVToQoz8so6xNEtMbVN9xaJk+RVfsOTh24XHhzA0KW51E/3ZYYrJTrLKOFGYq7SEgi7Cb81LX21SlxsxSmMLw0od+tXEek3meTbAvLtaDAlaMpop0ThJ20Qj+/d7jjxpzVhENinMeeSf+88t2CW4C1auf2LbEKzmKVNw/scGPw3+Tz1BWRN6ZqlnJPmTOJ37yUqJn9cpSRePH3mlCSI9xxerKl+wPWTjDLoy2c7EC0Phuv8KcEFp2zuhK4N+H3PzM1UBemfV50lOORBmMWxCgHNW5qWgNV21Fw/gmWn5mIUyeo4be3Q20LaTIf/SptUzRTU2mg0gCOpKjrHmuLUvh7eqJBKg98mns/Zc8xmbrUvtNDZkKRxaeeUdhVNy0/nrG0NiyotM+Sc5KLGOoHLCqwcqKo9dHITPH5OzDmjzuNuFlyRlmvXBIaKNup2pyaxOv2LXLMB7SoONvnhL0BLm/JwyQ+LSDNJctpJfXvbKIXGSkIIXKtyozo8AnDxBANBipmIM0dPup4rsIdhyKRxAb1jqUWqdu/4gpv//TDUAT0Oj/i48znxDxwrLwPbK1OmKtQ9bgPHt5MrWzE1TK/R4fR4h/mZwdekJkDmdKGJVFFmjRFS3sIlZfp3/N5xK/KYAC1JLHE4/1VgyND7SrWVIl6dq5/Dy3dJ8XNSBrjWukpPOVBNL+kcav+i4Bw3Zb5lL7ZmS3Te3PPu7awZesPO6tAE8/3ux73JB5k9xGXgXA7ReomcgVpDnTsk/nPxOetlCoEFUqL3L8HbcEkVaQlc/8m0DoztWjBdC3zoBbzepxL8vjtEjBF2UnWJOeo/Lwe++gZTYByBJz7fed7tN4EyHtbfwbJhkgEbA7Ap2b5tLfKcvEbNaiU6lTNRmdOk2lfYyNT5/CvbNjZRpaAAwV3eJ+iO3Dtxkmny2fRwgLRgBSbGOw9eq603CHYXc25ovnEtq7SQBmBNlR7kc9fcClfug9z7vPMzq4v7240uhGHbtGlp+CPrO7Vvrj1F71xmPaondV6qQ8iRRpChVcl6eP2sEFi2ZmGBIJOqMtYM4OKiVRSNAENmbs8cAhO4/itEslY/QQNIgIzKzsG+PI58B0ZC1wHMqTyN4cwjbO+rN9BMV5Ajx1rRDmkJxi2ilO+qWteDNubkvgkZkejUsgjdJhIydTlV2VVTg/XMsz1mzaVVYs7wKUk9fT8heJO7OW7Ek/zFPz2fllOGGfoF/8SO0ebKk0Cem9VdTlRqX0RYhZuSo6A5p9OuM9wTMFj6kTdtGeSQNaArxAFMMzmHn3wSuc55sFlz0Bq+IlR/31V/7WIKK0FyANpVQcox+fK57SNg3QDkqKHe3YGq/r13+Fs5mQKq/dlXh1erv7Gqb4DiJPDjqkHDAK0obw0e/hzly8qlFk6EPwI86vWkZTyjWg0MYHWZPd+T6pC8x9QpmgWo3VBlc1Zeym7DFq5VaKTPJPX/jDmXM+9HusHTr+0uXOpEq5zSBHnc4D5kJyeKJKLOT3Oa3qMW8S8EZ+lJ+30d9HXb7s1HwU+8S/OLNNW2NGBIlZfSO7c7Pzs/+kTCQDdzTVDNPK8phjrCRLS7lKCE4b2CXYm4To9OHO/r9Qhc0vxQ7SnDDrL97VmC8i1USQVVN0XCg+QLZIPE5M8MoiPCM0Y7/SB5Rb2hWU5grTDTvXb7d9+D6zoeGFOrRZdnLMuytL0WsUSEAVFfIGWtGkrf6FQYzX23OB5RXN8Od2eGfeI5+jXEBmJANFPPHJ+WXGoDk6BLz9mO1fHT6nlUE4PI05RU0aVfZBmZQo2CPBgONAzSsMo5j/YL9lCXBT/p754HE7pKXc6EyhFkNxnWUSjBgUiK1bRMOALAhXflbOCoUb17Hn5ddFsBv3dHA4YhwyhCqofIdaVsgDN4O6UidFUAAvnneZsiRZSubBvL9HRBloO9FJFkN7aBozVjBhTMa1fmzYGYElONlgO3FMjwbNiKqEaMYi2sXDIseBdn25lWUDaksUO7diny2CavPtHndD0MOwAd6ECXNVNq+qN4hEvBR/l75zwI2WVyztc8wj7qCnGW2kQ9mALEXdH8hjqgNCVNdvIoBCTMUpBWIYf34iWsH7iLHf+dh73AjOUTU6WvYDPJsjnUMDj1T16NCTCZ+LueRrRmbAwGAK7teyBqYSV5F6OW6Pm38Mj+Anfz+s7bdzM1ZgLJ1uDKXul1yAAxxzntToFYBieYLYoHKYJEcmk+OXEKId9Bk9GgRZ8gnKMMF0tG9xl8gYaiSVV/kSm16RdZXjSCZjK8iMlZCQM2LS3l3p5qjdi0K+hmJfpbDG7PLhCPHGxV/8zkGwARMT+W1tJqcajiorvKdexcma2pUoK4ovz3gOkQN/hlRK7T+tmfCGRCZZCSEKZ0AliUhV2zCdu5Qe2f+NO5fh6L7PazTx+TBs8g2Wqt3ExPiEjPtncdqqqbZcAWCHAIWWyuanN9o6pDXTRCtZeR/y9OCpOiYWlraCUE6V97ef5D2N1IaAoBLZaml36RZYPfe2Wzovh8Hgy8U4NBYnOeQoMm48LS7uDggN8pFyBwnepJzPHHdMesQwd7m4GfzgqS2t469zcPXsK97ij4r36/LjKE8v2enRLBI5DgqGywxqsXSBYswUDPJMwAdBUOJ7wz5i5e5whtLTJ6eQfxkk+sNoBRO++rLz32hCOTIIo5UyNmulaF2aUwVaTNabPJYsPpqdr3Ql4tjLlU9ccXDBLji7lDqwQyRhkL8VBJLCpXtXzEqKb/qs4S/iOQU10Cs6/PMvKLTDXD6ZfHmeLBqykUNOQmSkubBj/yNd16Hfid3mgGL+zxiJuTHevv6Q4dTkNpBW5sXAAuUyK+MMbXfjPDA+ZD4PjfryDNJuB/CxQ4XzYxxRffYsoaJHpGm2e/hyk4hSQ1IkDIIMCBH3kDTfJb2GMtD2u3xEJP94QoHdZMcliHaXpkkMTE1/262SmzhjnbG80DSnYLEtQFqUabf3xHSrQm6SwkFvvD+xqtlZ2jSfXH7e8acpQ2T7LjYW7rdZ7o56TKMAy2TKnh3Bv4Yd2tuHsPNjEgX5lMXi/Iv9PjNo+jetbosfN31rMcgLh2UXjcR1sQ2rR7h5NV6IHbcQGkmsMavSZU9wAO9RWfWVuOZ/dQUmw9ZNrkCkqRqOuVkThqwsgI+PcuToRAJgAY2M6VH+ZYunfZ7VvuavXdawcdB9nWYO9O1fqEfnLt+5x+2alDs1de0gFDJ565Wsu+hjK64JPqJiNlUV1Sr+VclB2nGXqXBHbsF5JoGZ5U8U5pIxXtOe+LuMMLjtthAXjROjXYHLRJzome3VFKKXE93EDTMjRPBGwK8XjplqBmtcX6FtFl08m8kHiL1VaxsJTSWnUJ2DP6kUhXDV2NF6XgX7r3EITyrNOXa5RhihN4yplsKyZMktWorqDjlQmaGEoIjo/PkNBaL7M/TDcf9xRHfcBTsKpycH88rp/+ypRXSb8sQ4JJJuepSmNfB3WgrBmg/MgTTS5B2DRbDxwxjahnHrYdw81T/zde91a1u0n4LY9cyciJLMinB+dVZ4GY0k5CrDXVWp4WjcBcgtw81vJcIasXggf93r4xRilbjOcw062i+IIYKYH8zJdEBzresqErWcyT/FdWJkamDm8QVwN9JrQrACN4tYJI9W8JyZSi0S+AKaA4CQhQARA8gBAggg6ioV7oqYF19lqlHELWDnS47+KDQCMKmjrXpNgkJCWpwmaP97Mw9EPSMFLKoKTW2dRPlRDXt+5xu0ZAaXkxMh4lDZkSP02HRp8O30rVhZ40F5EE3TpBKDUEUeOkz1tawd4WpA2EuDm5IkARU48sXBrr4H9PR8T5AmBceelE1AJB0kRgAwrFG/6bLAZ866zLBH1CHgVxL/gm1Yo9cRPjtKOARz2e3YP/tqWbK1UMkNgBTE7owdF9OaDfPVQCSACnI0G14rZW2bmVoTV73OfVXSxycZQrL0RwzmvtyHUiJ/plX2l2nBuDpVT9skJSUefnaDbOqjSSZb1EMYterIunM25g7qdtp2KH6KV6NA2cqu4pSwy6+eHYJ6pJqCwOInVG956MEuW/q6hQeW8pqtrVLmlx0oDUL65xy8Z9hmTjMdKWwqSYkixuECeB/NnQFyZdx2SLP/a5kVXlbaPHfzmhHF8No2BVCSTQAd4LnPcGVhv0TPbDZTiGWjEFRF0y8P2fzhsRmGiMyIYJMEgF8hPV2/Kyn+1H5ll2LyvksdTxxc2r70r1eeAyGTSzWeuQunkizkhQLvmlCYAOFSVhnSSPWrTdy4FdinvFD219tMHlMqFL9NyzEkecayyvC8DqVLnNoDWoMCehP8CHFCYWpNWDgkyhceIg0lCEQk+ppTUcK1lIeGkZK4jVJHCDlzeKvxTX30tDKrxRIgVWLKkgfEsMro7Q4Ms1slmcBTfgW8VPOTJbL3ACoOm1GmGJgMZDi1w/AOEzn8flcbAvB/iAHKJFwbIxIgNjVUCqJDP30vkQO6ujjuUOXks6StxCpR0TS6BoSl20wWijM0jBisKBzxmGROao+7jUauKG3j7uIJpGn7PL4M3EQxIy/kzhMfKhj5j/KJIUSFgVfPKo2XIDTkSp4OvAghwDu2YZOiYPyrg6Su3kkfIXVsjK5yRtZ1stmiA7k4xEl9fPf0/x36yKosNKhIrCV1dWXN8EsUZuZzSC9EeZ7lgIws5NCw0YPZ41DqVpxSsglaOwxmsHoBzpm4NfOeNxE5OCCYD+AD2NFLhkGYM5na5nbB+zSlUoU0oMJwxFAMX108QVDdE5ApkcJqmsPAOPnNXjqR5e2opL/b8tiKPEzgECKtyhll0bRV9SwIX2GiRJKaZGkCSkuhbYgrSssbGnKObiz5Yq7c11TC5OUTvSuqYnSYoMRfZ8EmMR6UEkCYKhxsu6osmgEGCZ2T1ADRCS17cGEPAL4I8REGyDBIIW6JwgCR1qr0dmC9p6JYjcGFHLBpZ769b0B9cbOpYrCAkhIOBAplFAigFZbnjeLW2psABd12zm6GZRUNKgrpsVTdX2JjBfTYZMiQQMNc6y9bw5nvwVO0gQTru7VX6qEQuA0tJCVlmh/164wSMSUu+spaRGNPU1ITJuRJL8dz22U+eF3XIdmms5uhzdvrOH6J92nxWiAkXZWtGVFtmQmImlRYB/U4zygl/Mb6JHxEULLA8gwVuB+NMfrm0miLpEmAv8hhELbPZSHJnu3K4LEPVo2UpZAYHLFGk8NaCen6fcTQ/x8uMQUYkgTCnwkXB0f8VRmBYaOJY4mt+ADHWdrglmoHlThnkf1JY6uvQjK52rJkNbVqS52oMMpwIzKtqVJ3JJA8vFdaup6rF+qAd5Tw/4tnZbUDtfrBWHCRIMUHABs51TowHdzecMbmA+tLsVH8VBwW7VmeKE5qNtCdWUtmkqiCw3qwznOyMI5O4APNmHRr2SmmplBGdxqjjLvDBElZFrzxgwAaEThC45QOC9IXWCHXjJILu5R8vXfYwX5SqAcpfAK0mKsWoJF/Lg5cPTA7A2SlgJACGRdjrfcYBXrlrGlryz+jg/1MSJ73TcvEfB5itoqkzHXKD0HbM8x+D3TnOpJGqSRbDmHNG3cJWflXJx/2Ln4ge2zwlRy8yJah+1GhBxBgQggwHx7nM8UC74nI4v/rlxYcYKqt06tDcQdv6Gb4KNlUghurGBIKMDThKLIwYnq39+WbB8g4pUaFi6MHUCueS+4xyBAj1PerwoUqkwW2aWaKWjPv8dwPOI8ksAqAJmhnOEt3hzsL/03zChMDYONY4ObA8AFUzQDIl5RZNPuJQzieGQKfR7J3hEGdAHXvQTLtrpXInQ3zkX5w7pzPYDE6JVJzAcAUyVwYDsGcCAAYn9wA1X4PW9045WNLYracpIOR7LbsGK6kJxn3FtQASnFYnSzuCL5iKFJfzdHJYHwAg3dGjqhLMQwqhHg66AT/IplByrrY1bi0iquX7iIGA5BQCoieqjKBwQUOVqbC3jPQLoxBPIqlZhVoJl6qKBILg0FIZpOOrcG7BEwNft4uyk9E2QkHQAWAHw1gEyD/+rHGYGmPityyoByxD4s965A8GqwSOegFaCNcyH/In4rWPRhqljSEq7Z1/BCsFXep+CoHQnCkgV54sTdz6Q4s8/NeL/Ny2B+z72zztnKVQQoOdLhSq4/iFe6Cw7j8gdgyQASVEKIIPQ3WB2ySBPxjauaSocxAq8nzdTcA6ckqhz6GiqMSXyy94zIHrRTkKt6WRC6tT7ilvsGpZhZ66dAJxc7c3sJaAOoYLpP01Gtqc5aMdhA577XZ3zqlZxv5s7g1v3Wq+kZawKdZ8QdHzt1g2B7SlYiyAyieKzYApAe3Fb6sScw6wvjjW7i10CIqBUtXOHYnQttOFwiT8WPeq0LL/Xp93s/wyEe0UEJDi7AUKQE28VUpAWcUBVo1CHAAqkBAlzHnxTicNJZKTbJsNyCrHdjuS4D7BuRX1480UVgYdZ8wkMThHsb2Ls0pXtcRj/uoOTQ4I9B5wTvOH/SPiLx7oa3Zj5vu+KCrLYi0ljAsZt2TpaZvYJ2D9IXiptomhlw6r2Ry+1vMT3X5/g8IFBX+B/nRNwiX7HTs5CaY5DSLSI1WnVWg99rWZcN0OYgQAcA9NRqbp3FqoMFm1s1Uvh2c7/FPuAgk9kw5U4wxkGxQDT1KnwjqkiDacQHWoU7K5YZYdNl6MdR4iLpOhxLtrndok4KvAFkZFMIXlhf/8buq/inztu4XR1GdrWZPo7NLgveP/OrXNdIAowZlFUFlPc8bt/JuPxeHmyUj3mahckg3YERZEhZz1VXEQuqjqnKp6bYEDGO1dmgcAnEt/KJ9DWHLB9uYGn0tY+JwR5SAhmvaZIRoi6HwsQEibjhQw82B0P0f/BLHToKGqp0qwVqjjNUFmaxvVguLlpmKNXgBEqmwPQVxeLfUhEXwyqKKkUThQHoOeT+f+vk7yAA4rViO//Pzxj5gJmMPgf23Nbt7kBu6Jbdv7IW60YqYxI0HBti3wm45bpbf2XVqhHayJhOhnbrfIMvS+Cfrf+h2f3JdVK4bcf/VX2jjeThKpbddnb8Fwf8ONp4++iOGNuFnQArAOc6H2HZoT5CaBQAo7HmD1SNdXAYXXCFUSdCb2SpKo5EXzTKENhrjd6g3pv0LWQFuWvs+jNXZhl2IzAfEZcSp44Hiq7I1QX+GL3Gfns5A+9u1gLCmaP4N8ZzKmWAwA71FzXfNAnZnyIQM01eWkyqPMF6Fmq5746WGbEsCTAhBfNVatKpUuDyGODMhJ4srJ3CEE2o4nVhgUqaMZFelqXZvmIGdABZrTLhvlYgASgCA6d1X5wbL54SV47ziwgJT1MtFmg2u/rbF/7c0whetZrz/R6LcNDFv00rV45hJkYuy44jzSV93FItYZrOdiP7NcUlQIQqkm4LJEQF58QrO+wYuENm4SsQyWFhZDoygN5/RO3UusQxiSFEKpQ14HBaeos9LXvF1yCtsrWtN2bVBwswPwJK8Ml3BlA+Y6S6hxcQS6WQ0QianCQIhQ9ngh/ZGwjP/lK9c4AwOT8Ile+YfDJANgJCB8ADQI4KhJKj2hOcZryMFAzvCqHBLNXu4KMWqJn69GAedu6aqcuYIlx6BkHcS2tMbsPyk3v1XK0ghxScOVX0UspJf+2dWLX3ljhTKm8RE5LipZBNQ4QvsoHLk4KjmXwMeQkacpIZumavP1f/kj2EvuZF04y2oPsZw4taCU+VEWKnwNeDeEuTzznwN19naPxAtbid+zD37BmgfZZMwDNuICoQy5YvL1jqsbdbWsF4lDdDJCDQe4UUm2ibKgGtMs4X4/BQQZUtfSl+ryzORCvkfb8yDk2FL9Sy8W8uGDSpYVmPJ43wT0/N/hE7hScp9ZH79clah1wi7hKqIe+YbycLvJVtcZ6UJe19kMqBBoh3Ywc0Hn2UREsFsnCghADPkHIWy9UF4G9xb1FCiNpukr/xGdxO9JbRkgVjZBwYwGCZDYH+c+brRb/8Uf6eKpdwR6AFsqtBPBEH/rSBfQpeBxPNPaUwAwoAHo6ZkRac2yYsdmZDoaAU4lXA64adEM/sJCGfWM8Mx73Lq2OT57FFR4BFoIZ77b6iipO8nqs0S0/cv8sZsuU0mE5hTTrULHHSvhre+A0Yt0U9Kqcq4kGVcEUKpXl5rGMvm/xUDNJLIVck5B0DrNcfGgvyCenMuLz527R4++uzIkKiZESChkU8PLpOXB0UwS7wu7Qsntbh9/dp9UJbObNyQC2sh5fWKGzE3oCqcc/N4zuOIjA5KteMP0JloAta4t+0IqO6xvSs6JJhjaiPMVFJunAKYvJbMa+mTutfD0XLNlYwLNRddPFGhn5F9FNS/dN2zYVRiSB5OsP6hr5C7JqtV8iZX5kXZoNZUhcQ1eQGxZHjp6XxGhVFHwgU9eLsh6cB/byJyv8wRVRO9oAf2NxMTmBUSLcUD3rDxiteDmgsOvLR37YmZqACVu+73A3Zapg0eM//wPnteq+PO7w1pc2+t5hBbBJPmAlv8JhYKJkbvdAXeb3DTCI4MRHhJeYBM7rVTh7HHEFY74kYWoOzdqrE1Nzca1zJXhFuNrsmo/ZDGMP48ZV2ZB747zCidgIv3MZcYzMkMmyO9BzqIHc0SRBcQpJDj5FrU3r2E8YyXh7HuM+twBJfNMs+JQYEHF5YdwKHn5Xc6D4VgsyEZE9mOtWdwwuF/qFjoE5E2l34SbBaYoyXUjmZ8p2+ZwVxE5AU4Iga0Dg9NgRotf0RfK0v/wCCAOI9eXxrLX7jwEE7IzLrM9/uOnPgMTAdIBo+05UOQ7Zvr6sZMyIRVF5n8RGvZ7OzfabpC63oO0z+rKWuZj5AV0cbUD7bI/XGB0VJDObKLuq8mvKZS1ncY6G6UqL2VJJrkREv/Nk4YZeBcqohqpRTiHlmJdma5SQGib4kFy0o0fvzsEqQiCwc5FBqqO0hS/lee3eXCQsmX8ALu7o0ehQ/s2uFH2VBAtPAfwXh5aSnalAxgnksBZMuqAOzQ59u3gw/+3wbN6bN2+GxRHE2+cXsIhuIBzWN5wqL8AAK6oBwc8AoWTFt9Zv8kzqOdLvJ2GwuudeJll3hHlzqBYinWTr+EHjqn1dHcmDzrS0+sJ9Dww1ylVLI6slRhPwE5/nzJlWmbTHho6olUO0W+c6oX1Fy2T4Ux3WqBZpZ2ki6hTK4KZUWHIsKRWm8X6XmuuvjNotMdrhSyVRapjZafIF7Cbuz3mLupvCs3XesceG0qC7+NNzjLhHwTUOYk1R6sb7IZAcyhCIr24rhUZQJHR+VGIfwj6C273zGxMQ8Ppt9BCrpO44audL43j1pr9DEshhTVtZVjjgl1VHp1QyqbRxy+SSk03JzOljMu3x2GSMTxvY99OPc/RX6/Sm80VPGdUWjQiRAgNAAx9tq052I61mchdV50CH2TmPSZ2x7AhonjiFuk51qiM7Zu5zhjkIpYWqj6rGwBQK2kTJGACm7f5dO6vV/oGMxY1JpiGlLIUqTLV4GrhB9N3Y5h/wVuCLun4xyOPu8YMLiiPQ/87ygLFi02z8FAU3yhOAWYxAaFYdavsqGPUooKA+OJ8oTbSn06gH4uX81XnUjNd5xnxyunvBK4GIQDrSdaVxo9g0RhCzfa4vPy0iMsmys545h5tYGljtXh7ljXmupn7Srkr7fkZeIqaT54jCYyYuSH/W7h0lLyvlmhLWuc5VBj5psTGFrMQFu1oion0UuiHnq9xkc23JxHb0Thf7qN1Vi9RoSqK11k20pAEFIl6qEyp+7GlsbGRD+1iSKAtXqILrq7uuGNxevYzHgK5hE6S78XiAvJypyGTD0ZBl4wmeKMMawLwAw32H2oyvFk2VTnCwZkAVdd2itb//CKtUHYDfQuQztJao3YEqEkgIkEMSEvZfLzGT5yefM7I2l1OGDtprZvR5LNNmbZqO8kbtYMYjiKIVTFjSbM/ivYQF0gZNmJNXuFOBkjCrxLioVv0zV96g1BTi23DOA7DxNFqnnB2NisXo1TP2Bdl6hmK12dEXhVAnrQdKABiYViy88LuC7+ZzbYmxjF3tSSkbi35nCy38pjcMXlnxRz4HcQC6PphCg5GM5V3kf6DCJbL7BTeWRX3cA/gDJMHmUI+CdURf54L55PYAT/uLD4ohBNLRdi438Li7vM7N+GwY+DKcZQCIkAwrFuIZqO0M7T18+TZHNQzjtKXnl3ZA7YT50nXdr9RrlAkAAEGw7FpO+5LzrbqlS5EltDyRufuKhk5IDe5KQeEO5zn7MdM4qQVwSVNi0NdQq4dPhAOB1QEhlgyWRJdc8DVAQQYt0Lszw9GBiYlXQVlCiKO049rd+NFriC5CPOBASAND/m6O8uADMzOVVG20BynNO4BRYIE7h+xnIzq/Lj11EZ9iL/FQRohv5ePBWp3HeROSVFaiFCAIAV22rsB5eObO1fuNB4J5ojXnoSWnw1rNFCCMzTZUAxWdFCjfzrxSrOQR4TYoBVY94nJeyB6S7xJTUWVRRtPtWpWUs4MchJ3ssL9kfOHCeV4HqgWSSyGRBiyFQUY6AyrUmP4njwVHq99y/LuPx33n6YDItTUm/88TcjjMOQRMoUHOiL8Qnd5Mcz9Ebd75jYUHunkCBH5hAQ7nAbhE9G7UcHUEKjAEAgglApYuiLh33EHUKVYgZYa1IqMu1xa+J7n1GMkRpEIybf0FE4eGTEuMy7H9STEWKYLuQWBHj2Updil9HwUqEUVtkpB2C3Xse8Ess0TngGQ4tYUqKbXvLW6X7mnBQZ3ffQqkJP0q29IgLbklwOo+bke/595F3trx9HhxAeo4qZItervK3oRfjPsrEmREzE7jcd0ckJBExb3iVtAAREGN0hNOA7QLq5VvAjquX5bc02g5w+prfVo0CUVN+RUEVGYaSMApLWKwKUFC84m66pmmG72GU6snTANFYa7KnEhSCBi6d6jV6DdlRhpRZIlAj0hRkkZs8/zqeiPZtOYmYddN5mU6ETXVVy2kWjGt1f/u0W89V7CfuMdSGUkkWxqETV1gAEYyxhuiM50zyXXRLmjRqhl801R04nRdbd2+4+d5xx6YeQwNDLIKFccJqHrqHL7AuvEEWHeAWSzJmoZzoF1YjVx0JMKKAMtitmO/7cD573z8B467y601qKDCACIIJMIB69SLI0o7SERpG65ut4Qi+zXfhm+e9wWKNj8+LYnJzB16CadzeCzM+BmxELvQHqTNZdeGfJbxc6pd08/OZQvq99Msg9IFC6JKZyc+Vf/ykeq86p3PIWdSDAkKh7izU3dytYDRbXD0lhZCZZRB0m0waBRoyJUI8Cv9h4/wjt0cpCDWloLI6EwESUVipEGx0ZoTQOxRp/k6vQA09w2CZRa1qZ3VDveJU9IWKCD3pqU/7PYd88FrtHL83YdPDZ3AJOWMQKrxfTE/74FqZ/UAwZVhlwTq3aoSLZX5+cpa1R0SnCaOPuPcZt2AiPmIaDnavKiiGJoMUh6UqSf+GI+OUjNl2DQXtU4NHLP9OaezfYgNVDMT16GbiEvNc6gSgzQJKSeBJEC14JITKPTOxjkj0XZukpiklHpAYJK/M37NZx7sCT7/UU/ERS9vK2DOdVxko58Bs/BMdalZLCUI5yFZgR01ATUMIUg1AZVFfEOL7Bzll2PubCHyCR7/cXFepMq5crR8XCOhgcFO7FaFOE/Y7CJjzurjyjpSXf2NeO+NI446livNyKKPXhyXIgsPrdKYQi2FW6UMHj6nY2OnVFx4NSVmlJzpLQs66hhCEnWEigVJtU/7m/y00aRKeTsRgTRGNHqNnp4daeYPiIIQfKuSEMwb1QL4ZuTsdMTB4BnnONbhxvMQbyLWxu7e4EhUnnvJ2JM5tYJvBOOBdDwn5rpIFs8lFWByhNn+Kz3ESya05vvVG//ZHfIwh0GWEALkL5dzuI5Y9b1knTVWXRqWYs57pOOvYM4sqrCT5eIGN9wOCGUB7ECuN72zkDW7UhQNOKwSywpqnrfDZ7zUN9lfPlu34pEJ3J2SU10AmpPBbAkDdY4an7oh7EzsDQ5RT6bohYFQd9MkpGYSEiCKQEEB0K8ZlUKPhqRkS6iGbUzesQ9+hdjTPJ914jbi3fl5dkzL7y5+HM8R1G5efSTeK3ASBKodCJj8AqlLx3VqXga+NJDDo1/O/I1bNTGAk/HTpeFuRc7gcRAg1OYeSNvYw6qrJDRhZ5tZWS1gPSzOPJ+JWbm7OeKGk4HJe/pmvxbreFWPc73OzMX/QfIJycdKPo2o8oY8JhSep9QTLVX21XIzQ6qddrTiQLWdS/78uqRZQAfN1oG0uOCr9P9fRz3l5gInJB+aQZ0szqRqoUpl6OEQRZUpFsWLf2+G0fMgJEJ8v1ahfYWmgjl2De+vRZf8WAryaeCFGVxn271CFwQReAMbMClf0mNEDUigrgII9OTHC2hZF0y5yoPPR/fg4wCoEIQAfyk6sRHy5TxWWUhlWaf7vc23qx62LLlFUkkZ901YW0mj+dRueLlWnt+WbTnR69L/5aRfQOg5XjMqvy6haYWLBT9wlbMUGVXi0M7Yrd4Bg/ryAuJOwNNJCQMR2QVdTzxLcncUUtMUTpq4FLnKpXaADpPoKFUBlBs6T7XiopdjrPAu9i4HZxkO7JWYL8xxiutxiYgf17BWERw+emvg2HgC05JZIPb5tHXgSsMREKCr7+Pq/x3EAN/0z6E+nbev1CQjEK0mdQ7XI1abbLUqQog8FQ/yJ67NNCY+2LYprwfoQPQr1LP/O35Dfa4PsM011eX3uTM549dwDFHmBqWvYuSyWwjZxyzJ9njR+qimKdyvr/1+HwJ1PyyMxbr1xc5NxK173YqpLQcICzWZNFZEEdApS0FfG+WDeS8xJQ/Gbsi52Ap6f/7PfJNCTKxrMzvWChyV4YyNL2ByGnrBAYQwRZBo8nKtQxRTrhxFeuTLhac+vHGXADgZSKmTHM4E1AiC85i1rSfpJMPucmkukSdex++/u/Nr+qp6VZQHnlm+AnEFeab/i40fg8du28MKsn7Xif/Q+ju8mqFUeV2FJ+RqLDTWtFEnjDzK7OK1+uDldXh/XvsP9dp8MLf8vU42J4mf6qRXOfUxKDgkEHemhUOTs4tnpNKw9jFdk1xI1khIVUmFAHxfeUa8iDPBUazwr5glqDkQJDATf4doL7QvlxVkvHXUMCNPr/KhI8E2nsnhBdb7SOZOE5ikWbngLwFP4Le/owwBUJif+HAewDi6pBguKVAYukOIOhI6FiCCVYe5zg7lfI9TzE9X+/nWrsgTJw6I1DjQpKA+KymBbvqA1Mt3PF9n/x3UjP/1XQ/xMj3QnB3V3m/pxt9q3k9c7SweXnJK2mC8aVuD0KRR7XXA4Vf84Jt0qFszZFu+49GmdQfCwIdrXBnAB0iI275ARE4mt+BYKaZNZAbp4ncDiWwj2RB9b7z4rYa0exK5bLRgPoLfePkFkyGngDXpgQBnCYxgdZLzOuLNm1AA7t5cqNUBSASJUYfTrxzgXYGcPrNcmqiGLcOsl3ncCV3YuGrCgOvmpck2s72LV09nXufiakzZ44wdc2JjgImuJk/i8fBWeWqlT45HkR5NPVl9BLlb7nPSMa9jxZoXWG0JdpXpV8B7eonj1VLL1EpZMakyVVNZrnwt3eRGxwOOARLNC0AcQQ47RE5BfI8qUvmdGLK97m6vfEPOe70lOQVHr0lS0nXJAwpIDjjmDn+YUBXVqEhl56CHl6NePQhTVRrnU1vfdImgG1NqSUMelrWGLXNn8vJHtUY4WXVOtyQmW5o41ndOaEx0Z7n7VYi275eXshI4X/id43/m6HkiFhUXseQMW1gW7XvC4TftsaRlt8okH1hlWiTwAtGgqRStJkStljzRVOKkehd53IW3KLsqoQseE8ajeW7fvPixmIhtEIeW5KUEJ2oU+LnXyy3woyYN2VNTty8E3OQfXwADCK5bIO6FhS3Jwkiq6kh4AwNghOWOzhpZVqtO+RnNusTSXNal+nxe7pZ8h3nT3VvdPNWwcUUzueu8nA1wmK16DS0gsnCt4V2tBJ7FqcXYcxIvMnahlIGVK+/X6pP2PijrMFuNJtl8hWAfMs65p71N0SvBQ0AFaIgdfl6Eu/N41ZAsbPcHFZyhLhdVNKJkadctcxrXIZldA9th4tlFg8sGLmK+t/mhnb6jHzGvHyUObGMObQci2CuAgL6Zh+Nef0NVGwCoKW/oEQHyJ5cwLO+byWWpmZzdpjd3AvaCA0SlurKaLSHnsP3MOV71NfNnB+caXbZ06ge55CFNtfsZn5dOgaykDllTNWEhLDBVLGXNqpoSMnSNhfM2sZsQNEyyirrkrgEI+WpgJJhxYvCaVF+lrHSWKy5VZiPE4wcm47hWsB8Q1zI2Hh+oSYGiowpawHzY4lYq7dZcUnCTfwPydKKqKtxKI6i0TVPFWZeXURRqxX45AJx673Gporw74VCsSl1rVh2Gpsp+mJ12XFqA5kpJGZeby+GsJqMDtsej9yIk/qnXmcftdyXN/3pr4g3IiAzhyvnQ9jwNOpxkHUgCrvLhQnEYeSrrZbAFcj9OcsUEBzEjLjVGPSTZycmrMroJ2L9ZwXC2sDoT0TDCRn50Hw4UvVbAWNgTgnU7fNVTsULzYQt3rcAuZNjrLjgAPL1IAYGtQQqYgyT1ni58oWAmeMAjdfWDHCwrsjWrLgXNqOoga85annrUtfdyJ9u4RSwtGb12Z5tREOt8pQ/C8br1yvA27P+BpqKQsyoCewt7ni6GYUvQLUHLQBKred8+dO/HhAkKCgSV4IEWqSsncAZ43o9xtKd6x85GMuqN/EjGtfOFsXE8u2I3VAS2IZAoR3qsL2Jl2nOhAfNhiy0G3c0XDLjxP3+BIcG4dIMIPnlWukU3MVB9Duez9X+kjnqCCSDSJtqSXQ5Lqkqdt5Quoa3zR++9BtZ4cgojteO9JtvyTNPk6Khu7YVZL+9x1X4fhKQAC5GhzoKWdUnLJZ3ELVUZUpJLxS2KmWv1Gme21Kl9DhNskGzQC04g0d0H7O5wCrlQGRYJ6CgJslVG6wTXVTYe2KgluY/zozvveynae/awRUYDjLw94nd6/3/9FWKGT4GOerswiVY1SJ38+T62cB7w6rsPNNk+NdePU6guFkK1Z1iQRuGkqao/2JzMbE3mruSsdTyT6/Favv3YotEFTxr65PITdqRiyTp5aEf8uYyNwDbVZy2kpIZsUhSby+bSBOwvcFBmhv06j/Hc2WbCzjMF7Ym0ANll+lhyGcuWBpKQno0PEX8ePI1N6ypEvLQrYoaxRZPbkKIZI1KQw3KDy+6ASl2jadDkYctEFKMO3v8cBz/8gk8C4O/DXUU11JKkMIOA23fB2z8/j0AZqzeiOIMAzhN2dtmFHfVcUAZaiz8k3/FPjrcJemdvq7YmtI5tRGJQ2vGCAFh4b0jBI1Kys7OFh5gNhiC2w438mW/QioO8DrNzMfKyBIsdHOh1BnI504fZOGeKQcIYm4z3MTftcKY5njwoxz7oNCUN0k5I8G0RrJ3G3h0R2Y7xaMeBhCsKs9SRUOB5rzBBrQToMN7/t3KRiZLGgDr+dgRJALwtDGTxKIBqIBQAJwPN9dPjARashOgdU6o6s8wuoAMNaYDEFYazgFv0MDCWNixt3pJO0iadt17IkJg9xnIfZ0bBTEXBx6we1UCvfBPLD8ojn7DW93PRC27+hcJFD1m14ZDgvANqmx2aU+jiJMXIhIwbVl4xVYi+yma2CzoKHYG4o3im2+zf8F6Nk3djPzI1C4xFvD33fZRss/b4QEjW7bDKifMNem+8CWIuAGpBtZ7QTqAyNYrK6pHjryJMnQjB2sHyGgRGKwBWyQBXKrZ0DvvQ0eJvPKAPfx4w2C7ssJuxsGudtB/YUgDZHXAOSmYOIQSCVD5OfmraGbfU/T3SBgwBv2ekEBXIfsqjbVrN0kqO73dbMedDZw07a7da1/Iz7vQqR6jHwawKuHghqWPLccWcgOJTPEZ4jyk60TR7ig2Bai8DatqPvptlIDA+srjFiJ/5kS4Hp0bfGXuBaYtOJApMx9rGTTMenyoQ2Tp2R5fg4lH0YmbvwEabIPdkTasMSaAFqQvgBftMm6yvhzq4s3dRQy+YMsJ2gHqrBiIAycQS8Df2tA+z/XOnXDc1uHQH0psPU9hZF5ZIZZ1tymCYQvJHGEZj2+FgA7A1TL5zWtzvknaoRJzrlX88KeCqSSH6n/ZVrtbK3K3MNDzmohWbTLJKGM+F0RhfzRyqdo5hPQfhcIZe9zrFnmS6OxlA31AUyxjwt92sOND55R4yOFeNxz5dQE5OnuwmRovjURSqAngvMjbG9MYjkRuqi3bgqg6++ok21rfX5BSwUQhI0AxMPydNToK5LvVn8Nwb5jvokAEQWB0JAYLJAYCDcsOY6Ez8hNu3bc4tVFg+LKcvH0RnZl1khVq1srzZ2nA3fsHEBEsSoyzLVzK3sv0wtZ2JIH1j2+DvkPBxJs4jNyibWn32tMRhKm/4Afu+odtAIMFZmvdRUuPwOYf108npLl3vQ2DWCnQSmk2FwmzwUQMHgW/ihgy3ynXHSBbY0UJycrBvYeLFRphLVey2C67CGQksStsO9eKyyaPgg1UNys97Y50wglGwegMuOA8wk9yazJ0mWysjwvz3FsglKAi9qDoYEJikaiJoW0HeKkTR19GPAG5lc516iEC8Sv3Dcj4VLcz4ubvsLmUQULYUwO8BiOJ7AJhz+O7Ov+8qx8J3NlEmvK619NDmX2X0Rwz4NoXfpoyYiT2t5rTuh8yxSqqSb5IzmfEVtEQHpKbQzlxzZMyZd/5TnuH/8Lm2Gc2URaSzoVPjg3EIecw7bsTwrNf14JsuMzJjJr46L3lHl1IcYTGajMSP4kgQWmAscjThon3qUbDKFzjY2ALlBTnTt32EZYQ0Z2qEBBgt+E3a0O9yVoUwNYcI4QrShYBgDSEJGBIQ5Ikk3NGfAYA76rvTuEfy7T8/zqN/OpQ/+BOGPSnaVP1687h9fcVo3E4MGwBrpgVx6XlKL/A41phjBoUDxfu74WO+1r7c/q63VNW0yZAtCFYJ5JxJpgUJV3LAQ62VUkp4wtri2f0T+72JC5+xYXDJc9a8oV0XAHX4gR1lHvSO582zXHm2wQXMuFcYEd9uJWEtYLdgHfLYyItvimiIjX3b8CJyg4ZLdpiOzNsXstGCwJA5Ct7EHo6AFUzeemTBo3WDHgWNrlFZPLPCfJ8VHJmABMHMQE4ACYAPQZT2D08CAnjtLlAnfzTVbBxhG2VdTjvrU55LuPZRc5lIbqNYyUoWgJuiqSz2CXN5SGPH+gcUD4hZ4DNeK92WT7dmyiBvHTNmcg/RsfOhl2w+hxYxlxc+V6pVAribwHUFbsisZMlMhUWI6jGYgyM+0rfuwkFDOU9lvoleymSUeNGnFmLCjGfGC2MTG4/ZIWYP9N+5FKxvOlL5SCFjY31zwk8QjJnYdh1wjzl4pptDPOnRwFeJ4Tffo0ec1PB9ASYZhgGgFoIQ0AEUk5CkBggIYRWPYEkeh4rQi2zQcq7sI7VrGtuFbIXsMDIVTdU4l1nMbQlDzcPQdbLSolSSKuQ9Z0oFQMysByMst5wm14w45gWDqAjteFkpCJnCd4XgG5ZFkFNdtYCF88mzAA/OcRkIPpQWPJUz4nvEeMeINt6k4Ir0fFvEGgHSm77ewxsXNNXOGV95e7kb69uCTfAk52YHAS5k3wSnRQGjEiNYuj2Bpwp78k2MHgs5UIhAqllIEuGUdEZNGoACBGCyAAfkeV/3m6pJR0fNzZQdc05WdwkrykWkWFPt6Ta7yBAZQuS5LWEZYFO3bxgf7TWTUkM2vZQOYiaj6HyFzIOJM8xIL4Q3VPUq2ayMRV/MPK3CTKCEiKQbumNH44QI2wi+chV+ERmNs3gbRcQEE5MRI1/d8P8kFyM6yRbm/zU2uuD0As4hCAW3NJI7adGAfLl9NVe6IQj1Pj2o15pBEggBI0Q11iokMFr4Tnx8JuSZZZ4Vyn0JZZnqZdTRkbmF6Zp9OlVzw/RMEDR2S9gltKx5LmzRPF7exesLT5sGohkz17HKWTIcYx07zArBPEiNs5tVOYsEv+QPX/wyS1zm9uwEEfiGAFAJ0qkbA8FvT9uC8UU9KzGSrtQdwXoiZgt2GMDGLXPL/xLrwT9nNl+bFfraeBOGRPBZUtMDCFyeHZoW8l+NqAtVDSuNg6XfDmQARNAW2BogQAEkgAIUQlZJsFmyiFl2np/3+qZx9TJqON3e1xXaG3qj/OubrthZCI01McyqeS4P83cV7kiZMW3mtJFZheErRHth2rk4wsRBJBVxW2+Y3r0KJTTeTJpQ9jmNjM2Kw6l2kkMyzNfOwLrTlwpGz1KA+FEP6XlMvNiK6jzzGv1o4gEvjyOe5perkk1bRaP1jffNAdcK1nFKOtFKgvBztqHT5eWCeaeZ/aXQfQUf3lQEnD0ABYKPK6BDQsV0TDXETKequcQsiyQEz8d7LVMMXWCMC5CP/fhtOd/m0N0zNV7dTLQs1ljTYe6/wKBDjEFdXTkgJd9ZNOtVmOAM6CXTXhg5haxuUWzYuV/veaz5RNYad+Q1RUBWuadSVi7BPPPxTICYjzCKPUtOChN92/zduMYbxAP+J/xzfpuwrVPg+XlvPM4AJgqcN6RdxxKI7jiaDGm/xkQ9vssGndFXQdShCIt9eB87MvzPDjMRIagfh2BTACiUTecW0TIkZxazBdlcebkmeR/XCjsflnywoQ8VhleVT/eYbf/k6AN9RH9aL/q3TmAXPNQpobNLQ71E9KRpT5pptW0Os4JYNukyMkRbYvuCM0eKI3Ni51NWnECW3wazXccOp2NSTYDKY93E1d08DUKbOBIDa5loYr79HTx7L/MP8u/5Ac9HZqGiKqRzLziBApntK8A4zA9WFYbzEQQWTQvtrjK6+B5J0orfZ9DyBtVhADJNQiAUgAFJNiCOwOlgcqqS2RZuihBmaZZLS39N2Nhabvt1mfvbEbY5g6oaLCIBwPbInNxG6LFIz+C4lBmq8gEqDL5Ee9G0aWa9ebYzqsIIw9I88qJpe8NM3eElb9hWz4LhKDxKjRfEQkHwZMYKsK3uihOwDQHWMh6xhUquZtTOI+4YbD3y6eaRj/qreoI1mopGed4rAC6DOSCnBjcXtIAg6gQAOCddcjeWwg+tmQPhbdf79Imwp4dggAhHSKqmgjxgRALCMMBqygEdiDTVIGWFiZzdX9BlAm5QTsPXVQmqRO9nYW2YetRiPb63rudj1jMzQHBhFLwhjpey0A0jC1e7tN3HcsU61otP4Tivk8TPs+qUfW9adcFuG2SWnf3UKQIhGzIQ6/Ww3hvUu1pyL5k4IZeUfw9MtCRRRH4anz4OLFYRFzuV/5d/Ouw1+fvnpIoH1F0CR8aAriepsscnSb0lKHcCivahXgWVFZJjE4BTCAGSiGDmec1snkIs6GC/9YYUxGgRM8oQLATv8zHLdYurj8Oi1lhiv9s1pczRuZJLlbe6Y/U2nLh6ZF2x4KQoItaJfBTL0T023X3luHV9b+uWVp2zGqxS915kJ4uuNoQwsh69Hr1FxCyZNz0VZaTfeuxughKuI5itqMJPilnQ9psdIPCRrIaMHo0zY3QGE7GOqQyXmv5ACNkPqrnk0BtitgReYXAoBMFMm0iiO9xvPRhJryWGNk3VeJZLJCN1ltkSgstr7YLMrKIyMECcJYc4F0ddw1JlmK+8WRi58dLuRXObW52uZ58cv9BfHu3b7LepvwhupxOsaXp7bqGZyHhxFE0w3/Oww1muhGh5P5V39wBhSEL+pYjVp8g4miSZ8VWrJs6+elEz1QgEzP0JgtFxwJghJHeINUGAQACVnAdpE34KFYRoV3V6QhMZuU47Jku56UJRLGTRoQczs8KYOMuGJRzGfJh2FnFVMsPYlsyNmWfs2h/F6sxT+OFxx0+wrjgN3G/f4Je7t3Qnsesj03sFzIx6PemJLbUa8QGZf2bWpRpJKodG0aFgV0DffKMIV3UIuEyYQwcYj96b+28SpFp3i94pAs/sd/ZwEIAEqgbuVDgWCkSgaKlCunRDtwd+ZtPiALl4kNBYaLfBrlB+HWqhi967utebNzPLPjpRo/LOiNtSN/rKsE5kW3Jj0/a22MPY+xXS/xSuPbvZf2nNQTpWIpZmhHMHMz3r9bQQJhUimWzJXo+tu+ZqQzfhAxOTfoBGq2IsN3BjI/w0yMCkYhcZWOlHb2/efAXhQL8GWxMC7EXnZzCiQgCBQmB5oClNNPcY+dGMathHzVM1kU23QWQXVdVdbBMq3uZF5luVW8QRGDnEzeRtEH1lGH4+mTMxZsw6bdhVBNnpQ9rRCibELg1T2XSPc3dN93o962VDorGEAGKi1aIBj9ARLz406BhvooNc2QdIskaVgJW/JSMcCQMEONC/YznKgBkzg7a4sifokNgbXi15OS6NtAzB39cuEAJuBZnMzxfIR+ei7zLtsGQ4omEYroU0WkcsbIuj0GNUjd67S09ZdDE5v4hoxSS63kEbGG1APesFsU4ysTQZWbM7ABJ6Qr/qO19A/CTmJuL7FALwIiIkgFfsPYljMjjSjEDEyMN/oiCoAtW1gJi+UgAd0TEZms2lYZZLZEiObN7jO9t43sxs9FJmPFVpdccgVVjZC4aLLjrGbJ+2yjDMeuy1dLvPwSKk3TZNR3yVLLveioh7DMS3SM9J4mpvUdb0+fsGIPrcJkTqV9Kgwo0s9DLfQIGV5KYFkQpeJhwAEwEgHdlwdB4Dv5aEshgRspEQ7eDm3D9EG1kYj0ezWnaofUksI7MEVbv2rB7RISHAfO1StyI5i77yHbFO9PQCixp8ZltkJs6/0Q9+1roAl1wjWnHOhkihUIZnvF/DWmY8jlGsN2qL+IKCttcBUEYBGvqxNJobDX44G6vHXGn5yUBQ37/pCod9mGeNuVSCYSWdAUAYOfPsvHDgSBJeRTuAOmksyFhGY21bjLNEB5QZWK1vK59202lARFw0hSqxPbmIr8Ac5q3HaN71zF1t9WdiLeKNNZlnZxwJ9n4N/+MIonfJgu2Pjudq+3HLjCWKpwSp+gEA/nBvQn7ThRFvaFz/BHQJjbetJoit+4ZXLX29QvyKkaxOXAAQIYsFCIyEWfZ8tVTw3iUMqFQTYFl0Rrg4ElHK2hGdpEDwCX+rjT/PxApQx7qTuqnCRVyqcMmCEY1gzrZVVsHIz1hX3C7qVldckAFoLqx+I+3kPEZycXwgOCPZem273Rth43FvLAIArh3k4bD3YbvtQEerkyBpdLFXGqvaawj9G+bCJ0ikjwJUAJ8MMOCQ4SQH2H/KSmMGa5O7MGNtYbQnMR7YGdMWXI9ZPApsUE70Gy3uoqZBNKA2aIIZH3DR1TipMEYuWuW9x1c2slFw82vUMwmoSmzvG5qbxDsBIfjxUc7xwbb2tt7IRER4/75I7Lo+R4wLJeHyQNLo+Nfo4ArBNT6N2jzNgyaI6ZplLwngv/Yaa0RTm/PxFQ9xw4v21wAgQ2U1kUhnMRzgBSAkgUDMrCaT03nYaDwauT4KBAA6HWPukRdF0VJIdTR8AAMnAfN0aQ2wUUjdMEPlKzC3rfp5HuyCjwkvbNrzbSxp2yU1rKl6h/PgIiHTrWh6qznDlnsdiOi3yuF/EeC3wTbjh9jwuW0Hvt2QBswoeI9GNaGaoK4j7DjpYn8twmyp9IPXUqRj08YrRt8IlbG/BIWtIDjcxB3PL3CgEFRw9xntqjUysYfIN75qt9skEWLby7KizKijYV5AdXZG3WgSFa4eBd+NviqLzkKVKqm89QyzaF3BKouromd1gJGMlTc1gl6Nt0CHmPcx3GVJet6cmG3dx+s6iDODuEk720sTz+UrOHQb/uXyNTo4QSOnAQRH3EQD+1ScO3cwBE34JRu0ezRQmuSwjWDb7ITH/MzLcJnDlzcg5CyAlCsuzgsP2gGbKgE1EILATBqRtJqZHk0L/Q5JOl61SiRs8w5bch8zq0k1BhiBUXDRpW5v3uydwjp+ZMaCc24UvK0/zNkMGLLq9bQhQSdhyKENp6trW2K8IfhMtopdb7CGOcucGLgNb20DLi2UAsWcpOPLlMbmtgt/0/iOjN4bfDGpW3UoB114JYpWCpVeotRY4Vo9/AGI4ty1fUF9PvsFh0NHcka2L+zIvgBmIjADAQKEQ+cx8CttaZuRwKFQYOXbUIlZ5txXBA1VQ7IKPxCj0RFHqoyuVGRjpqpGzlWMfKjb+ee59SntDH63A3Y5YxowkksObla9i5cwY98yMh7vzeOmFaf6WItETvl68OXdQjpIwoev0cUftj3dqnMqwBQyrDrUxt5rc65B5twB7P8Xtrk1CLhBHTlQPy91LYYkgaHwEFWIdhtgBpCQAEGIigkAR7qQWSDnG85qBMN5c+Ex8leJfei552fP2JMwpXKLXUYu4oSeGrLNAsa2YA3jZkjZntIAYrXpsOJN9QBUEK5F53DbZpi3gd4eCvTQVtURdhHxmPIHpD/k2297oFXCOcH9CFcUaDmh34wASSBXXVBE8jd7pgpYMLV9SLosbhnoR4f+aioTdLi8CQGlQxSuG/Zfr6EZOkAsUV+C0CcPCIIgnUAIYL0EAfwz8GYinUiaGXl1UsWY6tWqyuKUMoRAjpkzheCkm7pYpNPWTsRGFQZmTvrT26kg01N8+0zMTLrb6zDLcC1Y0tGR67tT/km/+umKTiVYh2r59/pndSnOA3yOHVXsZ8B5+GtC6k8DPTJPQLNrYJPvuEPpn0YD4xh04SBV+OhuBtlcCVCeWfi1R9TqSVZ0KcrbNnpEM0J0WcI9gAMgJ0fFCDouEEDCHEASCOTVqE5KFAjigKxEAalCZYtMJurt70ub65N/8j0nw8xsutET6Kl1qA0zXyGNgacyH2227aRMSmuMBi4AvWU3jOkQyzipuLa8rsAH/cJ4wQ09LtAbdlANU5Pf3i+grjFe8i+LRJmNVyExmjJOIEFzHHMJcAawsxH1i9eGZPsAshDZQHkF7a9NHZBgllpHXX3HRrutKTefTDgowhdUPZIAIGSFijsBBBhY+QrBIFLEBwQ/oW5UmAnfeb6ckxah1DAttXwj+hJwEVcbmMx7wihgzhYq055hEnnbnSalQNjiLkc0Nhht2JEM+AoevRiR2p2OeT0OJFV265bZTCTJBaRQHK1rpkdjlRo3AK5NR1hBOSfMgdwNYAXGUsaTXJ3+PzIAd6ssIPyKJYcEphhvzXTEU8fdfd1mV424ARyux4LvbwShk0PCDIQAUddIiowwFZikG7wLEZsWb1iFFx04P00oZswgwtRX4K1COoFRwJyxsF20Z31DYJEKTdS6EKR8Dpa/mWs1gYNkuB/vlnlZLzNYYz9iIffY5IQZbbNnpklEBW+riwrFxsG55BwFlj+BLMkPBVO+BP5A5kGwaUOK1lhakVRVzXn2vmH4bEapAzpU5uUfbod8+IZmu6+bP5qNeKdwz5Cne8DpAZiCDoAAQiHAKqQIXwEnga73XbyTSDcygpQawjIXTZs2DcwHS9t9cEIniMNXC67txMCZJSrTea1uDMG6BCw7YuVn4wSMbMDWG+WNRvjfw6kZbaqfB59DkeEYKKHomAfpxUoKh0+TKhX8kd13W20Wd4EtzwYdAQYDdDwFQILioDZ6WXI7t7sUarb7svmjUTRCyMEQJCTooi1ADkhnoA7NASSoWUwxRqNBzCKcVDnb2D703KchrnahWyS86IQ5fCWzlirrBKFowiiYl+g2W4NlCAB7f5nGSksALtmE2Dkmb08M8e+tw9gkLZ4GyETK29stxFBFWv5ca8dF876A7XKI6jApkseftWHb0JGhqgS9DEF3TwJ0SFAS3Zvr5Vvf7lJ45byg4Yf2OzsEQZdACohZQiK08L1EzE4wADO33TkzhKRkZ3smDt9puw0O8FRdXxvOSNYfqzHqSqcCcfTuV2iqzRNZWIEiKyx7Q6PaCZTWtgde37wKzPU8uCuPo97X3XSSlXTKp5HqQ6nCTUW6SGDed2ITyktFzwkIUQO395dMw9lBM+rC4oqjv7K8zE6fXU14yHc+gXYJVui9ixPPWX1x9frMcXZXIMLqjW1zvpUAmJgwpSGIiRk8BOqzwQEg6hrlkLNquWTAl/M0882zeO3fPl+vQI4ZlO+YBguVE9RGLppuq0meiVSQyQed5mDE9GJIurnJ93XMHUwAmEox6rVxwJSfFRO2TxaW1lOT332HyIgiWLhk06m3i70M1YjRin+Xju6dG1/jdTFHkGdo9sEsnwTDDm2NGPNXGwTBymLPDmedUJaUEI6Lpvx63F3CVfVpiKTWaL0T1xhdmGBITDi3VtAwCUG5A4HAiKyal7KbEogTqc51niEZ8NK4etMyZ6YrihM1+mPrjyhQcobDSUBhY1ViF7LaAEuj+Au4L+FwwgpR28+60rIS+sFxccc6H6rdEZ5Lx0YLUazdvvAIlldCNHBvotLRLx2pYdlf1xBaqwp7zGJpGJ0++JTqfb0ujxzaz7MSnH75ctGmqjKjFFX872i19zhJY5N8WFS3/SWPD49nM7ZOvD4tYmIABCZIwEAa/LXYabTrGsqQlxQ3IuI8m70mzwmUXkDZ5JJ1gthsBGc+mINkh09Tb61RgwhGpnHLSzwft0vKhIHZNJZWLUrzd8M50fbp/bigCGs5aTOSLBem3ZZxNZbbvAN2Ab+IkfgPNJT3q3RlwHj/mdZeEys2UhJUK5YzAywajSDx7Hf9uKPWF0Z99hloOMCIsfmj/6flH/5sc9TJHw08Vy4Bf1hb+k55TfQOJxwAg8CIpSFYRepIgDAmVVbNtQpezCRx3Lb9yXsJNHOPbMruYz46QDouGr7A4TNS4bF27Ws8siqqrLpP47OF27KAqjrmVa5sFXXszNhK1Z49mSZPt4X5QHv1yTiNxuNrrTdihdhNpPl5cQypLON09b5doGUK3G95drQ9StNqlWQXl8vxMjSr9Ilz3OsfUF8JcHAoflk1Wmz7cm8A3PHaeltYq2kJ+Ae2UeuQc1S7QmICAB7YrngaIEQIIBtlwymngBOLMyMRecetPXVlcbY0MxOrO90kDgzzFfl/Vzet3gtSRYEiWzO9LqvIbbyoOXWESYulB8jok9XGa1tavDqIHUiV982MgfC8WMcjbyN/ToUbzcO8Gdaw0NUJihc0NU+2Iy4XlPS+e6p2O0u4VYBQe7gHYAQPby0fP/6KtwvAgOTNDOW2gEeT4skjWtnM1YXeg9MIn0EgSC101EoDBESISUXGsgpRxEcpSFU2+plnySid8q0OceArjFF0QHJykGWJ8guvMsetI3SaheP5tAGdmVu6uqXFq4MYZJsuV9VjPvkM4heg/U5Nx/ZXeibXS/izkkhK4UX3TTidPXOaGT1gK4gpc4rSJGO4DI4aSoBawJA22/1/23IP/wQwOR0MQlDe6/qxZKhPB55520ZnOazeAOOBhdIeFxBBFJ4jbWT4FvIFqVblfT1rSXHMxFeYD4anQjpHcgyuwEqexl8JJftTjrIl4Fduq/ESd8l2PRSbFQDTZFme3lADLXKRry/VeKvAbgsGL9qNxNJg75N1ZgICx/Nra/Uoe6pSc6ISANfHDykYIvz2j9tk+3QrnXAYEgAmp+NehvL+fepA43RsutcGPLqfY/frEfhaM0KQjinasnuSXDKi782QXxDyzimF0Ew5GyupYBRg7Mr37ri3H/9wNVUD0nCgXq8qvWYb1Mezh+rO9kkbwg7ZKlhWC5iYxHRfxkpyS2WEdwktIzbtwb1oW5QADSn30NkTkM5DO/PVx8cRbBSaggAAIQhA62z4KHA4IAAMFafYTf/xIUirqvV16rMDeOZd2xiiDKMGopcZxZbYOunCgSljTZnW6yhY49eevmlEM2TCU5Gcz8+XnI6xi6qd3qjX+CFIMSOdizJmPZZbeb+aSuDrsIEMSHQL7u+JVIvR/pJ05fqOp/cjCWyhlNK7u6Pttwem+lmrOFYYTVp8PQUjFCYJJS7sd750EHTEtP3ZrJwXbxamWpmdXOqTISEst9V3EycGa1VKD2HDlNFaXfVApMdYACIA7feNeO14JSeIm7n36+9uUjYRlE7wWJVwKNkFjkFnFbSqyEnikqT4nbLk/dPcch2LggwKAKRuSt+K6688OktPtXXZVpADeyBU4A43/hZ9j/bDS6sAgZ+1Fu6qDDCHUMlMkVBqbptEELBtSmERPQACs5ZaWQEMq6DjPv7StPbKD6/82oLy8FaCXG+gLCqPRWM+4sLyaN/ba8TIJwIRrIxOHFklchPFpIRGLAYD7st4vAJLSwQwOWrAkah+Fqc6rYFu6el/f/oegB/q4rvMzJjcuZHufvs8mlFgPhxsQNmOCIZqG+UVjtHV+ICcoJMFKHC00TWScTBOYKogAFScmlolwLks3075aGuynYh2kQb6jHMfnMNbQJqesAS9ge/8xlc/TJS/l1U1RlQqzQnly0VHSiv9QFKELsHrlViWpQjgil9xyJZtUtEiL9FwKJSZnp0+u0IyMJNfMPlAhyfo1AGmfdfdDxLdMOi0vQ8QBbXXKcsyPso4XAJiojSOlDnrAWdAYp3Xac9f+yGULJYREC1fcU+ZgnNvuafVdg4JTACYADAxnEgNuDx2+albIXx9rel7pRJCHqU2QLXIxUaOrpr3QjcWBSy5LVFoC/OybMRBWSqLcDIGGs/iqoFvWLbyH9UMuOSeKwqzlJz5HSp0ecKJQDSow2kAEPRJn3SH0ly8RpAs5GjKBJAYxkuoceCbqYC2yAnLxxKlCEDxwe4ZmNrt3rpo6YLApBOm1LMQRwA791lb+dMkh0QFrpOq2Ygv7CSOatNMnoMQiAutx7IlcxcyYTOlgibarnY17vkMT62SWPNLM0pESC7/3SZFMW/gp8Hp8pdzWDsVhNNA2qPvEbCC2nYn+6DVAgRkAHJy8kuxzm4F1UPS3/vq7b0x188GEDVArayuxATguI+/Nq1tjp35FABFSExMTHBiJDiCx7sTECvZ+ekkyRVWVnAQM0Q1tNR9kuC5yroUxeS4b2HeBCpsYMB6QxJ88MG/+v5WDfV5dCvNsVwb+2DMQvcwOTMTiKDjF5/uuikQ1kPQaAV8MDCsD61OYAwBAWSqbzBOCtHeau+yHDdJWjMNB5cAmQlUnPoKQwLgbMS3Mz/aQnl28lWXRBroxAQmMAE7h6cEboGyaK98BwFHcFxwftg+L/OkPvsmGUWixC5zDSog05jUZUxTsWQmVghdNtzMEkF0mf3BM//xv6xKDtCOQ1TH7/8jrSQp4axrTtfjw2XhMyTBeUbPdOwgAAZozflBL5Kpv/MI8KknNlwULPpBCzg99JV+NLHGyxdhgAxYBWGqcV6CB//G8y9/aeCQBBkCCEAwYDW4CHPOfVE6ORyEKQtblZd01F85EmQoEY5PqWor2bRK2oS9ah8mXV9jc3w8SIYkm+Q9qADSKf7v/5d+R8B55nbNukqhxEBZpHpR8gnVOekxfNw78Ew1Dt2zvqNRACbERiMCGr99WfHHc5H3bit/66XFViI2P5IEmAOm1CUdcQSCZ9z90GQwGA4QQEAIYCFRXX2LPQUSABDwxct2GrK8Nm9roKRiUHl4l1olzysxbSRVceXHTs6myRlM7JBVG2BI83/ytemPn0u9Y8CdyUcADgpBKqW0npSNL9HyuE6+VTUjdAKgfyIzggnWZO4xKQyW3ine5Jn/8xXNXjoBArBK0CUmMCDQk55eCVSrk29WXBhXAhGwyJwxFzFJkEA5KI2KjAhfms/3fwaAHom3tfB4pE5lWFOFbJOqrAEIqDJUyAGnj0Yf3vb3owp5agAXmjsU5w8SuOTASao1IW7Ebo+/GHgCdhDmWP1o0AagAKsVwwZiBAAs8eGo8/EXQQATnCoBqBroqg/gv5XAU4kqMDAY1XSzHEKGAWHAA216g3YRIEOVzTN8b88T/NMpwIcMJ9iyZQMYxLLDh1Gbt4U/Wk1/IEzZH05o/u4EVT9WhoOsY8GeKbAGiEADQ6IvAZlMShdA0h45SpI0NLxTACt/i5P933H4b/7ymmwOJgBgwFAQrtFkaHASYAAGwGBCXR0jzoAkoTCaDWOltxsAWYVlI+arCfWjRMeKnirSEBGYVJAtE5NPRm3fFmIdMACrv0GtzxJ8qMAzx4vIaklJmAYI+K7hOMde6cEgRwgg4EVry8DiVkYwcmRDBqLwABlA9CyPcuVvKattG22pyPRY74qEKVUNbSju6atLkwFDIqhmABB+V7UjTRhgIIV4RrFrOeRryAAgw+3noFP/22PlevHLAQAMyBjgz6MO7/OpnhvQvKUtm8+iDv7d9VrHk35otxKmKo56k+x1wp5pIiuFuqW0243IzNQNsiJnIvQN/yzQ9TIn/Wla3E5jLkC4HuGeu5Qi2RPdCWBNdOKMBkZyQgLIDEEENOLbmEMAFEMYPqHkEHUKt6UyX8KadpOws/umf39dyRM6OwlT/Yxv4pdbiMfXX3l8wB+2Pb1TXoP0OCL3+h819IOo0iQ5czqawCVX+5mp0u9asIcuGDogdYoyN5FbYBiETEj4hmOK7lG8hcbv2Kdn4/juNBALZgvRDoTredX3nYf/jB+8cxmiWkw7N29j5dp8mA4AVERUAPxHC51o7DwSiqJJM7VYVUKzrAIwj3G7XWlrIj71v94bH14frQQHGPhqj/Jxy+hmPR4DvwYfbYumXWrbyZ+pEX80YTSOEQUDo/HBgAN71B2g0GzC9yfH3howizbNHYzlwjw1Ug86nOR9aJ89esjqvAA0f+l9/TtEPHPxPz1Cn865n2jB9/trBbDlVnpuOHrqqEtblK5fA430bXN+mMKAZEhggmj0/3/U/t+MIfCS/5xey9OrAhWQ3S7vaXeuEpwN+b0xOklrZ+YzvDODdLzwqlYFaJwdQPi1R/dnVrfN9FjfPiWo0Qfvh/nmHrq/4Vt/ow+60GP0FL764isx+xtqtP9NUYL01ZcK9gJCNrOSwXZrHGK4GtCTBj9AFVIhIPz68+wvzZ2e2RMnXfKZj6DjR9jTo8YBtT4jdF8AogUOllrPTkRRbIjwKxjEAAGn+I/fBx9kshQwdafXad/vI+dWIUM1j+S20aR7GcQ7DpMDNVNYJjsA9FB1d/Vaq4h1R61sieMuQfidHYt+MFb59jnwtONbD4jGI0AJDif+q1j/xOOFOo/2v7mR4AIBxyfBUiYBBKVABYg92ZuxBCR0tiGZiI634M0ClRY1VFUComdz0+eeG285avVluiTIZzGDju5Bx8NHqUNFUo8PU79GJhnoCACCnybse30Y8pnQ/sWU2SdtUMhhIeBcfs5hDleVydE4YKrLhMc9KtVRGk4bEUV0HyRD0iVdavTB7U9v+oMrksUQNKQ0HjDlagAOfyBs+XuU8bf0zw2AaQWTLw2QXCTvXOAEbQlgmxmLMri66hv9wjx33Uy8pCBVVSgZELle677YWl9/iVm6YKoBeeDxvAOE6UBZ6cGC5qEHYkz5wcbiolQhOFejLaQEQdVn8d28o4WI9DYmqqlqWgkXq2z/nKiNQQBgSGL+j98X+Jgmb53+BowUUWhEaRLJgRXy+YH2T/8T5fwt/fQxobTjqy9Nkcv3qRRwcKnvQPIEvnOu1aYiUFRQaibAtWpxxy2vX6JWX0GIaZfmLc+t7s5rrC5gYquEqQqCzQHzRUyfApgukzYRmPjUe/+Nk+o1SRumwpc5lHuDT9zkx3vgWcdoMTz8TYkRAMhmhKnnUhPv2yjrb+mpuQqws9ESJlwTRBUIuvNW4MrBJtn4K9U6nZgk5/taCt1MoNrcUVlRkVQGIHqJtjfUWe6RU5Rf188ZK+ntZPoJTDj3ggRBpE2UdlOY+rL88otP2lpE+wSJCWG5hWnWQa8HGA0j0O8eWUCXYGDqagzL9Ia2oLy/tTc3LwIhKIIExNfznAp0ggGw5YCX+6EWOjTUfTLt0HPMikMgB4UkP1FeXNJPBkSTrk1XfuXovYzwhTAlE2DkEGwOGYAuQafgels1o4e0dr7HEw3yMbsSEhpzAjByzrBTX5bEAgYydRU2AA7Y8Mz5vQ3z/Ft79NE+0Nw3CmCCrIDhDGB8SeDlfqgNGriRWYI5yLrdBmQZAjlGEclvmoAlPBe6dECH3Te00BgihkkD0s4TS4/1mXBuVdhUCAr79B1H1Hsg9JDO8PiX+ggARiw04pz4CxIuNCmoyNQhCcCQJQOZBg6StQ1z/tv61VxQL5l3s+dGWlL+HYBZnAT9oSwg2K+qa7+yctiPR78ojFG9eCnrzq7R/mS12I+sFAcNuOenX98e4t3vEqY4X1v/Cfz2N3gof4If/fc5X63d5Zuqk4DV8hjCegrT4my2bij9OJ7S0PQI3NicnH8tXUoANvqXUzKlgSim+1oy+dQ0FIwj/UUATUqnpr/a7BLs3ewmPvGV6r4rya/Dc+TZ5nLUAGvBerSu+E7fzL8i0EyqCSoBz7q3fuXsnD+fvbSgCgUGwbZuWyA2vqf0AQXEC+Xe3HZLqquEl6MBRvhdFyUp+KDJqR+oKbORqULU5nwNNEmmZmIhu0nEZ+utB+tzKHOdPeEa0iyc7wHW/oWyhwTgDdV4kOy4PXVRhp47Cn1JswHFa03qu4WAlgH1GkANlCkS1ccyi6YwMbQ+1JLqP2niPuAadOkT8mykzA4ICUDgqM7Nub/ccmKHUKLqZ+ujpFnqJumm5CgZoKYAw05tQylroEwu2yarqQ3KzNTuFNeC+f5tDT+fgz6cpEiZ/cctLgHGUK2bc7nWJvaD1DTUiLpEHyUpnbrsLtTOD8pQVkoZTLPlThwiW4gqlA2Z92c+l5j3nz99/G1N5YntsePuwZfqnRX87pE91bs4uOv/tzfx8hE2ofjgUtlNfZJ2anzoJ1LfD1BP8Frjl4zsmBQ6mza+ppf7njH/qSGRe8Eaayh1KwgMgLXkdPNDLF/7BJoSL7UJrdGWQkuztFR2QSHTaUSun/AavIbkyGR747/L5zUln+f1cnkYc/3bmshn28CFsocAy6/J6R8E/m6ohoy/5w5BBG8GiKR8kfEUtuqZQPT8fGMZCdzbSKRKf3s+zPbmweRB8KWj/AkrePR5zMPFrptquTHDqTfDenzJ404t1WhMHkwTWLs6pjzuW4HJYS6HirCHXKwhCT5NzUrJqlgPeWykIv1DHm9MBEy9CnNn42Y0AHddjiq/bABfq4Z9QvZPoyd9wt8QfgfW1Kn9kYwmbgim+qwFSGAhvY8vphYd9/29G1OnkPdYW3UkBzjYgNm8f+9q0Z0g+rrFH14OrVEB40vVyQ6wwNfjp4+pDnHpCcEb0x4OrVXxMlaVS1IAfJjyRPo4r0VySo8A4+Gljx1g3pmKmq8TfAdgdIAHZ7j0n1xdosOi9EucC7vZWFGucxjk7Q4wuD3YB099fjZWcQMeneISwJPmhpqdAuaGmL/vpHcBTJrzULdIwZqb4Z0gO0oXgI8cqLPDPWyWJg8uGUPqqs8smNol8jbR1IluHQA8uUc7rhZz81J5UzuAXZ7T8LqtDWndoB5y0d+3Z164yR8Gwf/hpSZ069D2JswdhHzMzly42W0I864WbE+w7CF9ChTo7mPPTfqjBbgzwC7deGnuEph3BoZ1IRfDDWos+dMcaHtCuOnW4bBvYNlDd8d3tk2elht1SYFrwL8evA3uhgPCpwSXyHpgOM3nKduNfwQ4YPAmPaebju0JxsWp8RZo9nXCrYAFgHnh+CnsdayA5u7164cFwFN98Gtg9BCO2Egye0+TcnQOePdhhAYwHpfqQQQIWPcpkTpmN05z/rl7k40V0FqAFWBP710t2AAs1nc+saTBb9lT03CGjlmONAAzyQXA3VMHrQF6XudbFoZgXrhJu/vGtDNnGGM2mgTeI8fYXrj5f+5oDRA9ZrOKSxh7e4MMJ8yiBT/CIQf3wKvCv1wON9/X33kPYA6QVqYHfMuNOZyAHmXgYnJ0HZj2+DFQD/uvX4F0APb2ws16x+hgt4GthfFDzMEJMO/NO1sPgNETXww00dwwT0f2MATw644CFydIF+qkf8JfDPJgY9Ul1+1ejGIJC2CAkXURwaTljJo53plDBLfmgMbJ6OZc2LkEDEsFMBo4JwbCkG9u2p766dYubr4zENH5uPfGPBKjDq57Dh1gFv5+YMV000I6rtewAvYu0+uWWpruHMBCq7jhDsAcRlVyiii5BHijuvuEaS97h11yGNZdBmbAqVlcfANwl7KM1NS0bqBFr0gD8dJ41OtG8TLC9oR8UXk4jHhwQDs2WWwEDtt4oAPBnZosNfZ48i96QQdsGJn6QncH2AcDpPeLLVM/Y0d4BLoI/acsLIAV+CXwzKoWldWTXWLZA3x8zeAZAQ84wL7LFC0MAfpI6uhuKQ6wOeiBYydZMnoepzwDmEwsgDPyGlLwt5IE+Dy+B+aJnHYZAWMhSDlHA0MysAY7S9xKn8GQezlCWuehtwAeugJMC2kYmxPjzHJLTeDzcTDQDHnUj4DLxwzYD7QHbq8OTAHmAOxDIbEgG8HMWm6zCR4LYBwhzQvxQMi3fd/FwwdutY6iewNu7wowFnb56N9dWm63CYiF2AVwTAVgweXbtpbb7vZE0ctIwRtI+W7D+yPYYjiYgiywFYTucqtyjT+54uyhkNA8Ayc741bdnRuA9Y+OvgjGZRFnR/Q/Gj237q5jlzBMP6bvcH5kaYC+Jebq+TOFuy7REA3yoaVOAgA='">
+        </a>
+      </div>
+      <div class="hey" data-f>45-Day Revenue Recovery Pilot · Confidential</div>
+      <h1 class="htitle" data-f data-d="1">The <span class="acc">Golden</span><br>Foundation</h1>
+      <p class="hsub" data-f data-d="2">Revenue operations, AI orchestration, and an inside sales protocol — built on the systems Golden already has.</p>
+      <div class="hmeta" data-f data-d="3">
+        <div><div class="hml">Prepared for</div><div class="hmv">Alina Verdiyan-Duval · Sean Duval · Joshua Zimdars</div></div>
+        <div><div class="hml">Prepared by</div><div class="hmv">Lynn Fernando · Raphael Bennett · REV Global</div></div>
+        <div><div class="hml">Presented</div><div class="hmv">April 21, 2026 · 4:00 PM ET</div></div>
+      </div>
+      <div class="hdates" data-f data-d="4">
+        <div class="hdp ft"><div class="hdpl">Pilot Start</div><div class="hdpv">May 1, 2026</div></div>
+        <div class="hdp"><div class="hdpl">Day 15 Gate</div><div class="hdpv">May 16</div></div>
+        <div class="hdp"><div class="hdpl">Day 30 Gate</div><div class="hdpv">May 31</div></div>
+        <div class="hdp"><div class="hdpl">Scorecard</div><div class="hdpv">June 15</div></div>
+        <div class="hdp ft"><div class="hdpl">Phase 2 Decision</div><div class="hdpv">June 1, 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="sbar">
+  <div class="container">
+    <div class="sgrid">
+      <div class="sitem" data-f><div class="snum">$300K<span class="acc">+</span></div><div class="slbl">Monthly quote pipeline</div></div>
+      <div class="sitem" data-f data-d="1"><div class="snum">+15<span class="acc">%</span></div><div class="slbl">Target conversion lift</div></div>
+      <div class="sitem" data-f data-d="2"><div class="snum">15<span class="acc"></span></div><div class="slbl">Deliverables owned forever</div></div>
+      <div class="sitem" data-f data-d="3"><div class="snum">45<span class="acc">d</span></div><div class="slbl">To prove the model</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="sw" id="problem">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>The Gap</div>
+    <h2 class="sh" data-f data-d="1">Not a demand problem.<br>A yield problem.</h2>
+    <p class="lead" data-f data-d="2">Golden generates strong quote volume even in a weak economy. The revenue is already in the funnel — the gap is between intent and booking.</p>
+    <div class="pgrid" data-f data-d="3">
+      <div class="pc"><div class="pnum">01</div><div class="pt">Quote expiration beats the decision window</div><div class="pb">Quotes expire after 4 days. Wedding, charter, and institutional buyers decide in 7–30 days. The quote disappears before the decision is made.</div><div class="pco"><div class="pcon">4 <span>days</span></div><div class="pcol">Quote window vs. 7–30 day buyer decision cycle</div></div></div>
+      <div class="pc"><div class="pnum">02</div><div class="pt">Complex quotes sit for hours, not minutes</div><div class="pb">Multi-vehicle and over-the-road charters require 2–4 hours of manual assembly. By the time the quote arrives, the customer has moved on.</div><div class="pco"><div class="pcon">2–4 <span>hrs</span></div><div class="pcol">Average complex quote turnaround — target: under 20 min</div></div></div>
+      <div class="pc"><div class="pnum">03</div><div class="pt">Over half of lost quotes have no recorded reason</div><div class="pb">Quotes auto-archive at service date. No feedback loop into pricing or sales coaching — the team is flying blind on what kills conversion.</div><div class="pco"><div class="pcon">&gt;50 <span>%</span></div><div class="pcol">Lost quotes with zero recorded reason for loss</div></div></div>
+      <div class="pc"><div class="pnum">04</div><div class="pt">Four systems that don't share intelligence</div><div class="pb">FreshSales, QuoteBot, Dialpad, and Livery Coach each do their job — but none see across the others, creating pipeline blind spots.</div><div class="pco"><div class="pcon">4 <span>silos</span></div><div class="pcol">Systems that don't share data — no unified deal record</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="sg" id="outcomes">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>The Four Pilot Outcomes</div>
+    <h2 class="sh" data-f data-d="1">What success looks like in 45 days</h2>
+    <p class="lead" data-f data-d="2">These are Golden's four stated success criteria — verbatim from April 17. Every REV Global deliverable maps directly to one of these outcomes.</p>
+    <div class="otbl" data-f data-d="3">
+      <div class="orow">
+        <div class="onc"><span>1</span></div>
+        <div class="omc"><div class="ot">Higher close rate on defined segments</div><div class="ob">Convert more of the $300K+ monthly pipeline already in the funnel. Each segment gets a distinct nurture track matched to its decision cycle and buyer psychology.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Four-track playbook: Airport 72hr automated · Wedding 45-day lifecycle · Charter 60-day approval sequence · Institutional human-only. Lead scoring triage fires on every inquiry. Quote window extended to match buyer cycle.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--gold-500)">+15%</div><div class="okl">Target conversion lift by Day 45 · baselined Day 1</div></div>
+      </div>
+      <div class="orow">
+        <div class="onc"><span>2</span></div>
+        <div class="omc"><div class="ot">Reduced quote aging — faster first-touch on high-value inquiries</div><div class="ob">Tier 1 institutional leads get a human in under 30 minutes. Complex quotes go from request to send in under 20 minutes. Aging becomes visible for the first time.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Dialpad → FreshSales native integration Day 1 (every call = instant contact record). Tier 1 routing: FreshSales priority task + Dialpad alert → human in 15 min. AI Draft Assistant cuts complex assembly from hours to minutes.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--navy-700)">&lt;30m</div><div class="okl">Tier 1 first-touch SLA · complex quote &lt;20 min</div></div>
+      </div>
+      <div class="orow">
+        <div class="onc"><span>3</span></div>
+        <div class="omc"><div class="ot">Follow-up running through the service date — not a short drip then dead</div><div class="ob">The 1–3 day drip matches no customer's decision timeline. Each segment gets content calibrated to its window — designed to help the buyer decide or get approval, not just ask "ready to book?"</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Four approved message libraries in Golden's voice. All 30 first-run messages approved by Sophie + Alina before activation. Airport: 72hr. Wedding: 45-day. Charter: 60-day. Institutional: zero automation.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--blue-500)">&gt;25%</div><div class="okl">Target nurture open rate · zero "robotic" complaints guardrail</div></div>
+      </div>
+      <div class="orow">
+        <div class="onc"><span>4</span></div>
+        <div class="omc"><div class="ot">Clean, measurable lead-to-quote-to-booking view using what you already have</div><div class="ob">Three sequenced integrations wire the existing stack into one deal record. No new software. Management gets a live dashboard — conversion by segment, response time vs. close rate, utilization vs. fixed costs.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Step 1: Dialpad → FreshSales (Week 1–2, native, low risk). Step 2: QuoteBot → FreshSales webhook (Week 2–3, Joshua owns). Step 3: FreshSales → Livery Coach read-sync (Week 3–4, Zapier, medium risk). Day 30: unified dashboard live.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--navy-600);font-size:1.4rem;">Day 30</div><div class="okl">Dashboard live · June 1 Phase 2 decision gate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS TABLE -->
+<section class="sw" id="comparison">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>The Capability Gap</div>
+    <h2 class="sh" data-f data-d="1">What your software does vs. what REV Global builds</h2>
+    <p class="lead" data-f data-d="2">The tools are good. The gap is the connective tissue, intelligence layer, and human operating system between them.</p>
+    <table class="vstbl" data-f data-d="3">
+      <thead class="vsh">
+        <tr>
+          <th style="width:28%">Capability</th>
+          <th style="width:36%">Existing stack today</th>
+          <th class="hl" style="width:36%">REV Global adds in Pilot 1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="vstr"><td class="tc">Single customer journey record</td><td class="th"><span class="bx">✕</span>4 separate systems, no shared record</td><td class="tr"><span class="bp">+</span>The Dispatch Console — one deal from first call to confirmed booking</td></tr>
+        <tr class="vstr"><td class="tc">Automatic lead scoring + routing</td><td class="th"><span class="bx">✕</span>FreshSales stores contacts, does not route</td><td class="tr"><span class="bp">+</span>The Co-Pilot — 6-signal scoring, Tier 1 human in 15 min</td></tr>
+        <tr class="vstr"><td class="tc">Complex quote turnaround</td><td class="th"><span class="bx">✕</span>2–4 hours manual assembly</td><td class="tr"><span class="bp">+</span>The Starter — AI draft under 20 min, human always approves</td></tr>
+        <tr class="vstr"><td class="tc">Live quote aging visibility</td><td class="th"><span class="bx">✕</span>QuoteBot siloed, no management view</td><td class="tr"><span class="bp">+</span>The Trip Sheet — live pipeline view by segment, tier, and rep</td></tr>
+        <tr class="vstr"><td class="tc">Why quotes don't convert</td><td class="th"><span class="bx">✕</span>&gt;50% lost quotes with zero recorded reason</td><td class="tr"><span class="bp">+</span>The Lost Fare Report — feedback campaign + monthly brief</td></tr>
+        <tr class="vstr"><td class="tc">Segment LTV and margin analysis</td><td class="th"><span class="bx">✕</span>Manual tracking on large trips only</td><td class="tr"><span class="bp">+</span>The Fleet Ledger — monthly profitability by segment and vehicle class</td></tr>
+        <tr class="vstr"><td class="tc">Idle fleet → proactive revenue</td><td class="th"><span class="bx">✕</span>Utilization data never drives outreach</td><td class="tr"><span class="bp">+</span>The Deadhead Log + Idle Fleet Play — dead miles into recurring contracts</td></tr>
+        <tr class="vstr"><td class="tc">Rate card pricing integrity</td><td class="th"><span class="bx">✕</span>Excel errors caught manually or not at all</td><td class="tr"><span class="bp">+</span>The Meter Check — automated weekly rate card audit</td></tr>
+        <tr class="vstr"><td class="tc">Documented sales process</td><td class="th"><span class="bx">✕</span>Institutional knowledge in individual reps' heads</td><td class="tr"><span class="bp">+</span>The Driver's Brief — every quote type, every segment, every scenario</td></tr>
+        <tr class="vstr"><td class="tc">Approved nurture content library</td><td class="th"><span class="bx">✕</span>Ad hoc follow-up, 3-day drip, inconsistent tone</td><td class="tr"><span class="bp">+</span>The Run Sheet — four approved tracks, loaded into FreshSales</td></tr>
+        <tr class="vstr"><td class="tc">Proactive corporate pipeline</td><td class="th"><span class="bx">✕</span>Institutional contracts arrive by referral only</td><td class="tr"><span class="bp">+</span>The Idle Fleet Play — targeted B2B outreach, verticals, rate cards</td></tr>
+        <tr class="vstr"><td class="tc">Collegiate + visiting team revenue</td><td class="th"><span class="bx">✕</span>Lost to out-of-state — no protocol or rate card</td><td class="tr"><span class="bp">+</span>The Visiting Team Protocol — SOP + affiliate rate card + Big Ten outreach</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="sd" id="roadmap">
+  <div class="container">
+    <div class="lbl" data-f>45-Day Route Plan</div>
+    <h2 class="sh sh-w" data-f data-d="1">Three gates.<br>One proven path.</h2>
+    <p class="lead lead-w" data-f data-d="2">Every phase has clear success criteria. If we meet it, we move forward. If not, we fix it before proceeding. No assumption. No heroics. Just disciplined execution against measurable gates.</p>
+
+    <!-- Timeline & Gates -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3rem; margin-bottom: 3rem;" data-f data-d="3">
+      
+      <div style="background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 2rem;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(16,185,129,.2); display: flex; align-items: center; justify-content: center; color: #6EE7B7; font-family: var(--font-d); font-weight: 700; font-size: 18px; margin-bottom: 1rem;">1</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: .5rem;">Days 1–15</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.82); margin-bottom: 1.5rem; line-height: 1.6;">Foundation ready: Dialpad ↔ FreshSales live, Co-Pilot scoring active, Trip Sheet visible, Meter Check running.</div>
+        <div style="background: rgba(16,185,129,.15); border-left: 3px solid #6EE7B7; padding: 1rem; border-radius: 0 8px 8px 0; font-size: 12px; color: rgba(255,255,255,.7);"><strong>Gate:</strong> Every call creates a record. Dashboard shows pipeline health.</div>
+      </div>
+
+      <div style="background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 2rem;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0,102,204,.2); display: flex; align-items: center; justify-content: center; color: #5BA3F5; font-family: var(--font-d); font-weight: 700; font-size: 18px; margin-bottom: 1rem;">2</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: .5rem;">Days 15–30</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.82); margin-bottom: 1.5rem; line-height: 1.6;">Automation engaged: All four Run Sheets firing, Starter drafting charters, Lost Fare feedback flowing, Visiting Team Protocol ready.</div>
+        <div style="background: rgba(0,102,204,.15); border-left: 3px solid #5BA3F5; padding: 1rem; border-radius: 0 8px 8px 0; font-size: 12px; color: rgba(255,255,255,.7);"><strong>Gate:</strong> Tier 1 leads responding in &lt;30 min. All messages approved before send.</div>
+      </div>
+
+      <div style="background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 2rem;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,203,5,.2); display: flex; align-items: center; justify-content: center; color: var(--gold-400); font-family: var(--font-d); font-weight: 700; font-size: 18px; margin-bottom: 1rem;">3</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: .5rem;">Days 30–45</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.82); margin-bottom: 1.5rem; line-height: 1.6;">Intelligence live: Fleet Ledger delivered, Deadhead Log activating corporate play, Logbook dashboard tracking all four KPIs.</div>
+        <div style="background: rgba(255,203,5,.15); border-left: 3px solid var(--gold-400); padding: 1rem; border-radius: 0 8px 8px 0; font-size: 12px; color: rgba(255,255,255,.7);"><strong>Gate:</strong> 10%+ conversion lift. Go/no-go decision for Phase 2.</div>
+      </div>
+
+    </div>
+
+    <!-- Deliverables by Phase -->
+    <div style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 2rem; margin-top: 2rem;" data-f data-d="4">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1.5rem;">What Gets Built in Each Phase</div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;">
+        
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; color: #6EE7B7; margin-bottom: 1rem; font-size: 14px;">Dispatch Layer (Connection)</div>
+          <ul style="list-style: none; padding: 0;">
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Dispatch Console</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Co-Pilot</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Starter</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Trip Sheet</li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; color: #5BA3F5; margin-bottom: 1rem; font-size: 14px;">Intelligence Layer (Insights)</div>
+          <ul style="list-style: none; padding: 0;">
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Lost Fare Report</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Fleet Ledger</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Deadhead Log</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Meter Check</li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; color: #FBB168; margin-bottom: 1rem; font-size: 14px;">Playbook + Permanent (Protocol & Ownership)</div>
+          <ul style="list-style: none; padding: 0;">
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Driver's Brief</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Run Sheet</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ Visiting Team Protocol</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Manifest, Transfer Map, Logbook</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="sd" id="deliverables">
+  <div class="container">
+    <div class="lbl" data-f>What You Get — Pilot 1</div>
+    <h2 class="sh sh-w" data-f data-d="1">15 strategic capabilities<br>built in 45 days</h2>
+    <p class="lead lead-w" data-f data-d="2">Four layers: connection (systems talk), intelligence (data drives decisions), playbook (people execute), permanence (you own it all). Click any deliverable for technical details.</p>
+
+    <div style="display:flex; gap:12px; margin-bottom:2.5rem;">
+      <button onclick="document.querySelectorAll('.dc').forEach(c=>c.classList.add('expanded'))" class="btn bto" style="font-size:13px;padding:10px 20px;">Expand All Details</button>
+      <button onclick="document.querySelectorAll('.dc').forEach(c=>c.classList.remove('expanded'))" class="btn bto" style="font-size:13px;padding:10px 20px;">Collapse All</button>
+    </div>
+
+    <!-- L1 -->
+    <div class="lb" data-f>
+      <div class="lhd"><span class="lnum">DISPATCH</span><span class="ltit">Connection + Orchestration</span><span class="lsub">Your stack finally talks to itself</span></div>
+      <div class="dgrid c2">
+
+        <div class="dc" id="del-dispatch-console">
+          <span class="dtag tg">D-01 · Integration</span>
+          <div class="dn">The Dispatch Console <span class="expand-icon">↓</span></div>
+          <div class="dcode">Unified call → quote → booking record</div>
+          <div class="deliverable-details">
+            <div class="dd">Every call, quote, and booking flows into one unified deal record — zero manual entry, zero dropped handoffs. Like a real dispatch board: every vehicle, every rider, every run visible in one place. No more hunting across four systems to find where a deal stands.</div>
+            <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Each system is an island. No shared record of a customer's journey from first call to confirmed booking exists anywhere in the stack.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-co-pilot">
+          <span class="dtag tg">D-02 · Orchestration</span>
+          <div class="dn">The Co-Pilot <span class="expand-icon">↓</span></div>
+          <div class="dcode">Real-time lead scoring & auto-routing</div>
+          <div class="deliverable-details">
+            <div class="dd">A real-time scoring engine in FreshSales that reads six signals — quote value, service type, passenger count, customer history, contact method, email domain — and routes every inbound inquiry to the right seat automatically. Tier 1 institutional leads get a human in 15 minutes. Tier 3 airport runs get a quote in 60 seconds. The Co-Pilot never sleeps.</div>
+            <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">FreshSales is a passive CRM. It stores contacts but does not score, tier, or route them. Every routing decision is manual and inconsistent.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-starter">
+          <span class="dtag tg">D-03 · AI Assist</span>
+          <div class="dn">The Starter <span class="expand-icon">↓</span></div>
+          <div class="dcode">AI-drafted complex quotes (under 20 min)</div>
+          <div class="deliverable-details">
+            <div class="dd">An AI agent trained on Golden's rate cards and vehicle logic that drafts complex multi-vehicle or over-the-road quotes in FreshSales in under 5 minutes — the way a seasoned dispatcher pre-stages a run before the driver needs it. Human reviews, fills 1–2 flagged fields, clicks send. The Starter never sends without a human in the seat.</div>
+            <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">QuoteBot handles standard quotes only. Complex charters require 2–4 hours of manual assembly — by which time the customer has often moved on.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-trip-sheet">
+          <span class="dtag tg">D-04 · Visibility</span>
+          <div class="dn">The Trip Sheet <span class="expand-icon">↓</span></div>
+          <div class="dcode">Live quote aging & pipeline health dashboard</div>
+          <div class="deliverable-details">
+            <div class="dd">A live management view showing every open quote by age, tier, segment, and last-touch date — like a trip sheet that shows every run on the board, which ones are assigned, which ones are stale, and which ones are about to miss their window. Management sees the full fleet of opportunities in real time for the first time.</div>
+            <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Quote aging exists in QuoteBot but is siloed. Management has no unified view of open pipeline health — stalled revenue is invisible until it's lost.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- L2 -->
+    <div class="lb" data-f>
+      <div class="lhd"><span class="lnum">INTELLIGENCE</span><span class="ltit" style="color:#5BA3F5">Usable Data + Actionable Insights</span><span class="lsub">Stop guessing about your own business</span></div>
+      <div class="dgrid c2">
+
+        <div class="dc" id="del-lost-fare">
+          <span class="dtag tb">D-05 · Intelligence</span>
+          <div class="dn">The Lost Fare Report</div>
+          <div class="dcode">Post-quote feedback system</div>
+          <div class="deliverable-details">
+          <div class="dd">A post-quote feedback campaign — incentivized with Starbucks gift cards — that systematically captures why customers didn't book: budget, timing, wrong vehicle, competitor, or a missed follow-up. Every lost fare is tagged in FreshSales and distilled monthly into a pricing and sales strategy brief. No more dead ends with no data.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Over 50% of lost quotes auto-archive at service date with zero recorded reason. The team is flying blind on what actually kills conversion.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-fleet-ledger">
+          <span class="dtag tb">D-06 · Intelligence</span>
+          <div class="dn">The Fleet Ledger</div>
+          <div class="dcode">Segment LTV & margin analysis</div>
+          <div class="deliverable-details">
+          <div class="dd">A monthly report showing revenue, margin, and lifetime value by customer segment — Institutional, Charter, Wedding, Airport — and by vehicle class. Answers the question every operator asks but can rarely answer: which runs are actually making money, and which are covering the truck but not the business? Tells leadership exactly where to double down.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Margin is tracked manually for large trips only. No segment-level LTV or profitability view exists. Leadership cannot see which part of the business to grow.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-deadhead-log">
+          <span class="dtag tb">D-07 · Intelligence</span>
+          <div class="dn">The Deadhead Log</div>
+          <div class="dcode">Fleet utilization mapping</div>
+          <div class="deliverable-details">
+          <div class="dd">A weekly report cross-referencing fleet utilization against quote volume by day and time slot — surfacing every "deadhead" window where vehicles and drivers are available but not producing. Each idle window triggers a targeted B2B outreach sequence for Monday–Thursday corporate contracts. Turns dead miles into recurring baseline revenue.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Utilization data lives in Livery Coach dispatch and is never connected to the quote pipeline or used to drive proactive outreach. Idle fleet is a cost, not an opportunity.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-meter-check">
+          <span class="dtag tb">D-08 · Intelligence</span>
+          <div class="dn">The Meter Check</div>
+          <div class="dcode">Automated rate card audit</div>
+          <div class="deliverable-details">
+          <div class="dd">An automated weekly audit that checks every quote against the current rate card — like a pre-trip meter check before the vehicle leaves the lot. Flags any deviation beyond 2% and surfaces Excel input errors before they become incorrect pricing sent to a customer. Protects margin and brand trust on every run.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Excel pricing errors are caught manually or not at all. Small input mistakes create wildly incorrect quotes — a trust and margin risk on every complex booking.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- L3 -->
+    <div class="lb" data-f>
+      <div class="lhd"><span class="lnum">PLAYBOOK</span><span class="ltit" style="color:#FBB168">Marketing + Inside Sales Protocol</span><span class="lsub">The human system, not just the tech</span></div>
+      <div class="dgrid c2">
+
+        <div class="dc" id="del-drivers-brief">
+          <span class="dtag to">D-09 · Playbook</span>
+          <div class="dn">The Driver's Brief</div>
+          <div class="dcode">Sales process documentation</div>
+          <div class="deliverable-details">
+          <div class="dd">Every great driver gets a brief before the run: who the client is, what they need, where they're going, and what exceptional service looks like for that specific passenger. This is the sales equivalent — a documented, step-by-step protocol for every quote type. Pre-quote discovery script, first-contact language by segment, objection handling, close logic, and FreshSales logging standards. Written in Golden's voice. Trains a new rep in days, not months.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Institutional knowledge lives in individual reps' heads. No documented sales process — creating inconsistency across the team and making onboarding slow and expensive.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-run-sheet">
+          <span class="dtag to">D-10 · Playbook</span>
+          <div class="dn">The Run Sheet</div>
+          <div class="dcode">Four-track nurture library</div>
+          <div class="deliverable-details">
+          <div class="dd">A run sheet tells every person on shift exactly what's happening, in what order, with what vehicle and client. The nurture version does the same for every open quote — all approved message templates across all four tracks (Airport, Wedding, Charter, Institutional), written in Golden's voice, loaded directly into FreshSales. No ad hoc follow-up. No missed touches. No dead quotes.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">No approved message library exists. Follow-up is ad hoc, tone is inconsistent, and the 3-day drip has no content strategy or segment logic behind it.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-idle-fleet">
+          <span class="dtag to">D-11 · Campaign</span>
+          <div class="dn">The Idle Fleet Play</div>
+          <div class="dcode">Corporate outreach campaign</div>
+          <div class="deliverable-details">
+          <div class="dd">Every dispatcher knows idle vehicles eat into the margin. This campaign turns Golden's deadhead windows into a proactive corporate revenue stream — a targeted B2B outreach sequence for consulting firms, automotive, healthcare, and finance prospects, built on the Deadhead Log data. Vertical-specific templates, LinkedIn + email cadence, and a Monday–Thursday recurring contract rate card. Executed by Sophie.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">No systematic corporate outreach exists. New institutional contracts arrive almost entirely by inbound referral. No proactive pipeline for the highest-LTV segment in the business.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-visiting-team" style="border:1px solid rgba(255,203,5,.3)">
+          <div class="dstar">Star Deliverable</div>
+          <span class="dtag to">D-12 · Protocol</span>
+          <div class="dn">The Visiting Team Protocol</div>
+          <div class="dcode">College sports SOP & rate card</div>
+          <div class="deliverable-details">
+          <div class="dd">Visiting college athletic teams — football, basketball, Olympic sports — fly into Michigan and hire out-of-state transportation companies because Golden has no partner-ready rate structure. Sean said resolving this alone could <em>double the size of the company</em>. The Visiting Team Protocol is a purpose-built SOP and rate card for team travel logistics: pre-built charter quote template, an affiliate rate card designed for confident resale, and an outreach sequence targeting ADs and travel coordinators at Big Ten programs.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">No protocol, no SOP, no partner rate card. Out-of-state companies win by default. This deliverable closes that gap entirely — and the revenue upside is enormous relative to the build effort.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- L4 -->
+    <div class="lb" data-f>
+      <div class="lhd"><span class="lnum">PERMANENT</span><span class="ltit" style="color:#6EE7B7">Assets You Own Forever</span><span class="lsub">What stays when the pilot ends</span></div>
+      <div class="dgrid c3">
+
+        <div class="dc">
+          <span class="dtag tge">D-13 · Asset</span>
+          <div class="dn">The Manifest</div>
+          <div class="dcode">Complete system documentation</div>
+          <div class="deliverable-details">
+          <div class="dd">A complete documented manifest of every integration, data flow, automation rule, and AI agent built during the pilot — so Joshua can maintain, extend, or hand it to a future hire without starting from scratch. Every run documented. Every route mapped.</div>
+        </div>
+
+        <div class="dc">
+          <span class="dtag tge">D-14 · Asset</span>
+          <div class="dn">The Transfer Map</div>
+          <div class="dcode">Magiis migration roadmap</div>
+          <div class="dd">A documented transition plan mapping every FreshSales workflow and QuoteBot integration to Magiis equivalents — so the June 1 Livery Coach decision is a calm, informed handoff, not a scramble. Every passenger accounted for at transfer.</div>
+        </div>
+
+        <div class="dc">
+          <span class="dtag tge">D-15 · Asset</span>
+          <div class="dn">The Logbook</div>
+          <div class="dcode">45-day scorecard · Baseline vs. results · Phase 2 recommendation</div>
+          <div class="dd">The complete record of every mile run in the pilot — baseline vs. results across all four outcomes, with a clear go / adjust / stop recommendation for Phase 2. The data to justify the decision to Sean, any board, or future partner. Every trip logged.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="sg" id="investment">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>Investment</div>
+    <h2 class="sh" data-f data-d="1">Skin in the game.<br>On both sides of the table.</h2>
+    <p class="lead" data-f data-d="2">REV Global is paid on results — not just retainers. The implementation fee covers the build. The performance fee is earned only on incremental revenue above your established baseline. If we don't generate lift, we don't earn the upside. That's the deal.</p>
+
+    <!-- How It Works Banner -->
+    <div style="background: var(--navy-950); border-radius: var(--r-lg); padding: 2rem 2.5rem; margin-bottom: 2.5rem; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 2rem; align-items: center;" data-f data-d="2">
+      <div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px;">Step 1 · Baseline Set</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 6px;">Establish Current Revenue</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.6;">We lock in your current monthly revenue (e.g., $240K/month at 5% conversion) as the baseline on Day 1. This number is agreed, documented, and fixed.</div>
+      </div>
+      <div style="width: 1px; height: 60px; background: rgba(255,255,255,.1);"></div>
+      <div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px;">Step 2 · Pilot Executes</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 6px;">45 Days of Execution</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.6;">All 15 deliverables built and live. Systems connected. Automation running. The Logbook tracks conversion, response time, and pipeline health in real time.</div>
+      </div>
+      <div style="width: 1px; height: 60px; background: rgba(255,255,255,.1);"></div>
+      <div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px;">Step 3 · Delta Measured</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 6px;">REV Global Earns on the Lift</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.6;">Performance fee applies only to revenue <em>above</em> the baseline — the delta REV Global generated. Your existing business is never penalized. Only new growth is shared.</div>
+      </div>
+    </div>
+
+    <!-- Tier Cards -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 2.5rem;" data-f data-d="3">
+
+      <!-- Tier 1 -->
+      <div class="icard">
+        <div class="itier">Tier 1 · The Town Car</div>
+        <div class="ipr">$35K</div>
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .25rem;">Phase 1 Implementation Fee</div>
+        <div class="ips">Classic. Reliable. Full capability, clean execution.</div>
+        <div class="idiv"></div>
+        <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;">+ Performance Fee (in addition to above)</div>
+          <div style="font-family: var(--font-d); font-weight: 800; font-size: 22px; color: var(--navy-900); line-height: 1.2; margin-bottom: 6px;">10% of Revenue Delta</div>
+          <div style="font-size: 13px; color: var(--gray-500); line-height: 1.55;">Earned on incremental revenue above your Day 1 baseline — paid monthly for 12 months post-implementation.</div>
+        </div>
+        <div class="iitems">
+          <div class="ii">All 15 deliverables built and delivered</div>
+          <div class="ii">Performance fee paid monthly on verified lift only</div>
+          <div class="ii">12-month rolling post-implementation period</div>
+        </div>
+        <div class="inote">The Town Car doesn't need extras to impress — it just runs. At $50K/month lift, performance fee = $5K/month ($60K/year) on top of the $35K implementation.</div>
+      </div>
+
+      <!-- Tier 2 — Recommended -->
+      <div class="icard ft">
+        <div class="ibadge">Recommended</div>
+        <div class="itier">Tier 2 · The Stretch</div>
+        <div class="ipr">$60K</div>
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .25rem;">Phase 1 Implementation Fee</div>
+        <div class="ips">The flagship. More horsepower, the one most clients choose.</div>
+        <div class="idiv"></div>
+        <div style="background: rgba(255,203,5,.06); border: 1px solid rgba(255,203,5,.25); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-500); margin-bottom: 10px;">+ Performance Fee (in addition to above)</div>
+          <div style="font-family: var(--font-d); font-weight: 800; font-size: 22px; color: var(--navy-900); line-height: 1.2; margin-bottom: 6px;">5% of Revenue Delta</div>
+          <div style="font-size: 13px; color: var(--gray-500); line-height: 1.55;">Earned on incremental revenue above baseline — paid monthly for 12 months post-implementation.</div>
+        </div>
+        <div class="iitems">
+          <div class="ii">All 15 deliverables built and delivered</div>
+          <div class="ii">Performance fee paid monthly on verified lift only</div>
+          <div class="ii">12-month rolling post-implementation period</div>
+        </div>
+        <a href="mailto:lynn@revglobal.co?subject=Golden Limo - Tier 2 Engagement" class="btn bta" style="width:100%;justify-content:center;margin-bottom:1rem;">Start with Tier 2 <span class="arr">→</span></a>
+        <div class="inote">The Stretch is what you book when you want to arrive right. At $50K/month lift, performance fee = $2.5K/month ($30K/year) on top of the $60K implementation.</div>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="icard">
+        <div class="itier">Tier 3 · The Coach</div>
+        <div class="ipr">$90K</div>
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .25rem;">Phase 1 Implementation Fee</div>
+        <div class="ips">Full fleet. Built for big contracts and the long haul.</div>
+        <div class="idiv"></div>
+        <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;">+ Performance Fee (in addition to above)</div>
+          <div style="font-family: var(--font-d); font-weight: 800; font-size: 22px; color: var(--navy-900); line-height: 1.2; margin-bottom: 6px;">1% of Revenue Delta</div>
+          <div style="font-size: 13px; color: var(--gray-500); line-height: 1.55;">Earned on incremental revenue above baseline — paid monthly for 12 months post-implementation.</div>
+        </div>
+        <div class="iitems">
+          <div class="ii">All 15 deliverables built and delivered</div>
+          <div class="ii">Phase 2 scoping included</div>
+          <div class="ii">Performance fee paid monthly on verified lift only</div>
+          <div class="ii">12-month rolling post-implementation period</div>
+        </div>
+        <div class="inote">The Coach is for operators running the whole route — not just the first leg. At $50K/month lift, performance fee = $500/month ($6K/year) on top of the $90K implementation.</div>
+      </div>
+
+    </div>
+
+    <!-- How the Baseline Works -->
+    <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-lg); padding: 2rem 2.5rem;" data-f data-d="4">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;">
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 18px; color: var(--navy-900); margin-bottom: 1rem;">How the Baseline & Delta Work</div>
+          <div style="font-size: 14px; color: var(--gray-500); line-height: 1.75; margin-bottom: 1rem;">The performance fee applies only to revenue <strong>above your current baseline</strong> — not your total revenue. Your existing business is never taxed. Only the incremental lift REV Global generates is shared.</div>
+          <div style="font-size: 14px; color: var(--gray-500); line-height: 1.75;">Baseline is set on Day 1, agreed in writing, and tracked monthly via the Logbook dashboard. If a month comes in below baseline — REV Global earns nothing on performance that month. No lift, no fee.</div>
+        </div>
+        <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.5rem;">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 1rem;">Illustrative Example · Tier 2 · The Stretch</div>
+          <div style="display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 14px;">
+            <div style="color: var(--gray-500);">Current monthly revenue (baseline)</div>
+            <div style="font-weight: 600; color: var(--navy-900); text-align: right;">$240,000</div>
+            <div style="color: var(--gray-500);">Post-pilot monthly revenue</div>
+            <div style="font-weight: 600; color: var(--navy-900); text-align: right;">$290,000</div>
+            <div style="color: var(--gray-500);">Monthly delta (lift)</div>
+            <div style="font-weight: 600; color: var(--gold-500); text-align: right;">$50,000</div>
+            <div style="height: 1px; background: var(--gray-200); grid-column: 1 / -1; margin: 4px 0;"></div>
+            <div style="color: var(--gray-500); font-weight: 600;">What Golden pays REV Global</div>
+            <div style="grid-column: 1 / -1;"></div>
+            <div style="color: var(--gray-500); padding-left: 1rem;">Phase 1 implementation fee (one-time)</div>
+            <div style="font-weight: 600; color: var(--navy-900); text-align: right;">$60,000</div>
+            <div style="color: var(--gray-500); padding-left: 1rem;">Performance fee · 5% of $50K delta/mo</div>
+            <div style="font-weight: 600; color: var(--navy-900); text-align: right;">+ $2,500/mo</div>
+            <div style="color: var(--gray-500); padding-left: 1rem;">Performance fees over 12 months</div>
+            <div style="font-weight: 600; color: var(--navy-900); text-align: right;">+ $30,000</div>
+            <div style="height: 1px; background: var(--gray-200); grid-column: 1 / -1; margin: 4px 0;"></div>
+            <div style="color: var(--navy-900); font-weight: 700;">Total REV Global cost (Year 1)</div>
+            <div style="font-weight: 700; color: var(--navy-900); text-align: right;">$90,000</div>
+            <div style="height: 1px; background: var(--gray-200); grid-column: 1 / -1; margin: 4px 0;"></div>
+            <div style="color: var(--gray-500);">New revenue Golden keeps (Year 1)</div>
+            <div style="font-weight: 700; color: var(--gold-500); text-align: right;">$570,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HIDDEN ROI -->
+<section class="sw" id="hidden-roi">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>Revenue ROI</div>
+    <h2 class="sh" data-f data-d="1">Four revenue streams<br>the Foundation unlocks.</h2>
+    <p class="lead" data-f data-d="2">The 10%+ conversion lift on existing pipeline is the floor — not the ceiling. The Foundation opens four distinct revenue channels that either don't exist today or are leaking at every stage. Each one maps directly to a deliverable. Each one is quantifiable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem;" data-f data-d="3">
+
+      <!-- 1. Inbound Revenue Capture -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-lg); padding: 2rem;">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#D1FAE5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          </div>
+          <div style="font-family:var(--font-d);font-weight:700;font-size:19px;color:var(--navy-900);">Inbound Revenue Capture</div>
+        </div>
+        <div style="font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:1.25rem;">Golden's pipeline already generates <strong>$300K+/month in quotes</strong>. At a 5% conversion rate, 95% of that demand leaves without booking. The Dispatch Console, Co-Pilot, and Run Sheets are purpose-built to recover that revenue — by routing leads faster, nurturing longer, and eliminating the manual delays that cost conversions.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Current monthly pipeline</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">$300K+</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Every 1% conversion lift</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">~$15K/mo</div>
+          </div>
+        </div>
+        <div style="background:rgba(5,150,105,.06);border-left:3px solid #059669;border-radius:0 var(--r-md) var(--r-md) 0;padding:1rem;font-size:13px;color:var(--gray-600);line-height:1.6;">Target: <strong>+10–15% conversion lift.</strong> At current pipeline volume that's <strong>$30–45K in additional monthly revenue</strong> — $360–540K annualized — from demand you're already generating. Deliverables: <a href="#del-dispatch-console" class="del-link" onclick="document.getElementById('del-dispatch-console')&&document.getElementById('del-dispatch-console').classList.add('expanded')">Dispatch Console</a>, <a href="#del-co-pilot" class="del-link" onclick="document.getElementById('del-co-pilot')&&document.getElementById('del-co-pilot').classList.add('expanded')">Co-Pilot</a>, <a href="#del-run-sheet" class="del-link" onclick="document.getElementById('del-run-sheet')&&document.getElementById('del-run-sheet').classList.add('expanded')">Run Sheets</a>, <a href="#del-starter" class="del-link" onclick="document.getElementById('del-starter')&&document.getElementById('del-starter').classList.add('expanded')">The Starter</a>.</div>
+      </div>
+
+      <!-- 2. Net-New Segment Revenue -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-lg); padding: 2rem;">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#FEF3C7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          </div>
+          <div style="font-family:var(--font-d);font-weight:700;font-size:19px;color:var(--navy-900);">Net-New Segment Revenue</div>
+        </div>
+        <div style="font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:1.25rem;">Two segments are actively spending money on transportation that Golden should be winning — and isn't. Big Ten visiting athletic teams are booking out-of-state operators by default because Golden has no protocol or partner rate card. Corporate Monday–Thursday runs are going to competitors because no proactive outreach exists. Both are fully addressable with the Foundation in place.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Big Ten visiting teams (Year 1)</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">$400K–1.2M</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">10–12 programs × $35–100K/season</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">3-year LTV per program</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">$1–3M+</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">Multi-sport, multi-year relationship</div>
+          </div>
+        </div>
+        <div style="background:rgba(217,119,6,.06);border-left:3px solid #D97706;border-radius:0 var(--r-md) var(--r-md) 0;padding:1rem;font-size:13px;color:var(--gray-600);line-height:1.6;">Sean said closing this gap alone could <em>double the size of the company.</em> Deliverables: <a href="#del-visiting-team" class="del-link" onclick="document.getElementById('del-visiting-team')&&document.getElementById('del-visiting-team').classList.add('expanded')">Visiting Team Protocol</a>, <a href="#del-idle-fleet" class="del-link" onclick="document.getElementById('del-idle-fleet')&&document.getElementById('del-idle-fleet').classList.add('expanded')">Idle Fleet Play</a>, <a href="#del-deadhead-log" class="del-link" onclick="document.getElementById('del-deadhead-log')&&document.getElementById('del-deadhead-log').classList.add('expanded')">Deadhead Log</a>.</div>
+      </div>
+
+      <!-- 3. Pricing Integrity & Margin Revenue -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-lg); padding: 2rem;">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#DBEAFE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <div style="font-family:var(--font-d);font-weight:700;font-size:19px;color:var(--navy-900);">Pricing Integrity & Revenue You're Already Losing</div>
+        </div>
+        <div style="font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:1.25rem;">Excel pricing errors don't just create awkward conversations — they create two distinct revenue losses: quotes sent too low (underprice a charter and you've just given margin away), and quotes sent inconsistently (a client who got one rate last time and sees a different rate today loses trust and goes elsewhere). The Meter Check and Fleet Ledger lock in pricing discipline across every vehicle class and every service type.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Avg charter mispricing risk</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">$500–5K</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">Per incorrectly priced multi-vehicle run</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Segment margin visibility</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">Zero</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">Today. First Fleet Ledger arrives Day 35.</div>
+          </div>
+        </div>
+        <div style="background:rgba(29,78,216,.06);border-left:3px solid #1D4ED8;border-radius:0 var(--r-md) var(--r-md) 0;padding:1rem;font-size:13px;color:var(--gray-600);line-height:1.6;">Once you know which segments and vehicle classes are actually profitable, you stop underpricing the runs that should be premium and stop chasing volume that erodes margin. Deliverables: <a href="#del-meter-check" class="del-link" onclick="document.getElementById('del-meter-check')&&document.getElementById('del-meter-check').classList.add('expanded')">Meter Check</a>, <a href="#del-fleet-ledger" class="del-link" onclick="document.getElementById('del-fleet-ledger')&&document.getElementById('del-fleet-ledger').classList.add('expanded')">Fleet Ledger</a>.</div>
+      </div>
+
+      <!-- 4. Tech Stack as Revenue Multiplier -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-lg); padding: 2rem;">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+          <div style="width:48px;height:48px;border-radius:50%;background:#F3E8FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7E22CE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <div style="font-family:var(--font-d);font-weight:700;font-size:19px;color:var(--navy-900);">Tech Stack as a Revenue Multiplier</div>
+        </div>
+        <div style="font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:1.25rem;">Dialpad, FreshSales, QuoteBot, and Livery Coach each do their job today — but they don't talk to each other. That silence costs revenue at every handoff: a Dialpad call that doesn't create a FreshSales record, a QuoteBot quote that doesn't trigger a nurture sequence, a booking in Livery Coach that doesn't close the deal stage. The Foundation wires these systems together so every dollar entering the funnel has a tracked, nurtured path to close.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Quote-to-close visibility today</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">None</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">No unified record exists end-to-end</div>
+          </div>
+          <div style="background:var(--gray-50);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;">Data compounds every month</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:28px;color:var(--navy-900);line-height:1;">Month 6+</div>
+            <div style="font-size:11px;color:var(--gray-500);margin-top:4px;">Clean data begins producing pricing + outreach intelligence</div>
+          </div>
+        </div>
+        <div style="background:rgba(126,34,206,.06);border-left:3px solid #7E22CE;border-radius:0 var(--r-md) var(--r-md) 0;padding:1rem;font-size:13px;color:var(--gray-600);line-height:1.6;">By Month 6, every quote, every lost fare, and every conversion becomes training data for the Co-Pilot and inputs for the Fleet Ledger. The system gets smarter over time. The gap vs. competitors who don't build this widens every month. Deliverables: <a href="#del-dispatch-console" class="del-link" onclick="document.getElementById('del-dispatch-console')&&document.getElementById('del-dispatch-console').classList.add('expanded')">Dispatch Console</a>, <a href="#del-trip-sheet" class="del-link" onclick="document.getElementById('del-trip-sheet')&&document.getElementById('del-trip-sheet').classList.add('expanded')">Trip Sheet</a>, <a href="#del-lost-fare" class="del-link" onclick="document.getElementById('del-lost-fare')&&document.getElementById('del-lost-fare').classList.add('expanded')">Lost Fare Report</a>, <a href="#del-co-pilot" class="del-link" onclick="document.getElementById('del-co-pilot')&&document.getElementById('del-co-pilot').classList.add('expanded')">Co-Pilot</a>.</div>
+      </div>
+
+    </div>
+
+    <!-- Revenue Summary Bar -->
+    <div style="background:linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%);border-radius:var(--r-lg);padding:2.5rem;margin-top:2.5rem;position:relative;overflow:hidden;" data-f data-d="4">
+      <div style="position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,203,5,.08) 0%,transparent 70%);"></div>
+      <div style="position:relative;">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-400);margin-bottom:1.5rem;">First-Year Topline Revenue Opportunity (Conservative)</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:2rem;">
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:6px;">Inbound conversion lift</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:26px;color:var(--white);line-height:1;">$360–540K</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">+10–15% on $300K/mo pipeline</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:6px;">Visiting Team contracts</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:26px;color:var(--white);line-height:1;">$400K–1.2M</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Net-new segment, Year 1</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:6px;">Corporate/idle fleet outreach</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:26px;color:var(--white);line-height:1;">$120–240K</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Mon–Thu recurring contracts</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:6px;">Pricing integrity recovered</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:26px;color:var(--white);line-height:1;">$60–120K</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Underprice + lost-trust prevention</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;">
+          <div>
+            <div style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.5rem;">Conservative first-year topline revenue opportunity</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:48px;color:var(--gold-400);line-height:1;">$940K–2.1M</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:.75rem;line-height:1.6;">Against a total Year 1 investment of $90–125K (implementation + performance fees at Tier 2). The Foundation doesn't just pay for itself — it changes the revenue trajectory of the business.</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;">Return multiple</div>
+            <div style="font-family:var(--font-d);font-weight:900;font-size:36px;color:var(--white);line-height:1;">10–23×</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">on total Year 1 investment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LEVEL OF EFFORT -->
+<section class="sw" id="level-of-effort" style="background: var(--gray-50);">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>Level of Effort & Execution Framework</div>
+    <h2 class="sh" data-f data-d="1">Transparent scoping.<br>Clear dependencies.<br>No surprises.</h2>
+    <p class="lead" data-f data-d="2">Every hour estimated. Every dependency mapped. Every risk surfaced. This section breaks down exactly what gets built, when it happens, what Golden must provide, and where conditional factors could shift timing or scope.</p>
+
+    <!-- Timeline Overview -->
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--gray-200); border-radius: var(--r-md); overflow: hidden; margin: 2rem 0; background: var(--white);" data-f data-d="3">
+      <div style="padding: 1.5rem; text-align: center; border-right: 1px solid var(--gray-200); background: #D1FAE5;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Days 1–5</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--navy-900); margin-bottom: 6px;">Foundation Setup</div>
+        <div style="font-size: 13px; color: var(--gray-500);">9–13 hours</div>
+      </div>
+      <div style="padding: 1.5rem; text-align: center; border-right: 1px solid var(--gray-200); background: #DBEAFE;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Days 5–14</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--navy-900); margin-bottom: 6px;">Connection + Triage</div>
+        <div style="font-size: 13px; color: var(--gray-500);">19–25 hours</div>
+      </div>
+      <div style="padding: 1.5rem; text-align: center; border-right: 1px solid var(--gray-200); background: #FEF3C7;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Days 14–21</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--navy-900); margin-bottom: 6px;">Automation Live</div>
+        <div style="font-size: 13px; color: var(--gray-500);">22–30 hours</div>
+      </div>
+      <div style="padding: 1.5rem; text-align: center; border-right: 1px solid var(--gray-200); background: #F3E8FF;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Days 21–35</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--navy-900); margin-bottom: 6px;">Intelligence Layer</div>
+        <div style="font-size: 13px; color: var(--gray-500);">24–32 hours</div>
+      </div>
+      <div style="padding: 1.5rem; text-align: center; background: var(--gray-100);">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Days 35–45</div>
+        <div style="font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--navy-900); margin-bottom: 6px;">Scorecard + Handoff</div>
+        <div style="font-size: 13px; color: var(--gray-500);">8–12 hours</div>
+      </div>
+    </div>
+
+    <!-- Bucket 1 -->
+    <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.5rem; background: var(--white);" data-f data-d="4">
+      <div style="display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: #D1FAE5;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; background: var(--green-600); color: var(--white);">1</div>
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--navy-900); line-height: 1.3;">Foundation Setup — Accounts, pipeline, architecture</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 3px;">Days 1–5 · Prerequisites to everything else · No dependencies</div>
+        </div>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--white); color: var(--green-600); white-space: nowrap;">Easy</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--green-600); color: var(--white); white-space: nowrap;">Go on Day 1</span>
+      </div>
+      <div style="padding: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">FreshSales provisioned</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">Pipeline + deal stages</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-08 · The Meter Check</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">Custom fields</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">User seats</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">What REV Global does</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Provision FreshSales Pro. Build the Golden pipeline with 5 deal stages + custom fields for Service Type, Vehicle Class, Quote Amount, Lead Source. Configure user seats and middleware account.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">6–8 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-08 · The Meter Check</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Joshua provides rate card + 30-day QuoteBot export → REV Global builds comparison spreadsheet → first pricing integrity report delivered by Day 5.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">2–4 hours</div>
+          </div>
+        </div>
+        <div style="background: #D1FAE5; border: 1px solid var(--green-600); border-radius: var(--r-md); padding: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green-600); margin-bottom: 6px;">Bucket 1 Total Estimated Hours</div>
+          <div style="font-family: var(--font-d); font-weight: 900; font-size: 26px; color: var(--green-600);">9–13 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bucket 2 -->
+    <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.5rem; background: var(--white);" data-f data-d="5">
+      <div style="display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: #DBEAFE;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; background: #1D4ED8; color: var(--white);">2</div>
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--navy-900); line-height: 1.3;">Connection + Triage — Dialpad live, Co-Pilot calibrated</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 3px;">Days 5–14 · Requires Bucket 1 complete + admin credentials</div>
+        </div>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--white); color: #1D4ED8; white-space: nowrap;">Medium</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: #1D4ED8; color: var(--white); white-space: nowrap;">Leg 1 core</span>
+      </div>
+      <div style="padding: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-01 · Dispatch Console</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-02 · Co-Pilot</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-04 · Trip Sheet</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">Zapier/Make middleware</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-01 · Dispatch Console</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Install Dialpad native app from Freshworks Marketplace. Configure call events → contact creation. Test inbound call flow. Zapier fallback configured in parallel.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">4–6 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-02 · Co-Pilot</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Enable Freddy AI scoring. Configure six signals, build three routing workflows (Tier 1/2/3). Test automated routing rules. Calibrate thresholds with real data.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">3–5 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-04 · Trip Sheet</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Build FreshSales custom dashboard: pipeline aging by stage, tier breakdown, last-touch column, quote value by segment. Native reporting widget — no integration required.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">2 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Critical dependencies</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">Joshua must provide: (1) Dialpad company admin credentials, (2) FreshSales admin credentials, (3) confirmation of FreshSales plan tier (Pro required). Without these, this entire bucket is blocked.</div>
+          </div>
+        </div>
+        <div style="background: #FEE2E2; border-radius: var(--r-md); padding: 1.25rem; font-size: 14px; color: #DC2626; line-height: 1.6; margin-bottom: 1.5rem;">⚠️ <strong>Timing Risk:</strong> Dialpad CTI whitelisting request must be submitted on Day 1 — it has a 24–48 hr vendor processing window that cannot be compressed. If Joshua doesn't submit the form Day 1, the Dispatch Console is delayed by up to 3 days.</div>
+        <div style="background: #DBEAFE; border: 1px solid #1D4ED8; border-radius: var(--r-md); padding: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #1D4ED8; margin-bottom: 6px;">Bucket 2 Total Estimated Hours</div>
+          <div style="font-family: var(--font-d); font-weight: 900; font-size: 26px; color: #1D4ED8;">19–25 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bucket 3 -->
+    <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.5rem; background: var(--white);" data-f data-d="6">
+      <div style="display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: #FEF3C7;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; background: #D97706; color: var(--white);">3</div>
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--navy-900); line-height: 1.3;">Automation Goes Live — QuoteBot bridge, nurture tracks, Starter deployed</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 3px;">Days 14–21 · Requires Bucket 2 stable + QuoteBot webhook confirmed</div>
+        </div>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--white); color: #D97706; white-space: nowrap;">Hard</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: #D97706; color: var(--white); white-space: nowrap;">Leg 2 activation</span>
+      </div>
+      <div style="padding: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-03 · The Starter (MVP)</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-10 · Run Sheets (all 4 tracks)</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-11 · Idle Fleet Play</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-05 · Lost Fare Report</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">QuoteBot → FreshSales bridge</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;"><strong>Conditional:</strong> IF webhook: Zapier catches payload → creates deal → fires Run Sheet. Build time: 3–5 hrs. IF no webhook: manual CSV export weekly → import → nurture triggers on import. Either way works.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">3–5 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-10 · Run Sheets</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Four FreshSales sequences: Airport (3 touches), Wedding (6), Charter (5), Institutional (alert only). REV Global writes all 22 templates. Alina + Sophie approve before activation.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">6–8 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-03 · The Starter (AI draft assistant)</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Dialpad AI recap → Zapier → Claude API → FreshSales draft note. MVP drafts complex charters only. Target: under 20 min. Raphael builds — custom development.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">10–12 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-05 · Lost Fare Report</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">FreshSales workflow: Lost deal stage → feedback email (Starbucks incentive) → reason tag custom field. Alina approves copy. First data arrives within 2 weeks of launch.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">3–5 hours</div>
+          </div>
+        </div>
+        <div style="background: #FEF3C7; border: 1px solid #D97706; border-radius: var(--r-md); padding: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #D97706; margin-bottom: 6px;">Bucket 3 Total Estimated Hours</div>
+          <div style="font-family: var(--font-d); font-weight: 900; font-size: 26px; color: #D97706;">22–30 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bucket 4 -->
+    <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.5rem; background: var(--white);" data-f data-d="7">
+      <div style="display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: #F3E8FF;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; background: #7E22CE; color: var(--white);">4</div>
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--navy-900); line-height: 1.3;">Intelligence Layer — Fleet Ledger, Deadhead Log, Visiting Team Protocol</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 3px;">Days 21–35 · Requires historical data inputs from Joshua + Sean</div>
+        </div>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--white); color: #7E22CE; white-space: nowrap;">Medium</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: #7E22CE; color: var(--white); white-space: nowrap;">Data-driven insights</span>
+      </div>
+      <div style="padding: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-06 · The Fleet Ledger</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-07 · The Deadhead Log</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-12 · Visiting Team Protocol</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600);">D-09 · Driver's Brief</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-06 · Fleet Ledger path</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;"><strong>Conditional:</strong> Day 21: Revenue Snapshot (QuoteBot 90-day export + service type breakdown). Day 35: Full Ledger with cost structure. Requires Sean to provide cost-per-vehicle-class by Day 14.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">8–10 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-07 · Deadhead Log</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;"><strong>Risk:</strong> Requires Joshua to export 60–90 days of Livery Coach dispatch data by Day 21. REV Global builds Google Sheets model mapping vehicle time blocks vs. quote timestamps. First report Day 28–30.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">6–8 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-12 · Visiting Team Protocol</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">REV Global drafts SOP + affiliate rate card + Big Ten AD outreach sequence by Day 21. Sean approves rate card + contact list by Day 28. Outreach begins Day 30.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">6–8 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-09 · Driver's Brief (SOP)</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Sales SOP documentation using Dialpad call data + real quotes from first 21 days. Needs 21 days of observed behavior to write accurately. Delivered Day 28.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">4–6 hours</div>
+          </div>
+        </div>
+        <div style="background: #F3E8FF; border: 1px solid #7E22CE; border-radius: var(--r-md); padding: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #7E22CE; margin-bottom: 6px;">Bucket 4 Total Estimated Hours</div>
+          <div style="font-family: var(--font-d); font-weight: 900; font-size: 26px; color: #7E22CE;">24–32 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bucket 5 -->
+    <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 2.5rem; background: var(--white);" data-f data-d="8">
+      <div style="display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: var(--gray-100);">
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; background: #DC2626; color: var(--white);">5</div>
+        <div>
+          <div style="font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--navy-900); line-height: 1.3;">Scorecard + Handoff — Documentation, migration map, 45-day report</div>
+          <div style="font-size: 13px; color: var(--gray-500); margin-top: 3px;">Days 35–45 · Compiles everything from Buckets 1–4</div>
+        </div>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: var(--white); color: #DC2626; white-space: nowrap;">Easy</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: #DC2626; color: var(--white); white-space: nowrap;">Decision gate</span>
+      </div>
+      <div style="padding: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;">
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-13 · The Manifest</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-14 · The Transfer Map</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: var(--gold-400); color: var(--navy-900);">D-15 · The Logbook</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-13 · The Manifest</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Complete system architecture: every integration, Zapier flow, workflow rule, custom field, sequence. Format: Google Doc + diagram. Built continuously from Day 1, finalized Day 40.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">3–4 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-14 · The Transfer Map</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;"><strong>Conditional:</strong> Magiis migration readiness. If API confirmed: full execution plan, data mapping, cutover timeline. If no API: recommendation to hold until LC API release or assess alternatives.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">2–3 hours</div>
+          </div>
+          <div style="background: var(--gray-50); border-radius: var(--r-md); padding: 1.25rem; grid-column: 1 / -1;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">D-15 · The Logbook — 45-day scorecard</div>
+            <div style="font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 8px;">Measures all four outcomes vs. baseline: conversion lift %, average first-touch response time, Run Sheet performance, lead-to-booking visibility. Presented to Sean + Alina at Day 45. 10%+ lift = proceed to Phase 2.</div>
+            <div style="font-family: var(--font-d); font-weight: 700; font-size: 22px; color: var(--navy-900);">3–5 hours</div>
+          </div>
+        </div>
+        <div style="background: #FEE2E2; border: 1px solid #DC2626; border-radius: var(--r-md); padding: 1.25rem;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #DC2626; margin-bottom: 6px;">Bucket 5 Total Estimated Hours</div>
+          <div style="font-family: var(--font-d); font-weight: 900; font-size: 26px; color: #DC2626;">8–12 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Checklist -->
+    <div style="margin-top: 3rem;" data-f data-d="9">
+      <h3 class="sh">Client Responsibility Checklist</h3>
+      <p class="lead">What Golden Limo must provide, organized by owner and when it's needed</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+        
+        <!-- Joshua -->
+        <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; background: var(--white);">
+          <div style="padding: 1rem 1.5rem; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: #DBEAFE; color: #1E40AF;">Joshua Zimdars — Tech Lead</div>
+          <div style="padding: 0;">
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>FreshSales admin login credentials</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Admin-level access required. REV Global cannot configure pipelines, workflows, Freddy AI, or custom fields without this.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Dialpad company admin credentials</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Company-level admin needed to install FreshSales Marketplace app and submit Dialpad CTI Requester Form. Submit form on Day 1 — it has 24–48 hr processing window.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Current rate card</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">All vehicles, service types, surcharges. Any format: Excel, PDF, Google Sheet. Required for The Meter Check (D-08) which runs in Week 1.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>QuoteBot admin access + 90-day quote export</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Needed for baseline conversion rate, Meter Check, and Fleet Ledger.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>QuoteBot webhook/API confirmation</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #DBEAFE; color: #1D4ED8; margin-left: 6px;">Day 7</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Determines if Run Sheets auto-fire or require manual CSV bridge.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Magiis API/developer documentation status</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #DBEAFE; color: #1D4ED8; margin-left: 6px;">Day 7</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Changes Transfer Map from migration plan to recommendation.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem;">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Livery Coach dispatch export — 60–90 days</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: var(--gray-200); color: var(--gray-600); margin-left: 6px;">Day 21</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Required for Deadhead Log. Needs: vehicle ID, service date, scheduled start/end time, vehicle type.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sean -->
+        <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; background: var(--white);">
+          <div style="padding: 1rem 1.5rem; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: #FEF3C7; color: #92400E;">Sean Duval — CEO</div>
+          <div style="padding: 0;">
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>FreshSales plan: Growth ($9/user) vs. Pro ($39/user)</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Pro required for multiple pipelines, Freddy deal insights, advanced workflows.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Zapier or Make.com account + budget approval</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Make Core (~$9/month) or Zapier Professional (~$49/month). REV Global recommends Make.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Number of FreshSales user seats needed</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1 blocker</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Every rep who uses FreshSales needs Pro seat ($39/user/month). Determines billing.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Cost structure by vehicle class</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEF3C7; color: #D97706; margin-left: 6px;">Day 14</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Driver pay per hour/run, fuel cost estimate, insurance allocation. Without this, Fleet Ledger shows revenue only — not margin.</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem;">
+              <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
+              <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
+                <div><strong>Visiting Team Protocol: rate card input + AD contacts</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: var(--gray-200); color: var(--gray-600); margin-left: 6px;">Day 21</span></div>
+                <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">REV Global drafts rate card structure — Sean confirms pricing tiers and identifies existing Big Ten contacts.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta" id="cta">
+  <div class="container">
+    <div class="ctat" data-f>Golden Limousine can close<br><span class="acc">more</span> of what it already generates.</div>
+    <p class="ctab" data-f data-d="1">The pipeline exists. The demand exists. The brand is the strongest in the market. What is missing is the layer between the systems — and the human protocol to make it compound. That is what we build in 45 days.</p>
+    <div class="ctabtns" data-f data-d="2">
+      <a href="mailto:lynn@revglobal.co?subject=Golden Limo Pilot - Start May 1" class="btn bta">Start the Pilot — May 1 <span class="arr">→</span></a>
+      <a href="#deliverables" class="btn bto">Review All 15 Deliverables</a>
+    </div>
+    <div class="ctadates" data-f data-d="3">
+      <div class="ctadi hl"><div class="ctadl">Pilot Launch</div><div class="ctadv">May 1, 2026</div></div>
+      <div class="ctadi"><div class="ctadl">Day 15 Gate</div><div class="ctadv">May 16</div></div>
+      <div class="ctadi"><div class="ctadl">Day 30 Gate</div><div class="ctadv">May 31</div></div>
+      <div class="ctadi"><div class="ctadl">Full Scorecard</div><div class="ctadv">June 15</div></div>
+      <div class="ctadi hl"><div class="ctadl">Phase 2 Decision</div><div class="ctadv">June 1, 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITOR ANALYSIS -->
+<section class="sw" id="competitors">
+  <div class="container">
+    <div class="lbl lbl-navy" data-f>Competitor Analysis</div>
+    <h2 class="sh" data-f data-d="1">What the market is doing —<br>and where Golden stays <span style="color:var(--gold-500)">ahead</span></h2>
+    <p class="lead" data-f data-d="2">Michigan's ground transportation market is consolidating around basic digital tools. Here's what competitors are deploying — and the structural gaps that the Golden Foundation is designed to permanently close.</p>
+
+    <div class="comp-grid" data-f data-d="3">
+
+      <div class="comp-card">
+        <div class="comp-cat">Online quoting · Price aggregators</div>
+        <div class="comp-title">Instant price-range forms + aggregator funnels</div>
+        <div class="comp-body">Price 4 Limo and similar aggregators use short web forms — date, time, passenger count, origin/destination — to show an instant price range and push users to reserve. This reduces friction vs. "call for rates." Operators like A Dream Limousine and Detroit limo competitors use "Request a Quote" forms to capture leads, then close via phone and email — conversion relies heavily on sales follow-up rather than self-serve checkout.</div>
+        <span class="comp-tag comp-tag-warn">Gap: No real-time quote + CRM pipeline behind it</span>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-cat">Pricing transparency · Trust signals</div>
+        <div class="comp-title">Published flat-rate tables + "no surge" positioning</div>
+        <div class="comp-body">World Class Detroit publishes clear DTW flat-rate tables by city, along with "no surge pricing" language — which increases trust and reduces confusion at the quote stage. Flat-rate airport pricing shortens the sales process: if a prospect already sees the rate, the quote step is effectively done and they just need to book. Airport-focused providers emphasize professional drivers and 24/7 service to convert price-sensitive travelers from TNCs (Uber/Lyft).</div>
+        <span class="comp-tag comp-tag-warn">Gap: No dynamic pricing or yield optimization behind the flat rates</span>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-cat">Booking flows · Reservation UX</div>
+        <div class="comp-title">Manual confirmation flows with dated UX</div>
+        <div class="comp-body">Most Michigan chauffeur services offer basic online "reservation request" pages where bookings are confirmed manually rather than in real time. The customer fills a long form and waits for confirmation — which introduces significant drop-off risk between intent and booking. Most site reservation engines feel dated (multiple steps, not mobile-optimized), which likely depresses conversion, especially for same-day or mobile inquiries.</div>
+        <span class="comp-tag comp-tag-warn">Gap: No lead scoring or nurture behind the dropped quotes</span>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-cat">Review presence · Social proof</div>
+        <div class="comp-title">Review-driven conversion on event + wedding segments</div>
+        <div class="comp-body">Strong review presence on Google, wedding/event platforms, and party bus directories helps event-oriented competitors convert "quote lookers" into confirmed reservations. This social proof layer is the primary trust mechanism for transactional wedding and special event bookings — particularly where customers are comparing 3–5 providers simultaneously and choosing based on testimonial quality and review volume over price.</div>
+        <span class="comp-tag comp-tag-info">Golden's 30-year track record already leads here</span>
+      </div>
+
+    </div>
+
+    <!-- The Moat -->
+    <div class="lbl lbl-navy" data-f>Golden's Structural Advantage</div>
+    <h3 class="sh sh-w" style="font-size:clamp(22px,2.5vw,34px)" data-f data-d="1">What no competitor can replicate<br>in the next 18 months</h3>
+    <p class="lead" style="max-width:680px" data-f data-d="2">Competitors are copying tactics — flat-rate tables, quote forms, review campaigns. None of them are building the operational intelligence layer that makes Golden's conversion, margin, and brand protection self-reinforcing. That layer is what the Golden Foundation creates.</p>
+
+    <div class="moat-grid" data-f data-d="3">
+
+      <div class="moat-card">
+        <div class="moat-title">Institutional revenue moat</div>
+        <div class="moat-body">The University of Michigan relationship, Big Ten affiliate network, and long-tenure corporate accounts represent <span class="moat-accent">50%+ of revenue on contractual terms</span> that no competitor can match through a quote form. <a href="#del-visiting-team" class="del-link" onclick="document.getElementById('del-visiting-team') && document.getElementById('del-visiting-team').classList.add('expanded')">The Visiting Team Protocol</a> and <a href="#del-idle-fleet" class="del-link" onclick="document.getElementById('del-idle-fleet') && document.getElementById('del-idle-fleet').classList.add('expanded')">Idle Fleet Play</a> extend this advantage into segments competitors haven't touched.</div>
+      </div>
+
+      <div class="moat-card">
+        <div class="moat-title">Conversion intelligence advantage</div>
+        <div class="moat-body">Competitors see a quote form submission and wait. Golden — post-Foundation — sees a <span class="moat-accent">tiered, scored lead with a calibrated nurture track firing before the competition picks up the phone</span>. The <a href="#del-dispatch-console" class="del-link" onclick="document.getElementById('del-dispatch-console') && document.getElementById('del-dispatch-console').classList.add('expanded')">Dispatch Console</a>, <a href="#del-co-pilot" class="del-link" onclick="document.getElementById('del-co-pilot') && document.getElementById('del-co-pilot').classList.add('expanded')">Co-Pilot</a>, and <a href="#del-trip-sheet" class="del-link" onclick="document.getElementById('del-trip-sheet') && document.getElementById('del-trip-sheet').classList.add('expanded')">Trip Sheet</a> create a conversion flywheel no flat-rate table can replicate.</div>
+      </div>
+
+      <div class="moat-card">
+        <div class="moat-title">Brand prestige + pricing power</div>
+        <div class="moat-body">Competitors who publish flat-rate tables race to the bottom. Golden's positioning — white-glove service, no "robotic" automation, human-first on every Tier 1 inquiry — <span class="moat-accent">protects margin while competitors commoditize</span>. The <a href="#del-meter-check" class="del-link" onclick="document.getElementById('del-meter-check') && document.getElementById('del-meter-check').classList.add('expanded')">Meter Check</a> and <a href="#del-fleet-ledger" class="del-link" onclick="document.getElementById('del-fleet-ledger') && document.getElementById('del-fleet-ledger').classList.add('expanded')">Fleet Ledger</a> ensure pricing discipline compounds over time.</div>
+      </div>
+
+      <div class="moat-card">
+        <div class="moat-title">30-year operational depth</div>
+        <div class="moat-body">A new competitor with a slick website can publish a flat-rate table today. They cannot acquire 30 years of driver relationships, safety culture, affiliate networks, or the institutional memory of thousands of executed runs. <span class="moat-accent"><a href="#deliverables" class="del-link" onclick="document.getElementById('deliverables') && document.getElementById('deliverables').classList.add('expanded')">The Foundation</a> makes that depth visible in the funnel</span> for the first time.</div>
+      </div>
+
+      <div class="moat-card">
+        <div class="moat-title">Data compounding over time</div>
+        <div class="moat-body">Every quote, every lost fare, every conversion that flows through FreshSales becomes training data for the Co-Pilot and inputs for the Fleet Ledger. <span class="moat-accent">Six months of clean data beats any competitor's guesswork on pricing, segment profitability, and outreach timing.</span> The longer it runs, the wider the gap.</div>
+      </div>
+
+      <div class="moat-card">
+        <div class="moat-title">Affiliate + sports logistics network</div>
+        <div class="moat-body">The Visiting Team Protocol and the affiliate rate card create a partner-ready revenue stream that out-of-state companies currently win by default. Once the protocol is live, <span class="moat-accent">Golden becomes the first call for Big Ten travel coordinators</span> — a position that locks in recurring high-margin revenue no review campaign can replicate.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fin">
+      <div class="flogs">
+        <a href="https://revglobalinc.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;line-height:0;">
+          <img src="https://revglobalinc.com/logo-nav.png" alt="REV Global" style="height:28px;width:auto;object-fit:contain;opacity:.8;">
+        </a>
+        <div class="fsep"></div>
+        <img src="https://goldenlimo.com/wp-content/themes/golden-limo-theme/images/logo.png" alt="Golden Limousine" class="fgl" onerror="this.style.display='none'">
+      </div>
+      <div class="fmeta">Confidential · Prepared for Golden Limousine International · April 21, 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', window.scrollY > 40));
+
+// Intersection Observer — scroll entrance animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-f]').forEach(el => {
+  if (!el.classList.contains('hero-logo-wrap')) io.observe(el);
+  else el.style.opacity = '';
+});
+
+// Grid children staggered entrance
+document.querySelectorAll('.pgrid,.otbl,.dgrid').forEach(g => {
+  [...g.children].forEach((c, i) => {
+    c.setAttribute('data-f', '');
+    c.setAttribute('data-d', Math.min(i + 1, 4));
+    io.observe(c);
+  });
+});
+</script>
+<script>
+// Deliverable accordion — click to expand
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.dc').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+      this.classList.toggle('expanded');
+    });
+  });
+});
+</script>
+<script>
+async function checkGate(e){
+  e.preventDefault();
+  const pw=document.getElementById('pw');
+  const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw.value)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hash==='d36e9c47a21aed0b08455e0d192be59b4b0b25077d509f328a15b54494602831'){
+    document.getElementById('gate').classList.add('hide');
+    sessionStorage.setItem('gp_auth','1');
+    setTimeout(()=>document.getElementById('gate').remove(),600);
+  }else{
+    pw.classList.add('err');
+    document.getElementById('gate-err').textContent='Incorrect access code';
+    setTimeout(()=>{pw.classList.remove('err');pw.value='';pw.focus()},500);
+  }
+  return false;
+}
+if(sessionStorage.getItem('gp_auth')==='1'){document.getElementById('gate').remove();}
+</script>
+</body>
+</html>
