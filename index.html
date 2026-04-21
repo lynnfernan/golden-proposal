@@ -165,6 +165,7 @@ nav.sc { background: rgba(4,13,30,.96); backdrop-filter: blur(20px); border-bott
 .tb { background: rgba(0,102,204,.2); color: #5BA3F5; }
 .tge { background: rgba(16,185,129,.12); color: #6EE7B7; }
 .to { background: rgba(251,146,60,.12); color: #FBB168; }
+.tva { background: rgba(168,85,247,.12); color: #C084FC; }
 .dn { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: .75rem; line-height: 1.3; display: flex; align-items: center; justify-content: space-between; }
 .dd { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 1.125rem; }
 .expand-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,203,5,.15); color: var(--gold-400); font-size: 14px; transition: transform var(--smooth); }
@@ -331,8 +332,17 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
 <!-- PASSWORD GATE -->
 <div id="gate">
   <div class="gate-box">
-    <img src="rev-logo.png" alt="REV Global" style="width:80px;height:auto;margin-bottom:1.25rem;">
-    <div class="gate-logo">REV<span>.</span>Global</div>
+    <svg width="64" height="72" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1.5rem;">
+      <!-- Left face -->
+      <polygon points="30,80 80,50 80,140 30,170" fill="#FFCB05"/>
+      <!-- Top-right face -->
+      <polygon points="90,10 170,55 120,85 90,45" fill="#FFCB05"/>
+      <polygon points="170,55 170,100 120,130 120,85" fill="#FFCB05"/>
+      <!-- Bottom-right face -->
+      <polygon points="90,140 170,105 170,195 90,220" fill="#FFCB05"/>
+      <!-- REV GLOBAL text -->
+      <text x="100" y="260" text-anchor="middle" fill="white" font-family="Montserrat,sans-serif" font-weight="900" font-size="32" letter-spacing="3">REV GLOBAL</text>
+    </svg>
     <div class="gate-sub">Confidential Proposal — Golden Limousine International</div>
     <label class="gate-label" for="pw">Enter access code</label>
     <form id="gate-form" onsubmit="return checkGate(event)">
@@ -397,7 +407,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
       <h1 class="htitle" data-f data-d="1">The <span class="acc">Golden</span><br>Foundation</h1>
       <p class="hsub" data-f data-d="2">Revenue operations, AI orchestration, and an inside sales protocol — built on the systems Golden already has.</p>
       <div class="hmeta" data-f data-d="3">
-        <div><div class="hml">Prepared for</div><div class="hmv">Alina Verdiyan-Duval · Sean Duval · Joshua Zimdars</div></div>
+        <div><div class="hml">Prepared for</div><div class="hmv">Alina Verdiyan-Duval · Sean Duval · Joshua Zimdars · Sophie Rees · Kathryn DaCosta</div></div>
         <div><div class="hml">Prepared by</div><div class="hmv">Lynn Fernando · Raphael Bennett · REV Global</div></div>
         <div><div class="hml">Presented</div><div class="hmv">April 21, 2026 · 4:00 PM ET</div></div>
       </div>
@@ -444,7 +454,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
   <div class="container">
     <div class="lbl lbl-navy" data-f>The Four Pilot Outcomes</div>
     <h2 class="sh" data-f data-d="1">What success looks like in 45 days</h2>
-    <p class="lead" data-f data-d="2">These are Golden's four stated success criteria — verbatim from April 17. Every REV Global deliverable maps directly to one of these outcomes.</p>
+    <p class="lead" data-f data-d="2">Golden's stated outcomes — in the client's exact words: <strong>Quote to Booking Conversion, Recurring Volume, and Systems that Support each other.</strong> Every REV Global deliverable maps directly to one of these outcomes.</p>
     <div class="otbl" data-f data-d="3">
       <div class="orow">
         <div class="onc"><span>1</span></div>
@@ -570,6 +580,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
           <ul style="list-style: none; padding: 0;">
             <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Driver's Brief</li>
             <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Run Sheet</li>
+            <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ Marketing/CRM Multichannel Sequencing</li>
             <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ Visiting Team Protocol</li>
             <li style="font-size: 13px; color: rgba(255,255,255,.88); margin-bottom: .75rem; line-height: 1.5;">✓ The Manifest, Transfer Map, Logbook</li>
           </ul>
@@ -695,7 +706,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
       <div class="dgrid c2">
 
         <div class="dc" id="del-drivers-brief">
-          <span class="dtag to">D-09 · Playbook</span>
+          <span class="dtag tva">D-09 · Value Add</span>
           <div class="dn">The Driver's Brief</div>
           <div class="dcode">Sales process documentation</div>
           <div class="deliverable-details">
@@ -705,7 +716,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
         </div>
 
         <div class="dc" id="del-run-sheet">
-          <span class="dtag to">D-10 · Playbook</span>
+          <span class="dtag tva">D-10 · Value Add</span>
           <div class="dn">The Run Sheet</div>
           <div class="dcode">Four-track nurture library</div>
           <div class="deliverable-details">
@@ -714,8 +725,18 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
           </div>
         </div>
 
-        <div class="dc" id="del-idle-fleet">
+        <div class="dc" id="del-multichannel">
           <span class="dtag to">D-11 · Campaign</span>
+          <div class="dn">Marketing/CRM Multichannel Sequencing</div>
+          <div class="dcode">Expanded drip campaigns · Top audience optimization</div>
+          <div class="deliverable-details">
+          <div class="dd">The current drip dies after three days — regardless of segment, intent, or deal size. This deliverable expands Golden's nurture engine into a true multichannel sequencing system across email, SMS, and phone touchpoints inside FreshSales. Each sequence is tailored to Golden's top-performing audiences — Airport transfers, Wedding, Charter, and Institutional — with cadence, messaging, and channel mix optimized per segment. The result: every high-value lead gets the right message, on the right channel, at the right time in their decision window.</div>
+          <div class="dct"><div class="dctlbl">Gap today</div><div class="dcttxt">Follow-up is single-channel (email only), generic across all segments, and stops well before most buyers are ready to decide. No multichannel orchestration exists — leaving SMS and phone follow-up entirely ad hoc.</div></div>
+          </div>
+        </div>
+
+        <div class="dc" id="del-idle-fleet">
+          <span class="dtag to">D-12 · Campaign</span>
           <div class="dn">The Idle Fleet Play</div>
           <div class="dcode">Corporate outreach campaign</div>
           <div class="deliverable-details">
@@ -726,7 +747,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
 
         <div class="dc" id="del-visiting-team" style="border:1px solid rgba(255,203,5,.3)">
           <div class="dstar">Star Deliverable</div>
-          <span class="dtag to">D-12 · Protocol</span>
+          <span class="dtag to">D-13 · Protocol</span>
           <div class="dn">The Visiting Team Protocol</div>
           <div class="dcode">College sports SOP & rate card</div>
           <div class="deliverable-details">
@@ -744,7 +765,7 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
       <div class="dgrid c3">
 
         <div class="dc">
-          <span class="dtag tge">D-13 · Asset</span>
+          <span class="dtag tge">D-14 · Asset</span>
           <div class="dn">The Manifest</div>
           <div class="dcode">Complete system documentation</div>
           <div class="deliverable-details">
@@ -752,14 +773,14 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
         </div>
 
         <div class="dc">
-          <span class="dtag tge">D-14 · Asset</span>
+          <span class="dtag tge">D-15 · Asset</span>
           <div class="dn">The Transfer Map</div>
           <div class="dcode">Magiis migration roadmap</div>
           <div class="dd">A documented transition plan mapping every FreshSales workflow and QuoteBot integration to Magiis equivalents — so the June 1 Livery Coach decision is a calm, informed handoff, not a scramble. Every passenger accounted for at transfer.</div>
         </div>
 
         <div class="dc">
-          <span class="dtag tge">D-15 · Asset</span>
+          <span class="dtag tge">D-16 · Asset</span>
           <div class="dn">The Logbook</div>
           <div class="dcode">45-day scorecard · Baseline vs. results · Phase 2 recommendation</div>
           <div class="dd">The complete record of every mile run in the pilot — baseline vs. results across all four outcomes, with a clear go / adjust / stop recommendation for Phase 2. The data to justify the decision to Sean, any board, or future partner. Every trip logged.</div>
@@ -1134,109 +1155,6 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
   </div>
 </section>
 
-<!-- NEXT STEPS -->
-<section class="sg" id="next-steps">
-  <div class="container">
-    <div class="lbl lbl-navy" data-f>Next Steps</div>
-    <h2 class="sh" data-f data-d="1">Ready to start.<br>Here's what we need from Golden.</h2>
-    <p class="lead" data-f data-d="2">The pilot begins May 1. To hit the ground running on Day 1, we need a few items from Joshua and Sean. Everything below is organized by owner and deadline.</p>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;" data-f data-d="3">
-
-      <!-- Joshua -->
-      <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; background: var(--white);">
-        <div style="padding: 1rem 1.5rem; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: #DBEAFE; color: #1E40AF;">Joshua Zimdars — Tech Lead</div>
-        <div style="padding: 0;">
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>FreshSales admin login credentials</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Admin-level access required to configure pipelines, workflows, and custom fields.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Dialpad company admin credentials</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Needed to install FreshSales app and submit CTI form (24-48 hr processing).</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Current rate card</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">All vehicles, service types, surcharges. Any format. Required for The Meter Check.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>QuoteBot admin access + 90-day quote export</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Needed for baseline conversion rate, Meter Check, and Fleet Ledger.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>QuoteBot webhook/API confirmation</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #DBEAFE; color: #1D4ED8; margin-left: 6px;">Day 7</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Determines if Run Sheets auto-fire or require manual CSV bridge.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem;">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Livery Coach dispatch export — 60-90 days</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: var(--gray-200); color: var(--gray-600); margin-left: 6px;">Day 21</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Required for the Deadhead Log. Needs: vehicle ID, service date, start/end time, vehicle type.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sean -->
-      <div style="border: 1px solid var(--gray-200); border-radius: var(--r-lg); overflow: hidden; background: var(--white);">
-        <div style="padding: 1rem 1.5rem; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: #FEF3C7; color: #92400E;">Sean Duval — CEO</div>
-        <div style="padding: 0;">
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>FreshSales plan: Growth ($9/user) vs. Pro ($39/user)</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Pro required for multiple pipelines, Freddy deal insights, advanced workflows.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Zapier or Make.com account + budget approval</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Make Core (~$9/month) or Zapier Professional (~$49/month). REV Global recommends Make.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Number of FreshSales user seats needed</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEE2E2; color: #DC2626; margin-left: 6px;">Day 1</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Every rep who uses FreshSales needs Pro seat ($39/user/month).</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Cost structure by vehicle class</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #FEF3C7; color: #D97706; margin-left: 6px;">Day 14</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">Driver pay, fuel cost, insurance allocation. Without this, Fleet Ledger shows revenue only.</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 1.25rem 1.5rem;">
-            <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid var(--gray-300); flex-shrink: 0; margin-top: 3px; background: var(--white);"></div>
-            <div style="font-size: 13px; color: var(--navy-900); line-height: 1.5; flex: 1;">
-              <div><strong>Visiting Team Protocol: rate card input + AD contacts</strong> <span style="font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: var(--gray-200); color: var(--gray-600); margin-left: 6px;">Day 21</span></div>
-              <div style="font-size: 12px; color: var(--gray-500); margin-top: 3px;">REV Global drafts rate card structure — Sean confirms pricing tiers and Big Ten contacts.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- COMPETITOR ANALYSIS -->
 <section class="sw" id="competitors">
