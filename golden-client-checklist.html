@@ -10,7 +10,10 @@
 body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; line-height: 1.6; }
 
 .header { background: linear-gradient(135deg, #040D1E 0%, #0B1F48 100%); padding: 3rem 2rem 2.5rem; text-align: center; }
-.header-brand { display: block; width: 80px; height: auto; margin: 0 auto 1.25rem; }
+.header-logos { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
+.header-brand { display: block; width: 80px; height: auto; }
+.header-sep { width: 1px; height: 50px; background: rgba(255,255,255,.2); }
+.header-brand-gl { display: block; width: 70px; height: auto; }
 .header-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #fff; letter-spacing: .04em; margin-bottom: .25rem; }
 .header-logo span { color: #FFCB05; }
 .header h1 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 28px; color: #fff; margin-bottom: .5rem; }
@@ -63,8 +66,12 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
 <body>
 
 <div class="header">
-  <img class="header-brand" src="rev-logo.png" alt="REV Global">
-  <div class="header-logo">REV <span>GLOBAL</span></div>
+  <div class="header-logos">
+    <img class="header-brand" src="rev-logo.png" alt="REV Global">
+    <div class="header-sep"></div>
+    <img class="header-brand-gl" src="golden-logo.png" alt="Golden Limousine">
+  </div>
+  <div class="header-logo">REV <span>GLOBAL</span> <span style="color:rgba(255,255,255,.3);font-weight:400;margin:0 .5rem;">x</span> Golden Limousine</div>
   <h1>Client Needs Checklist</h1>
   <p>Golden Limousine International — Pilot Engagement</p>
 </div>
