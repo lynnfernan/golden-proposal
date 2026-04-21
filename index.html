@@ -68,15 +68,15 @@ h1.sh, h2.sh, h3.sh, h1.htitle { text-align: left; }
 .btn:hover .arr { transform: translateX(4px); }
 
 /* ── NAV ── */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; transition: all var(--smooth); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; padding: 0 1rem; transition: all var(--smooth); }
 nav.sc { background: rgba(4,13,30,.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.06); }
-.ni { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.ni { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 1.5rem; }
 .nlogos { display: flex; align-items: center; gap: 14px; }
 .nsep { width: 1px; height: 28px; background: rgba(255,255,255,.2); }
 .nrev { font-family: var(--font-d); font-weight: 900; font-size: 15px; letter-spacing: .04em; color: var(--white); opacity: .9; }
 .nrev span { color: var(--gold-400); }
 .ngl { height: 26px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .8; }
-.nlinks { display: flex; gap: 2rem; list-style: none; }
+.nlinks { display: flex; gap: 1.5rem; list-style: none; flex-shrink: 1; min-width: 0; }
 .nlinks a { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; transition: color var(--ease); }
 .nlinks a:hover { color: var(--white); }
 .ncta { display: flex; gap: 12px; }
@@ -455,33 +455,39 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
 <!-- OUTCOMES -->
 <section class="sg" id="outcomes">
   <div class="container">
-    <div class="lbl lbl-navy" data-f>The Four Pilot Outcomes</div>
+    <div class="lbl lbl-navy" data-f>The Five Pilot Outcomes</div>
     <h2 class="sh" data-f data-d="1">What success looks like in 45 days</h2>
-    <p class="lead" data-f data-d="2">Golden's stated outcomes — in the client's exact words: <strong>Quote to Booking Conversion, Recurring Volume, and Systems that Support each other.</strong> Every REV Global deliverable maps directly to one of these outcomes.</p>
+    <p class="lead" data-f data-d="2">Five measurable outcomes that move Golden from quoting to booking — without compromising the premium experience.</p>
     <div class="otbl" data-f data-d="3">
       <div class="orow">
         <div class="onc"><span>1</span></div>
-        <div class="omc"><div class="ot">Higher close rate on defined segments</div><div class="ob">Convert more of the $300K+ monthly pipeline already in the funnel. Each segment gets a distinct nurture track matched to its decision cycle and buyer psychology.</div></div>
-        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Four-track playbook: Airport 72hr automated · Wedding 45-day lifecycle · Charter 60-day approval sequence · Institutional human-only. Lead scoring triage fires on every inquiry. Quote window extended to match buyer cycle.</div></div>
+        <div class="omc"><div class="ot">Conversion plan</div><div class="ob">The specific follow-up and drip sequence by quote type — airport, wedding, charter, and institutional — and how it will be executed without degrading the premium experience.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Four-track playbook: Airport 72hr automated · Wedding 45-day lifecycle · Charter 60-day approval sequence · Institutional human-only. All messages approved in Golden's voice before activation. Designed to help the buyer decide or get approval, not just ask "ready to book?"</div></div>
         <div class="okc"><div class="okn" style="color:var(--gold-500)">+15%</div><div class="okl">Target conversion lift by Day 45 · baselined Day 1</div></div>
       </div>
       <div class="orow">
         <div class="onc"><span>2</span></div>
-        <div class="omc"><div class="ot">Reduced quote aging — faster first-touch on high-value inquiries</div><div class="ob">Tier 1 institutional leads get a human in under 30 minutes. Complex quotes go from request to send in under 20 minutes. Aging becomes visible for the first time.</div></div>
-        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Dialpad → FreshSales native integration Day 1 (every call = instant contact record). Tier 1 routing: FreshSales priority task + Dialpad alert → human in 15 min. AI Draft Assistant cuts complex assembly from hours to minutes.</div></div>
-        <div class="okc"><div class="okn" style="color:var(--navy-700)">&lt;30m</div><div class="okl">Tier 1 first-touch SLA · complex quote &lt;20 min</div></div>
+        <div class="omc"><div class="ot">Triage and routing</div><div class="ob">How we will score and route leads, and how we will ensure high-value opportunities get quick human touch and go to the right people.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Lead scoring triage fires on every inquiry. Tier 1 routing: FreshSales priority task + Dialpad alert → human in under 15 minutes. Lower-tier leads enter automated nurture tracks matched to their decision cycle.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--navy-700)">&lt;30m</div><div class="okl">Tier 1 first-touch SLA · right lead to right person</div></div>
       </div>
       <div class="orow">
         <div class="onc"><span>3</span></div>
-        <div class="omc"><div class="ot">Follow-up running through the service date — not a short drip then dead</div><div class="ob">The 1–3 day drip matches no customer's decision timeline. Each segment gets content calibrated to its window — designed to help the buyer decide or get approval, not just ask "ready to book?"</div></div>
-        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Four approved message libraries in Golden's voice. All 30 first-run messages approved by Sophie + Alina before activation. Airport: 72hr. Wedding: 45-day. Charter: 60-day. Institutional: zero automation.</div></div>
-        <div class="okc"><div class="okn" style="color:var(--blue-500)">&gt;25%</div><div class="okl">Target nurture open rate · zero "robotic" complaints guardrail</div></div>
+        <div class="omc"><div class="ot">Quote latency</div><div class="ob">How we will handle complex quotes that require manual coding so they do not sit for hours.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">AI Draft Assistant cuts multi-vehicle and over-the-road charter assembly from hours to minutes. Complex quotes go from request to send in under 20 minutes. Quote aging becomes visible for the first time.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--blue-500)">&lt;20m</div><div class="okl">Complex quote turnaround — down from 2–4 hours</div></div>
       </div>
       <div class="orow">
         <div class="onc"><span>4</span></div>
-        <div class="omc"><div class="ot">Clean, measurable lead-to-quote-to-booking view using what you already have</div><div class="ob">Three sequenced integrations wire the existing stack into one deal record. No new software. Management gets a live dashboard — conversion by segment, response time vs. close rate, utilization vs. fixed costs.</div></div>
-        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Step 1: Dialpad → FreshSales (Week 1–2, native, low risk). Step 2: QuoteBot → FreshSales webhook (Week 2–3, Joshua owns). Step 3: FreshSales → Livery Coach read-sync (Week 3–4, Zapier, medium risk). Day 30: unified dashboard live.</div></div>
-        <div class="okc"><div class="okn" style="color:var(--navy-600);font-size:1.4rem;">Day 30</div><div class="okl">Dashboard live · June 1 Phase 2 decision gate</div></div>
+        <div class="omc"><div class="ot">Integration path</div><div class="ob">What connects first, how it connects, and what data access we need from you.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Step 1: Dialpad → FreshSales (Week 1–2, native, low risk). Step 2: QuoteBot → FreshSales webhook (Week 2–3). Step 3: FreshSales → Livery Coach read-sync (Week 3–4). No new software — wiring the existing stack into one deal record.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--navy-600);font-size:1.4rem;">Day 30</div><div class="okl">Unified pipeline view live · using your existing systems</div></div>
+      </div>
+      <div class="orow">
+        <div class="onc"><span>5</span></div>
+        <div class="omc"><div class="ot">Success metrics</div><div class="ob">The measures we will use to judge the pilot, including response time, conversion rate by segment, and brand and margin guardrails.</div></div>
+        <div class="omh"><div class="oml">How we deliver it</div><div class="omt">Dashboard tracks: response time vs. close rate by segment, conversion rate by quote type, utilization vs. fixed cost absorption. Guardrails: zero "robotic" complaints, no Uber-like pricing language, margin floors by segment.</div></div>
+        <div class="okc"><div class="okn" style="color:var(--gold-500)">Live</div><div class="okl">Real-time dashboard · conversion by segment · brand guardrails</div></div>
       </div>
     </div>
   </div>
