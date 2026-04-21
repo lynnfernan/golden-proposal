@@ -23,6 +23,7 @@
 .gate-btn:hover{background:#fff;transform:translateY(-1px)}
 .gate-err-msg{font-family:'Inter',sans-serif;font-size:12px;color:#EF4444;margin-top:.75rem;min-height:18px}
 .gate-conf{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.2);margin-top:2rem}
+.gate-brand{display:block;width:min(100px,26vw);height:auto;margin:0 auto .75rem;aspect-ratio:1}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
 :root {
@@ -332,17 +333,14 @@ footer { background: var(--navy-950); padding: 2rem 0; border-top: 1px solid rgb
 <!-- PASSWORD GATE -->
 <div id="gate">
   <div class="gate-box">
-    <svg width="64" height="72" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1.5rem;">
-      <!-- Left face -->
-      <polygon points="30,80 80,50 80,140 30,170" fill="#FFCB05"/>
-      <!-- Top-right face -->
-      <polygon points="90,10 170,55 120,85 90,45" fill="#FFCB05"/>
-      <polygon points="170,55 170,100 120,130 120,85" fill="#FFCB05"/>
-      <!-- Bottom-right face -->
-      <polygon points="90,140 170,105 170,195 90,220" fill="#FFCB05"/>
-      <!-- REV GLOBAL text -->
-      <text x="100" y="260" text-anchor="middle" fill="white" font-family="Montserrat,sans-serif" font-weight="900" font-size="32" letter-spacing="3">REV GLOBAL</text>
+    <svg class="gate-brand" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="REV Global">
+      <title>REV Global</title>
+      <!-- Isometric cube: shared edges so faces meet cleanly -->
+      <polygon points="50,6 92,34 50,62 8,34" fill="#FFCB05"/>
+      <polygon points="8,34 50,62 50,98 8,70" fill="#FFCB05"/>
+      <polygon points="50,62 92,34 92,70 50,98" fill="#FFCB05"/>
     </svg>
+    <div class="gate-logo">REV <span>GLOBAL</span></div>
     <div class="gate-sub">Confidential Proposal — Golden Limousine International</div>
     <label class="gate-label" for="pw">Enter access code</label>
     <form id="gate-form" onsubmit="return checkGate(event)">
