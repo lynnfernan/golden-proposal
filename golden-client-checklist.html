@@ -25,11 +25,13 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
 .progress-fill { background: linear-gradient(90deg, #FFCB05, #F59E0B); height: 100%; width: 0%; border-radius: 8px; transition: width 0.4s ease; }
 .progress-label { font-size: 13px; font-weight: 600; color: #6B7280; margin-bottom: .5rem; text-align: right; }
 
-.section { margin-bottom: 2rem; }
-.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; cursor: pointer; }
+.section { margin-bottom: 2.5rem; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
 .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
 .section-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: #040D1E; }
-.section-count { font-size: 12px; font-weight: 600; color: #9CA3AF; margin-left: auto; }
+.section-count { font-size: 12px; font-weight: 600; color: #9CA3AF; margin-left: auto; white-space: nowrap; }
+
+.section-desc { font-size: 13px; color: #6B7280; margin: -.5rem 0 1rem 52px; line-height: 1.5; }
 
 .checklist { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: #fff; border-radius: 10px; border: 1px solid #E5E7EB; transition: all 0.2s ease; cursor: pointer; }
@@ -38,20 +40,30 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
 .checklist li.checked .cb { background: #22C55E; border-color: #22C55E; }
 .checklist li.checked .cb::after { opacity: 1; }
 .checklist li.checked .item-text { color: #6B7280; }
+.checklist li.critical { border-left: 3px solid #EF4444; }
 
 .cb { width: 22px; height: 22px; border-radius: 6px; border: 2px solid #D1D5DB; flex-shrink: 0; position: relative; margin-top: 1px; transition: all 0.2s ease; }
 .cb::after { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 13px; font-weight: 700; opacity: 0; transition: opacity 0.2s ease; }
 
 .item-text { font-size: 14px; color: #374151; line-height: 1.5; }
 .item-note { display: block; font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+.item-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+.tag-critical { background: #FEE2E2; color: #DC2626; }
+.tag-blocker { background: #FEF3C7; color: #D97706; }
 
-.icon-access { background: rgba(59,130,246,.1); color: #3B82F6; }
-.icon-data { background: rgba(255,203,5,.15); color: #D97706; }
-.icon-people { background: rgba(139,92,246,.1); color: #8B5CF6; }
-.icon-brand { background: rgba(236,72,153,.1); color: #EC4899; }
-.icon-quote { background: rgba(20,184,166,.1); color: #14B8A6; }
-.icon-partner { background: rgba(249,115,22,.1); color: #F97316; }
-.icon-contract { background: rgba(34,197,94,.1); color: #22C55E; }
+.icon-d1 { background: #FEE2E2; color: #DC2626; }
+.icon-w1 { background: rgba(255,203,5,.15); color: #D97706; }
+.icon-w2 { background: rgba(59,130,246,.1); color: #3B82F6; }
+.icon-w3 { background: rgba(139,92,246,.1); color: #8B5CF6; }
+.icon-w4 { background: rgba(20,184,166,.1); color: #14B8A6; }
+.icon-g1 { background: rgba(34,197,94,.1); color: #22C55E; }
+.icon-g2 { background: rgba(59,130,246,.1); color: #3B82F6; }
+.icon-g3 { background: rgba(255,203,5,.15); color: #D97706; }
+
+.gate { background: linear-gradient(135deg, #040D1E, #0B1F48); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 16px; }
+.gate-marker { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; color: #FFCB05; white-space: nowrap; }
+.gate-text { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; }
+.gate-text strong { color: #fff; }
 
 .footer { text-align: center; padding: 2rem; font-size: 12px; color: #9CA3AF; border-top: 1px solid #E5E7EB; }
 .footer strong { color: #040D1E; }
@@ -60,6 +72,7 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
   body { background: #fff; }
   .checklist li { break-inside: avoid; }
   .header { padding: 2rem; }
+  .gate { break-inside: avoid; }
 }
 </style>
 </head>
@@ -72,118 +85,144 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
     <img class="header-brand-gl" src="golden-logo.png" alt="Golden Limousine">
   </div>
   <div class="header-logo">REV <span>GLOBAL</span> <span style="color:rgba(255,255,255,.3);font-weight:400;margin:0 .5rem;">x</span> Golden Limousine</div>
-  <h1>Client Needs Checklist</h1>
-  <p>Golden Limousine International — Pilot Engagement</p>
+  <h1>Pilot Checklist</h1>
+  <p>45-Day Engagement Timeline — What We Need, When We Need It</p>
 </div>
 
 <div class="container">
 
-  <div class="progress-label"><span id="progress-text">0 of 30 complete</span></div>
+  <div class="progress-label"><span id="progress-text">0 of 29 complete</span></div>
   <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
 
-  <!-- SYSTEM ACCESS -->
+  <!-- ============ PRE-KICKOFF ============ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-access">🔑</div>
-      <div class="section-title">System Access</div>
-      <div class="section-count">Needed by Day 1</div>
+      <div class="section-icon icon-d1">!</div>
+      <div class="section-title">Pre-Kickoff</div>
+      <div class="section-count">Before Day 1</div>
     </div>
+    <div class="section-desc">These items block everything. Nothing starts until these are complete.</div>
     <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">FreshSales admin access<span class="item-note">Pipeline configuration, automation rules, scoring setup</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Dialpad admin access<span class="item-note">For native FreshSales integration</span></div></li>
-      <li><div class="cb"></div><div class="item-text">QuoteBot API or webhook access<span class="item-note">Joshua to provide</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Livery Coach read access<span class="item-note">For FreshSales sync — needed by Week 3</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Tier selected and engagement agreement signed <span class="item-tag tag-critical">Blocker</span><span class="item-note">Tier 1 ($35K) / Tier 2 ($60K, recommended) / Tier 3 ($90K)</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Pilot start date confirmed <span class="item-tag tag-critical">Blocker</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Confirm decision-maker(s) for gate reviews<span class="item-note">Who attends Day 15, Day 30, and Day 45 checkpoints</span></div></li>
     </ul>
   </div>
 
-  <!-- DATA & BASELINES -->
+  <!-- ============ DAY 1 ============ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-data">📊</div>
-      <div class="section-title">Data & Baselines</div>
-      <div class="section-count">Needed by Day 1</div>
+      <div class="section-icon icon-d1">1</div>
+      <div class="section-title">Day 1 — Baseline Lock & Access</div>
+      <div class="section-count">Critical</div>
     </div>
+    <div class="section-desc">Revenue baseline is locked and system access is granted. This is the foundation for every deliverable and every success metric.</div>
     <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">Current monthly revenue baseline<span class="item-note">Agreed and locked on Day 1 (e.g., $240K/month)</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Current conversion rate by segment<span class="item-note">Airport, wedding, charter, institutional</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Lock current monthly revenue baseline <span class="item-tag tag-critical">Critical</span><span class="item-note">Agreed, documented, and fixed — this number determines performance fee</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Current conversion rate by segment <span class="item-tag tag-critical">Critical</span><span class="item-note">Airport, wedding, charter, institutional — Day 1 benchmark</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">FreshSales admin access <span class="item-tag tag-critical">Critical</span><span class="item-note">Pipeline configuration, automation rules, lead scoring setup</span></div></li>
+      <li class="critical"><div class="cb"></div><div class="item-text">Dialpad admin access <span class="item-tag tag-critical">Critical</span><span class="item-note">Dialpad → FreshSales integration starts immediately</span></div></li>
       <li><div class="cb"></div><div class="item-text">Average quote volume per month by segment</div></li>
       <li><div class="cb"></div><div class="item-text">Current quote expiration window and policies</div></li>
       <li><div class="cb"></div><div class="item-text">Existing rate cards, peak policies, and minimum pricing</div></li>
-      <li><div class="cb"></div><div class="item-text">Historical lost quote data<span class="item-note">Whatever exists in FreshSales / QuoteBot</span></div></li>
     </ul>
   </div>
 
-  <!-- PEOPLE & APPROVALS -->
+  <!-- ============ WEEK 1 ============ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-people">👥</div>
-      <div class="section-title">People & Approvals</div>
-      <div class="section-count">Confirm before kickoff</div>
+      <div class="section-icon icon-w1">W1</div>
+      <div class="section-title">Week 1 — Discovery & Brand Rules</div>
+      <div class="section-count">Days 1–7</div>
     </div>
+    <div class="section-desc">Deep-dive into how Golden quotes, follows up, and communicates today. Establish brand guardrails before any messaging is built.</div>
     <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">Confirm who approves messaging before activation<span class="item-note">Sophie + Alina — or others?</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Confirm Tier 1 lead routing<span class="item-note">Who handles high-value institutional inquiries</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Joshua availability for QuoteBot webhook integration<span class="item-note">Week 2–3 window</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Confirm decision-maker(s) for gate reviews<span class="item-note">Day 15 / Day 30 / Day 45 checkpoints</span></div></li>
-    </ul>
-  </div>
-
-  <!-- BRAND & GUARDRAILS -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon icon-brand">🛡</div>
-      <div class="section-title">Brand & Guardrails</div>
-      <div class="section-count">Critical for messaging</div>
-    </div>
-    <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">Brand voice guidelines or examples of approved customer communications</div></li>
-      <li><div class="cb"></div><div class="item-text">List of language and pricing terms to avoid<span class="item-note">Uber-like surge language, etc.</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Margin floors by segment<span class="item-note">Minimum acceptable margin per quote type</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Compliance or legal requirements on automated outreach</div></li>
-    </ul>
-  </div>
-
-  <!-- QUOTE PROCESS -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon icon-quote">📋</div>
-      <div class="section-title">Quote Process Understanding</div>
-      <div class="section-count">Discovery sessions</div>
-    </div>
-    <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">Walkthrough of current complex quote assembly process<span class="item-note">Multi-vehicle, over-the-road charters</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Current follow-up cadence<span class="item-note">What happens after a quote is sent today</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Current drip / nurture setup<span class="item-note">What's running, what's not</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Walkthrough of complex quote assembly process<span class="item-note">Multi-vehicle, over-the-road charters — understand the manual coding bottleneck</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Current follow-up cadence<span class="item-note">What happens after a quote is sent today — who follows up, when, how</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Current drip / nurture setup<span class="item-note">What's running, what's dead, what never existed</span></div></li>
       <li><div class="cb"></div><div class="item-text">How quotes are tracked from inquiry to booking or lost</div></li>
+      <li><div class="cb"></div><div class="item-text">Brand voice guidelines or examples of approved customer communications<span class="item-note">Sets the tone for all four drip sequences</span></div></li>
+      <li><div class="cb"></div><div class="item-text">List of language and pricing terms to avoid<span class="item-note">No Uber-like surge language — define what's off-limits</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Margin floors by segment<span class="item-note">Minimum acceptable margin per quote type — guardrail for revenue management</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Compliance or legal requirements on automated outreach</div></li>
+      <li><div class="cb"></div><div class="item-text">Historical lost quote data<span class="item-note">Whatever exists in FreshSales / QuoteBot — feeds lead scoring model</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Confirm who approves messaging before activation<span class="item-note">Sophie + Alina — or others?</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Confirm Tier 1 lead routing<span class="item-note">Who handles high-value institutional inquiries — names, not roles</span></div></li>
     </ul>
   </div>
 
-  <!-- PARTNER & OUTREACH -->
+  <!-- ============ WEEK 2 ============ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-partner">🤝</div>
-      <div class="section-title">Partner & Outreach</div>
-      <div class="section-count">For campaign buildout</div>
+      <div class="section-icon icon-w2">W2</div>
+      <div class="section-title">Week 2 — Integration & Scoring</div>
+      <div class="section-count">Days 8–14</div>
     </div>
+    <div class="section-desc">Dialpad → FreshSales goes live. Lead scoring and triage rules are configured. QuoteBot integration begins.</div>
     <ul class="checklist">
+      <li><div class="cb"></div><div class="item-text">QuoteBot API or webhook access <span class="item-tag tag-blocker">Blocker for W2–3</span><span class="item-note">Joshua to provide — needed for quote-to-CRM sync</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Joshua availability confirmed for QuoteBot webhook integration<span class="item-note">Hands-on collaboration window during Week 2–3</span></div></li>
+    </ul>
+  </div>
+
+  <!-- ══════ GATE 1 ══════ -->
+  <div class="gate">
+    <div class="gate-marker">GATE 1 — DAY 15</div>
+    <div class="gate-text"><strong>Every call creates a record.</strong> Dashboard shows pipeline health. Dialpad → FreshSales live.</div>
+  </div>
+
+  <!-- ============ WEEK 3 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-w3">W3</div>
+      <div class="section-title">Week 3 — Nurture & Partner Data</div>
+      <div class="section-count">Days 15–21</div>
+    </div>
+    <div class="section-desc">Four-track drip sequences built and submitted for approval. Partner and outreach target lists needed for campaign buildout.</div>
+    <ul class="checklist">
+      <li><div class="cb"></div><div class="item-text">Livery Coach read access<span class="item-note">For FreshSales → Livery Coach sync — connects dispatch to pipeline</span></div></li>
       <li><div class="cb"></div><div class="item-text">List of current affiliate / partner relationships<span class="item-note">For partner enablement strategy</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Target list for corporate outreach campaign<span class="item-note">Consulting, automotive, healthcare, finance</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Big Ten athletic department contacts or target list<span class="item-note">For Visiting Team Protocol</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Target list for corporate outreach campaign<span class="item-note">Consulting, automotive, healthcare, finance verticals</span></div></li>
+      <li><div class="cb"></div><div class="item-text">Big Ten athletic department contacts or target list<span class="item-note">For Visiting Team Protocol outreach</span></div></li>
     </ul>
   </div>
 
-  <!-- TIER & CONTRACT -->
+  <!-- ============ WEEK 4 ============ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-contract">✅</div>
-      <div class="section-title">Tier Selection & Contract</div>
-      <div class="section-count">Final step</div>
+      <div class="section-icon icon-w4">W4</div>
+      <div class="section-title">Week 4 — Systems Live & Dashboard</div>
+      <div class="section-count">Days 22–30</div>
     </div>
+    <div class="section-desc">FreshSales → Livery Coach sync completes. Unified dashboard goes live. All integrations connected.</div>
     <ul class="checklist">
-      <li><div class="cb"></div><div class="item-text">Tier selected<span class="item-note">Tier 1 ($35K) / Tier 2 ($60K, recommended) / Tier 3 ($90K)</span></div></li>
-      <li><div class="cb"></div><div class="item-text">Signed engagement agreement</div></li>
-      <li><div class="cb"></div><div class="item-text">Pilot start date confirmed</div></li>
+      <li><div class="cb"></div><div class="item-text">Confirm dashboard KPI requirements<span class="item-note">Response time, conversion by segment, utilization vs. fixed costs — what else do you need to see?</span></div></li>
     </ul>
+  </div>
+
+  <!-- ══════ GATE 2 ══════ -->
+  <div class="gate">
+    <div class="gate-marker">GATE 2 — DAY 30</div>
+    <div class="gate-text"><strong>Tier 1 leads responding in &lt;30 min.</strong> All messages approved. Unified dashboard live. Go/no-go on Phase 2.</div>
+  </div>
+
+  <!-- ============ WEEK 5–6 ============ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-g3">W5–6</div>
+      <div class="section-title">Weeks 5–6 — Measure & Prove</div>
+      <div class="section-count">Days 31–45</div>
+    </div>
+    <div class="section-desc">Full system running. Measuring conversion lift, response time, and brand guardrails against Day 1 baseline.</div>
+    <ul class="checklist">
+      <li><div class="cb"></div><div class="item-text">Final gate review scheduled<span class="item-note">Day 45 — decision-makers present, data reviewed, Phase 2 go/no-go</span></div></li>
+    </ul>
+  </div>
+
+  <!-- ══════ GATE 3 ══════ -->
+  <div class="gate">
+    <div class="gate-marker">GATE 3 — DAY 45</div>
+    <div class="gate-text"><strong>15%+ conversion lift.</strong> Response time, conversion by segment, and brand guardrails all measured against Day 1 baseline. Phase 2 decision.</div>
   </div>
 
 </div>
@@ -194,8 +233,7 @@ body { font-family: 'Inter', sans-serif; background: #F8F9FB; color: #1a1a2e; li
 </div>
 
 <script>
-// Interactive checklist with localStorage persistence
-const KEY = 'golden-checklist';
+const KEY = 'golden-checklist-v2';
 
 function loadState() {
   try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; }
